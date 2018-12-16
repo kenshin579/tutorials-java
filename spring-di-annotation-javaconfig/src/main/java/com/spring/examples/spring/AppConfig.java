@@ -8,8 +8,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan("com.spring.examples")
 public class AppConfig {
-    @Bean
-    public QuoteRepository getQuoteRepository(QuoteRepository quoteRepository) {
-        return quoteRepository;
-    }
+    //todo: javaconfig으로 동작을 하지 않음.
+//    @Bean
+//    public QuoteRepository getQuoteRepository(QuoteRepository quoteRepository) {
+//        return quoteRepository;
+//    }
 }
