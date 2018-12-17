@@ -8,6 +8,7 @@
         <module>spring-di-annotation</module>
         <module>spring-di-annotation-javaconfig</module>
         <module>spring-di-javaconfig</module>
+        <module>simple-spring-memcached</module>
     </modules>
     <packaging>pom</packaging>
   <name>tutorials-spring-examples</name>
