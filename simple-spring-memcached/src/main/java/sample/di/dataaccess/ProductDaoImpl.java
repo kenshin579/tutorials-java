@@ -25,6 +25,7 @@ public class ProductDaoImpl implements ProductDao {
 //    @Cacheable(value = "area")
     @ReadThroughSingleCache(namespace = "area")
     public Product findProduct(@ParameterValueKeyProvider String name) {
+//    public Product findProduct(String name) {
         slowly(); // 고의로 지연시킴
         return storage.get(name);
     }
