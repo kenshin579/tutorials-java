@@ -24,12 +24,12 @@ public class QuoteRestController {
     private QuoteService quoteService;
 
     @GetMapping("/quotes")
-    public List getQuotes() {
+    public List getAllQuotes() {
         return quoteService.getAllQuotes();
     }
 
     @GetMapping("/quote/{id}")
-    public ResponseEntity getQuote(@PathVariable("id") Long id) {
+    public ResponseEntity getQuoteById(@PathVariable("id") Long id) {
 
         Quote Quote = quoteService.getQuoteById(id);
         if (Quote == null) {
@@ -46,7 +46,7 @@ public class QuoteRestController {
     }
 
     @DeleteMapping("/quote/{id}")
-    public ResponseEntity deleteQuote(@PathVariable Long id) {
+    public ResponseEntity deleteQuoteById(@PathVariable Long id) {
         if (null == quoteService.deleteQuoteById(id)) {
             return new ResponseEntity("No Quote found for ID " + id, HttpStatus.NOT_FOUND);
         }
@@ -55,7 +55,7 @@ public class QuoteRestController {
     }
 
     @PutMapping("/quote/{id}")
-    public ResponseEntity updateQuote(@PathVariable Long id, @RequestBody Quote Quote) {
+    public ResponseEntity updateQuoteById(@PathVariable Long id, @RequestBody Quote Quote) {
         Quote = quoteService.updateQuoteById(id, Quote);
         if (null == Quote) {
             return new ResponseEntity("No Quote found for ID " + id, HttpStatus.NOT_FOUND);
