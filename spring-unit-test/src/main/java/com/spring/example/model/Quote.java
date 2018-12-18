@@ -7,6 +7,7 @@ import lombok.NonNull;
 @Data
 @AllArgsConstructor
 public class Quote {
+    @NonNull int id;
     @NonNull String author;
     @NonNull String quote;
 }
