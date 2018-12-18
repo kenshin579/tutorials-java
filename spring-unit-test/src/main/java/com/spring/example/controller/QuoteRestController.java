@@ -1,10 +1,18 @@
 package com.spring.example.controller;
 
+import com.spring.example.model.Quote;
 import com.spring.example.service.QuoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -15,59 +23,45 @@ public class QuoteRestController {
     @Autowired
     private QuoteService quoteService;
 
-    @GetMapping("/quote")
-    public ResponseEntity getQuote() {
-        return new ResponseEntity(quoteService.getQuote(), HttpStatus.OK);
+    @GetMapping("/quotes")
+    public List getQuotes() {
+        return quoteService.getAllQuotes();
     }
 
+    @GetMapping("/quote/{id}")
+    public ResponseEntity getQuote(@PathVariable("id") Long id) {
 
-//
-//    @GetMapping("/customers")
-//    public List getCustomers() {
-//        return customerDAO.list();
-//    }
-//
-//    @GetMapping("/customers/{id}")
-//    public ResponseEntity getCustomer(@PathVariable("id") Long id) {
-//
-//        Customer customer = customerDAO.get(id);
-//        if (customer == null) {
-//            return new ResponseEntity("No Customer found for ID " + id, HttpStatus.NOT_FOUND);
-//        }
-//
-//        return new ResponseEntity(customer, HttpStatus.OK);
-//    }
-//
-//    @PostMapping(value = "/customers")
-//    public ResponseEntity createCustomer(@RequestBody Customer customer) {
-//
-//        customerDAO.create(customer);
-//
-//        return new ResponseEntity(customer, HttpStatus.OK);
-//    }
-//
-//    @DeleteMapping("/customers/{id}")
-//    public ResponseEntity deleteCustomer(@PathVariable Long id) {
-//
-//        if (null == customerDAO.delete(id)) {
-//            return new ResponseEntity("No Customer found for ID " + id, HttpStatus.NOT_FOUND);
-//        }
-//
-//        return new ResponseEntity(id, HttpStatus.OK);
-//
-//    }
-//
-//    @PutMapping("/customers/{id}")
-//    public ResponseEntity updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
-//
-//        customer = customerDAO.update(id, customer);
-//
-//        if (null == customer) {
-//            return new ResponseEntity("No Customer found for ID " + id, HttpStatus.NOT_FOUND);
-//        }
-//
-//        return new ResponseEntity(customer, HttpStatus.OK);
-//    }
+        Quote Quote = quoteService.getQuoteById(id);
+        if (Quote == null) {
+            return new ResponseEntity("No Quote found for ID " + id, HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity(Quote, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/quote")
+    public ResponseEntity createQuote(@RequestBody Quote Quote) {
+        quoteService.createQuote(Quote);
+        return new ResponseEntity(Quote, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/quote/{id}")
+    public ResponseEntity deleteQuote(@PathVariable Long id) {
+        if (null == quoteService.deleteQuoteById(id)) {
+            return new ResponseEntity("No Quote found for ID " + id, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(id, HttpStatus.OK);
+
+    }
+
+    @PutMapping("/quote/{id}")
+    public ResponseEntity updateQuote(@PathVariable Long id, @RequestBody Quote Quote) {
+        Quote = quoteService.updateQuoteById(id, Quote);
+        if (null == Quote) {
+            return new ResponseEntity("No Quote found for ID " + id, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(Quote, HttpStatus.OK);
+    }
 
 
 }
