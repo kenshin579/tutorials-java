@@ -13,7 +13,7 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-//    @CacheKeyMethod
+    @CacheKeyMethod
     public String getName() {
         return name;
     }

@@ -1,13 +1,17 @@
 package sample.di.dataaccess;
 
 import com.google.code.ssm.api.ParameterValueKeyProvider;
+import com.google.code.ssm.api.ReadThroughAssignCache;
+import com.google.code.ssm.api.ReadThroughMultiCache;
 import com.google.code.ssm.api.ReadThroughSingleCache;
 import org.springframework.stereotype.Repository;
 import sample.di.business.domain.Product;
-import sample.di.business.service.ProductDao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Repository
 public class ProductDaoImpl implements ProductDao {
@@ -15,19 +19,24 @@ public class ProductDaoImpl implements ProductDao {
     // RDB의 대체
     private Map<String, Product> storage = new HashMap<String, Product>();
 
-    // Dao이지만 단순화 하기 위해 RDB에는 액세스 하지 않음
+    @ReadThroughAssignCache(namespace = "area", assignedKey="all")
+    public List<Product> findAllProducts() {
+        slowly(); // 고의로 지연시킴
+        List<Product> productList = new ArrayList<>();
 
-    /**
-     * @param name
-     * @return
-     * @Cacheable : 캐시를 적용함
-     */
-//    @Cacheable(value = "area")
+        return storage.values().stream().collect(Collectors.toList());
+    }
+
     @ReadThroughSingleCache(namespace = "area")
     public Product findProduct(@ParameterValueKeyProvider String name) {
-//    public Product findProduct(String name) {
+//    public Product findProductByReadThroughSingleCache(String name) {
         slowly(); // 고의로 지연시킴
         return storage.get(name);
+    }
+
+    @ReadThroughMultiCache(namespace = "area")
+    public List<Integer> getIncrementValue(@ParameterValueKeyProvider List<Integer> nums, int incrementValue) {
+        return nums.stream().map(x -> x + incrementValue).collect(Collectors.toList());
     }
 
     //    @ReadThroughSingleCache(namespace = "area")
