@@ -64,7 +64,46 @@ public class ProductServiceImpl implements ProductService {
 
     public void addProduct(Product product) {
         log.debug("addProduct : Product : {}", product);
+        // 측정 시작
+        StopWatch sw = new StopWatch();
+        sw.start();
+
         productDao.addProduct(product);
+
+        // 측정 종료
+        sw.stop();
+
+        System.out.format("Seconds=%1$s, value=%2$s%n",
+                sw.getTotalTimeSeconds(), product);
+    }
+
+    public void changeProduct(String productName, int overridePrice) {
+        log.debug("changeProduct : productName : {} : overridePrice : {}", overridePrice);
+        // 측정 시작
+        StopWatch sw = new StopWatch();
+        sw.start();
+
+        productDao.changeProduct(productName, overridePrice);
+
+        // 측정 종료
+        sw.stop();
+        System.out.format("Seconds=%1$s, value=%2$s%n",
+                sw.getTotalTimeSeconds(), productName);
+    }
+
+    public List<Product> resetPriceForAllProducts() {
+        log.debug("resetPriceForAllProducts");
+        // 측정 시작
+        StopWatch sw = new StopWatch();
+        sw.start();
+
+        List<Product> value = productDao.resetPriceForAllProducts();
+        // 측정 종료
+        sw.stop();
+
+        System.out.format("Seconds=%1$s, value=%2$s%n",
+                sw.getTotalTimeSeconds(), value);
+        return value;
     }
 
     @Override
@@ -74,7 +113,6 @@ public class ProductServiceImpl implements ProductService {
         StopWatch sw = new StopWatch();
         sw.start();
 
-
         List<Integer> value = productDao.getIncrementValue(nums, incrementValue);
 
         // 측정 종료
@@ -83,5 +121,56 @@ public class ProductServiceImpl implements ProductService {
         System.out.format("Seconds=%1$s, value=%2$s%n",
                 sw.getTotalTimeSeconds(), value);
         return value;
+    }
+
+    public List<Product> updatePriceForGivenProductName(List<String> nameList, int overridePrice) {
+        log.debug("updatePriceForGivenProductName : nameList : {}", nameList);
+        // 측정 시작
+        StopWatch sw = new StopWatch();
+        sw.start();
+
+        List<Product> value = productDao.updatePriceForGivenProductName(nameList, overridePrice);
+
+        // 측정 종료
+        sw.stop();
+
+        System.out.format("Seconds=%1$s, value=%2$s%n",
+                sw.getTotalTimeSeconds(), value);
+        return value;
+    }
+
+    @Override
+    public List<Product> getAllProductsFromMemory() {
+        log.debug("getAllProductsFromMemory");
+        // 측정 시작
+        StopWatch sw = new StopWatch();
+        sw.start();
+
+        List<Product> value = productDao.getAllProductsFromMemory();
+
+        // 측정 종료
+        sw.stop();
+
+        System.out.format("Seconds=%1$s, value=%2$s%n",
+                sw.getTotalTimeSeconds(), value);
+        return value;
+    }
+
+    @Override
+    public Product getProductFromMemory(String name) {
+        log.debug("getProductFromMemory : name : {}", name);
+        // 측정 시작
+        StopWatch sw = new StopWatch();
+        sw.start();
+
+        Product product = productDao.getProductFromMemory(name);
+
+        // 측정 종료
+        sw.stop();
+
+        System.out.format("Seconds=%1$s, value=%2$s%n",
+                sw.getTotalTimeSeconds(), product);
+
+        return product;
     }
 }
