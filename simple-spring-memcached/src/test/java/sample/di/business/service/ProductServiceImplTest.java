@@ -86,7 +86,7 @@ public class ProductServiceImplTest {
         this.executeWithMemcachedFlush(productService, () -> {
             productService.addProduct(new Product("microsoft", 100));
             productService.addProduct(new Product("sony", 100));
-            productService.resetPriceForAllProducts();
+            productService.findAllProducts();
             productService.resetPriceForAllProducts();
         });
     }
@@ -98,6 +98,7 @@ public class ProductServiceImplTest {
             productService.addProduct(product);
             productService.changeProduct(product.getName(), 500);
             productService.changeProduct(product.getName(), 1000);
+            assertEquals(1000, productService.findProduct("microsoft"));
         });
     }
 
@@ -108,8 +109,10 @@ public class ProductServiceImplTest {
             productService.addProduct(new Product("microsoft2", 100));
             productService.addProduct(new Product("microsoft3", 100));
             List<String> names = new ArrayList<>(Arrays.asList("microsoft1", "microsoft3"));
-            productService.updatePriceForGivenProductName(names, 1000);
-            productService.updatePriceForGivenProductName(names, 500);
+            List<Product> p1 = productService.updatePriceForGivenProductName(names, 1000);
+            List<Product> p2 = productService.updatePriceForGivenProductName(names, 500);
+            assertEquals(2, p1.size());
+            assertEquals(2, p2.size());
         });
     }
 
@@ -117,8 +120,10 @@ public class ProductServiceImplTest {
     public void testInvalidateAssignCache() {
         this.executeWithMemcachedFlush(productService, () -> {
             productService.addProduct(new Product("microsoft", 100));
+            productService.addProduct(new Product("sony", 200));
             productService.findAllProducts(); //cached 됨
-            productService.getAllProductsFromMemory(); //cache에서 삭제됨
+            List<Product> list = productService.getAllProductsFromMemory(); //cache에서 삭제됨
+            assertEquals(1, list.size());
         });
     }
 
@@ -127,15 +132,21 @@ public class ProductServiceImplTest {
         this.executeWithMemcachedFlush(productService, () -> {
             productService.addProduct(new Product("microsoft", 100));
             productService.findProduct("microsoft"); //cache됨
-            productService.getProductFromMemory("microsoft"); //cache에서 삭제됨
+            Product product = productService.getProductFromMemory("microsoft"); //cache에서 삭제됨
+            assertEquals("microsoft", product.getName());
         });
     }
 
 
     @Test
-    public void testInvalidateMultiCache() {  //todo: 여기서부터 작업하면 됨
+    public void testInvalidateMultiCache() {
         this.executeWithMemcachedFlush(productService, () -> {
-            productService.addProduct(new Product("microsoft", 100));
+            productService.addProduct(new Product("microsoft1", 100));
+            productService.addProduct(new Product("microsoft2", 200));
+            productService.addProduct(new Product("microsoft3", 300));
+            productService.findProduct("microsoft1");
+            List<Product> list = productService.getProductGivenProductNameFromMemory(Arrays.asList("microsoft1", "microsoft2"));
+            assertEquals(2, list.size());
         });
     }
 

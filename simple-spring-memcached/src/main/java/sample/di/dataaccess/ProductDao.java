@@ -1,5 +1,6 @@
 package sample.di.dataaccess;
 
+import com.google.code.ssm.api.ParameterValueKeyProvider;
 import sample.di.business.domain.Product;
 
 import java.util.List;
@@ -24,4 +25,6 @@ public interface ProductDao {
     List<Product> getAllProductsFromMemory();
 
     Product getProductFromMemory(String name);
+
+    List<Product> getProductGivenProductNameFromMemory(List<String> nameList);
 }

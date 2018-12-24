@@ -173,4 +173,22 @@ public class ProductServiceImpl implements ProductService {
 
         return product;
     }
+
+    @Override
+    public List<Product> getProductGivenProductNameFromMemory(List<String> nameList) {
+        log.debug("getProductGivenProductNameFromMemory : nameList : {}", nameList);
+        // 측정 시작
+        StopWatch sw = new StopWatch();
+        sw.start();
+
+        List<Product> value = productDao.getProductGivenProductNameFromMemory(nameList);
+
+        // 측정 종료
+        sw.stop();
+
+        System.out.format("Seconds=%1$s, value=%2$s%n",
+                sw.getTotalTimeSeconds(), value);
+
+        return value;
+    }
 }

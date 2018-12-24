@@ -24,4 +24,6 @@ public interface ProductService {
     List<Product> getAllProductsFromMemory();
 
     Product getProductFromMemory(String name);
+
+    List<Product> getProductGivenProductNameFromMemory(List<String> nameList);
 }

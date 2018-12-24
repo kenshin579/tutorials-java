@@ -91,11 +91,18 @@ public class ProductDaoImpl implements ProductDao {
         return storage.get(name);
     }
 
-//    @InvalidateMultiCache(namespace = "area")
-//    public List<Integer> getIncrementValue(@ParameterValueKeyProvider List<Integer> nums, int incrementValue) {
-//        slowly(); // 고의로 지연시킴
-//        return nums.stream().map(x -> x + incrementValue).collect(Collectors.toList());
-//    }
+    @InvalidateMultiCache(namespace = "area")
+    public List<Product> getProductGivenProductNameFromMemory(@ParameterValueKeyProvider List<String> nameList) {
+        slowly();
+        List<Product> result = new ArrayList<>();
+        Product product;
+
+        for (String name : nameList) {
+            product = storage.get(name);
+            result.add(product);
+        }
+        return result;
+    }
 
     private void slowly() {
         try {
