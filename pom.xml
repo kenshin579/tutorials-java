@@ -10,6 +10,7 @@
         <module>spring-di-javaconfig</module>
         <module>simple-spring-memcached</module>
         <module>spring-unit-test</module>
+        <module>spring-mvc-upload</module>
     </modules>
     <packaging>pom</packaging>
   <name>tutorials-spring-examples</name>
