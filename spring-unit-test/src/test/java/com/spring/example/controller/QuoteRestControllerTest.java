@@ -31,11 +31,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration(classes = {AppConfig.class})
 @WebAppConfiguration
 public class QuoteRestControllerTest {
-    @Mock
-    QuoteService quoteService;
+//    @Mock
+//    QuoteService quoteService;
 
-    @InjectMocks
-    private QuoteRestController quoteRestController;
+//    @InjectMocks
+//    private QuoteRestController quoteRestController;
 
     @Autowired
     private WebApplicationContext wac;
