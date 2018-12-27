@@ -19,21 +19,21 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = { "com.boraji.tutorial.spring.controller" })
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-   @Bean
-   public InternalResourceViewResolver resolver() {
-      InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-      resolver.setViewClass(JstlView.class);
-      resolver.setPrefix("/WEB-INF/views/");
-      resolver.setSuffix(".jsp");
-      return resolver;
-   }
+	@Bean
+	public InternalResourceViewResolver resolver() {
+		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+		resolver.setViewClass(JstlView.class);
+		resolver.setPrefix("/WEB-INF/views/");
+		resolver.setSuffix(".jsp");
+		return resolver;
+	}
 
-   @Bean
-   public MultipartResolver multipartResolver() {
-      CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-      multipartResolver.setMaxUploadSize(1048576000 ); // 10MB
-      multipartResolver.setMaxUploadSizePerFile(1048576000 ); // 1MB
-      return multipartResolver;
-   }
+	@Bean
+	public MultipartResolver multipartResolver() {
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+		multipartResolver.setMaxUploadSize(1048576000); // 10MB
+		multipartResolver.setMaxUploadSizePerFile(1048576000); // 1MB
+		return multipartResolver;
+	}
 
 }
