@@ -8,8 +8,8 @@ import javax.servlet.ServletRegistration.Dynamic;
 /**
  * @author imssbora
  */
-public class MyWebAppInitializer
-		extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+	private static int MAX_FILE_ZIZE = 10 * 1024 * 1024;
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
@@ -34,8 +34,8 @@ public class MyWebAppInitializer
 		//   maxFileSize - the maximum size allowed for uploaded files
 		//   maxRequestSize - the maximum size allowed for multipart/form-data requests
 		//   fileSizeThreshold - the size threshold after which files will be written to disk
-		MultipartConfigElement multipartConfig = new MultipartConfigElement("D:/", 1048576,
-				10485760, 0);
+		MultipartConfigElement multipartConfig = new MultipartConfigElement("/Users/frankyoh/Desktop/upload", MAX_FILE_ZIZE,
+				MAX_FILE_ZIZE, 0);
 		registration.setMultipartConfig(multipartConfig);
 	}
 }

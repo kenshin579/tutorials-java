@@ -17,6 +17,7 @@ import java.io.IOException;
  */
 @Controller
 public class FileUploadController {
+	private final String DOWNLOAD_PATH = "/Users/frankyoh/Desktop/upload";
 
 	@GetMapping("/")
 	public String fileUploadForm(Model model) {
@@ -32,7 +33,7 @@ public class FileUploadController {
 		// Save file on system
 		if (!file.getOriginalFilename().isEmpty()) {
 			BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(
-					new File("D:/SingleFileUpload", file.getOriginalFilename())));
+					new File(DOWNLOAD_PATH + "/" + "SingleFileUpload", file.getOriginalFilename())));
 			outputStream.write(file.getBytes());
 			outputStream.flush();
 			outputStream.close();
@@ -55,7 +56,7 @@ public class FileUploadController {
 			if (!file.getOriginalFilename().isEmpty()) {
 				BufferedOutputStream outputStream = new BufferedOutputStream(
 						new FileOutputStream(
-								new File("D:/MultipleFileUpload", file.getOriginalFilename())));
+								new File(DOWNLOAD_PATH + "/" + "MultipleFileUpload", file.getOriginalFilename())));
 
 				outputStream.write(file.getBytes());
 				outputStream.flush();

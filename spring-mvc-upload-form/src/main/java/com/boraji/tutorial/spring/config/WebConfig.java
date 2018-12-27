@@ -10,6 +10,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import javax.servlet.annotation.MultipartConfig;
+
 /**
  * @author imssbora
  */
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.boraji.tutorial.spring.controller" })
+//@MultipartConfig(maxFileSize = 10 * 1024 * 1024)
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Bean
