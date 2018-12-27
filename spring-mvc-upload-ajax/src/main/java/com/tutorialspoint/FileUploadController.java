@@ -1,4 +1,4 @@
-package com.boraji.tutorial.spring.controller;
+package com.tutorialspoint;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

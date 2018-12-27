@@ -19,7 +19,6 @@ import javax.servlet.annotation.MultipartConfig;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.boraji.tutorial.spring.controller" })
-//@MultipartConfig(maxFileSize = 10 * 1024 * 1024)
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Bean

@@ -10,18 +10,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.spring.examples</groupId>
-    <artifactId>spring-mvc-upload-form</artifactId>
+    <artifactId>spring-mvc-upload-ajax-mixed-xml</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>spring-mvc-upload-form Maven Webapp</name>
+    <name>spring-mvc-upload-ajax-mixed-xml Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <org.springframework-version>4.3.7.RELEASE</org.springframework-version>
         <jackson.version>2.7.5</jackson.version>
-        <failOnMissingWebXml>false</failOnMissingWebXml>
     </properties>
 
     <dependencies>
