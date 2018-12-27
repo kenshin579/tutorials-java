@@ -1,0 +1,1 @@
+http://www.mkyong.com/spring-mvc/gradle-spring-mvc-web-project-example/

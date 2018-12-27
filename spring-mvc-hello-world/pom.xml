@@ -75,7 +75,6 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
-            <scope>runtime</scope>
         </dependency>
 
         <!-- Servlet Dependency -->
@@ -85,25 +84,6 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf-spring4</artifactId>
-            <version>3.0.9.RELEASE</version>
-        </dependency>
-
-        <!--<dependency>-->
-            <!--<groupId>org.thymeleaf</groupId>-->
-            <!--<artifactId>thymeleaf-spring3</artifactId>-->
-            <!--<version>3.0.8.RELEASE</version>-->
-        <!--</dependency>-->
-
-        <!-- JSP Dependency -->
-        <!--<dependency>-->
-            <!--<groupId>javax.servlet.jsp</groupId>-->
-            <!--<artifactId>javax.servlet.jsp-api</artifactId>-->
-            <!--<version>2.3.1</version>-->
-            <!--<scope>provided</scope>-->
-        <!--</dependency>-->
     </dependencies>
 
     <build>
