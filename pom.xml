@@ -11,6 +11,7 @@
         <module>simple-spring-memcached</module>
         <module>spring-unit-test</module>
         <module>spring-mvc-upload-ajax</module>
+        <module>spring-mvc-upload-form</module>
     </modules>
     <packaging>pom</packaging>
   <name>tutorials-spring-examples</name>
