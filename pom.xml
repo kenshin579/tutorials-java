@@ -10,9 +10,9 @@
         <module>spring-di-javaconfig</module>
         <module>simple-spring-memcached</module>
         <module>spring-unit-test</module>
-        <module>spring-mvc-upload-ajax</module>
-        <module>spring-mvc-upload-form</module>
-        <module>spring-mvc-upload-ajax-mixed-xml</module>
+        <module>spring-mvc-javaconfig-fileupload-ajax</module>
+        <module>spring-mvc-javaconfig-fileupload-form</module>
+        <module>spring-mvc-xml-fileupload</module>
         <module>spring-mvc-hello-world</module>
     </modules>
     <packaging>pom</packaging>
