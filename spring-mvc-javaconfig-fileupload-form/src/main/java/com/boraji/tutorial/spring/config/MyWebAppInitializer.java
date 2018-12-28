@@ -34,7 +34,7 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
 		//   maxFileSize - the maximum size allowed for uploaded files
 		//   maxRequestSize - the maximum size allowed for multipart/form-data requests
 		//   fileSizeThreshold - the size threshold after which files will be written to disk
-		MultipartConfigElement multipartConfig = new MultipartConfigElement("/Users/frankyoh/Desktop/upload", MAX_FILE_ZIZE,
+		MultipartConfigElement multipartConfig = new MultipartConfigElement("/tmp/upload", MAX_FILE_ZIZE,
 				MAX_FILE_ZIZE, 0);
 		registration.setMultipartConfig(multipartConfig);
 	}

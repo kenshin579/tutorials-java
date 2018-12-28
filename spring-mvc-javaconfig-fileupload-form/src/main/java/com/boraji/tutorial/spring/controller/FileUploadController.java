@@ -17,7 +17,7 @@ import java.io.IOException;
  */
 @Controller
 public class FileUploadController {
-	private final String DOWNLOAD_PATH = "/Users/frankyoh/Desktop/upload";
+	private final String DOWNLOAD_PATH = "/tmp/upload";
 
 	@GetMapping("/")
 	public String fileUploadForm(Model model) {
