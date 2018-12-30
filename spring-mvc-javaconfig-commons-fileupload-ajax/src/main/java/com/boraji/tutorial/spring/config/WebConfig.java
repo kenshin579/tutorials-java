@@ -18,6 +18,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.boraji.tutorial.spring.controller" })
 public class WebConfig extends WebMvcConfigurerAdapter {
+	private final int MAX_SIZE = 10 * 1024 * 1024;
 
 	@Bean
 	public InternalResourceViewResolver resolver() {
@@ -31,8 +32,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public MultipartResolver multipartResolver() {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-		multipartResolver.setMaxUploadSize(1048576000); // 10MB
-		multipartResolver.setMaxUploadSizePerFile(1048576000); // 1MB
+		multipartResolver.setMaxUploadSize(MAX_SIZE); // 10MB
+		multipartResolver.setMaxUploadSizePerFile(MAX_SIZE); // 10MB
+		multipartResolver.setMaxInMemorySize(0);
 		return multipartResolver;
 	}
 
