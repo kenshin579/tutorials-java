@@ -108,6 +108,9 @@ public class FileUploadController {
 			outputStream.flush();
 			outputStream.close();
 
+//			or
+//			file.transferTo(new File(DOWNLOAD_PATH + "/" + "SingleFileUploadWithAdditionalDataWithClassMapping", file.getOriginalFilename()));
+
 			model.addAttribute("msg", "File uploaded successfully.");
 		} else {
 			model.addAttribute("msg", "Please select a valid mediaFile..");
