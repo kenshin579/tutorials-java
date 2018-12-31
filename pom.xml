@@ -14,6 +14,8 @@
         <module>spring-mvc-javaconfig-fileupload-form</module>
         <module>spring-mvc-xml-fileupload</module>
         <module>spring-mvc-hello-world</module>
+        <module>spring-mvc-exception-handler</module>
+        <module>spring-mvc-exception-journaldev</module>
     </modules>
     <packaging>pom</packaging>
   <name>tutorials-spring-examples</name>
