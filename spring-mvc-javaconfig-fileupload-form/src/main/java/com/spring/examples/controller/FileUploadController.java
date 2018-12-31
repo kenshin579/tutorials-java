@@ -1,4 +1,4 @@
-package com.boraji.tutorial.spring.controller;
+package com.spring.examples.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

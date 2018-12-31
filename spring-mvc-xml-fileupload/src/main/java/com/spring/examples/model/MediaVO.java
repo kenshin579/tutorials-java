@@ -1,4 +1,4 @@
-package com.tutorialspoint.model;
+package com.spring.examples.model;
 
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;

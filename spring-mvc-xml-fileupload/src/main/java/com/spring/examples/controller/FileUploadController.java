@@ -1,6 +1,6 @@
-package com.tutorialspoint.controller;
+package com.spring.examples.controller;
 
-import com.tutorialspoint.model.MediaVO;
+import com.spring.examples.model.MediaVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
