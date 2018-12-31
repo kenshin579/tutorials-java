@@ -19,7 +19,7 @@
     <table>
         <tr>
             <td>Select File</td>
-            <td><input type="mediaFile" name="mediaFile"></td>
+            <td><input type="file" name="mediaFile"></td>
             <td>
                 <button type="submit">Upload</button>
             </td>
@@ -33,7 +33,7 @@
     <table>
         <tr>
             <td>Select Files</td>
-            <td><input type="mediaFile" name="mediaFile" multiple="multiple"></td>
+            <td><input type="file" name="mediaFile" multiple="multiple"></td>
             <td>
                 <button type="submit">Upload</button>
             </td>
