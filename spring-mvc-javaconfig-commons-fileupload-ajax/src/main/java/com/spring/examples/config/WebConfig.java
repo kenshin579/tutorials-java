@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.boraji.tutorial.spring.controller" })
+@ComponentScan(basePackages = { "com.spring.examples" })
 public class WebConfig extends WebMvcConfigurerAdapter {
 	private final int MAX_SIZE = 10 * 1024 * 1024;
 

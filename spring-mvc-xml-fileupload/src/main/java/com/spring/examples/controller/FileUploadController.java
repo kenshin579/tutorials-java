@@ -34,12 +34,7 @@ public class FileUploadController {
 
 		// Save mediaFile on system
 		if (!file.getOriginalFilename().isEmpty()) {
-			BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(
-					new File(DOWNLOAD_PATH + "/" + "SingleFileUpload", file.getOriginalFilename())));
-			outputStream.write(file.getBytes());
-			outputStream.flush();
-			outputStream.close();
-
+			file.transferTo(new File(DOWNLOAD_PATH + "/" + "SingleFileUpload", file.getOriginalFilename()));
 			model.addAttribute("msg", "File uploaded successfully.");
 		} else {
 			model.addAttribute("msg", "Please select a valid mediaFile..");

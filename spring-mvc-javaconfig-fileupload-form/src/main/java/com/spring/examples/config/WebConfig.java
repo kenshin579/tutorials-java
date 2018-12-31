@@ -18,7 +18,7 @@ import javax.servlet.annotation.MultipartConfig;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.boraji.tutorial.spring.controller" })
+@ComponentScan(basePackages = { "com.spring.examples" })
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Bean
