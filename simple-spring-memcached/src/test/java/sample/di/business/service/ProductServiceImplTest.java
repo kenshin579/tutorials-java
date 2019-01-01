@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -149,7 +149,6 @@ public class ProductServiceImplTest {
             assertEquals(2, list.size());
         });
     }
-
 
     private void executeWithMemcachedFlush(ProductService productService, Runnable r) {
 

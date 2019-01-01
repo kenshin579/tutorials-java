@@ -34,9 +34,4 @@ public class MemcachedUtilTest {
         memcachedClient.flushAll();
         assertNull(memcachedClient.get("a"));
     }
-
-    @Test
-    public void name() {
-        //
-    }
 }
