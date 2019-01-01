@@ -17,24 +17,27 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import static com.spring.examples.controller.Constants.DOWNLOAD_PATH;
+import static com.spring.examples.controller.Constants.MULTI_FILE_UPLOAD_PATH;
+import static com.spring.examples.controller.Constants.SINGLE_FILE_UPLOAD_AND_EXTRA_DATA1_PATH;
+import static com.spring.examples.controller.Constants.SINGLE_FILE_UPLOAD_AND_EXTRA_DATA2_PATH;
+import static com.spring.examples.controller.Constants.SINGLE_FILE_UPLOAD_PATH;
+
 @Slf4j
 @Controller
 public class FileUploadController {
-	private final String DOWNLOAD_PATH = "/tmp/upload";
-
 	@GetMapping("/")
 	public String fileUploadForm(Model model) {
 		return "fileUploadForm";
 	}
 
-	// Handling single mediaFile upload request
 	@PostMapping("/singleFileUpload")
 	public String singleFileUpload(@RequestParam("mediaFile") MultipartFile file, Model model)
 			throws IOException {
 
 		// Save mediaFile on system
 		if (!file.getOriginalFilename().isEmpty()) {
-			file.transferTo(new File(DOWNLOAD_PATH + "/" + "SingleFileUpload", file.getOriginalFilename()));
+			file.transferTo(new File(DOWNLOAD_PATH + "/" + SINGLE_FILE_UPLOAD_PATH, file.getOriginalFilename()));
 			model.addAttribute("msg", "File uploaded successfully.");
 		} else {
 			model.addAttribute("msg", "Please select a valid mediaFile..");
@@ -43,7 +46,6 @@ public class FileUploadController {
 		return "fileUploadForm";
 	}
 
-	// Handling multiple files upload request
 	@PostMapping("/multipleFileUpload")
 	public String multipleFileUpload(@RequestParam("mediaFile") MultipartFile[] files,
 			Model model) throws IOException {
@@ -53,7 +55,7 @@ public class FileUploadController {
 			if (!file.getOriginalFilename().isEmpty()) {
 				BufferedOutputStream outputStream = new BufferedOutputStream(
 						new FileOutputStream(
-								new File(DOWNLOAD_PATH + "/" + "MultipleFileUpload", file.getOriginalFilename())));
+								new File(DOWNLOAD_PATH + "/" + MULTI_FILE_UPLOAD_PATH, file.getOriginalFilename())));
 
 				outputStream.write(file.getBytes());
 				outputStream.flush();
@@ -79,7 +81,7 @@ public class FileUploadController {
 		// Save mediaFile on system
 		if (!file.getOriginalFilename().isEmpty()) {
 			BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(
-					new File(DOWNLOAD_PATH + "/" + "SingleFileUploadWithAdditionalData", file.getOriginalFilename())));
+					new File(DOWNLOAD_PATH + "/" + SINGLE_FILE_UPLOAD_AND_EXTRA_DATA1_PATH, file.getOriginalFilename())));
 			outputStream.write(file.getBytes());
 			outputStream.flush();
 			outputStream.close();
@@ -98,7 +100,7 @@ public class FileUploadController {
 		// Save mediaFile on system
 		if (!file.getOriginalFilename().isEmpty()) {
 			BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(
-					new File(DOWNLOAD_PATH + "/" + "SingleFileUploadWithAdditionalDataWithClassMapping", file.getOriginalFilename())));
+					new File(DOWNLOAD_PATH + "/" + SINGLE_FILE_UPLOAD_AND_EXTRA_DATA2_PATH, file.getOriginalFilename())));
 			outputStream.write(file.getBytes());
 			outputStream.flush();
 			outputStream.close();
