@@ -55,6 +55,7 @@
     <button type="submit">Upload</button>
 </form>
 <br/>
+<hr/>
 <h3>파일 업로드 + 추가 정보 by @ModelAttribute</h3>
 <form action="uploadFileModelAttribute" method="post" enctype="multipart/form-data">
     Creator:<br>
@@ -68,6 +69,7 @@
     <button type="submit">Upload</button>
 </form>
 <br/>
+<hr/>
 <span style="color: red; font-size: 14px;">${msg}</span>
 
 </body>

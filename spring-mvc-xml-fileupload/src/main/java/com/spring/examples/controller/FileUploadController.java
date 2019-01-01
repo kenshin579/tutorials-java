@@ -75,17 +75,10 @@ public class FileUploadController {
 
 		log.info("creator : {}", creator);
 		log.info("callbackUrl : {}", callbackUrl);
-		log.info("getOriginalFilename : {}", file.getOriginalFilename());
-		log.info("getSize : {}", file.getSize());
 
 		// Save mediaFile on system
 		if (!file.getOriginalFilename().isEmpty()) {
-			BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(
-					new File(DOWNLOAD_PATH + "/" + SINGLE_FILE_UPLOAD_AND_EXTRA_DATA1_PATH, file.getOriginalFilename())));
-			outputStream.write(file.getBytes());
-			outputStream.flush();
-			outputStream.close();
-
+			file.transferTo(new File(DOWNLOAD_PATH + "/" + SINGLE_FILE_UPLOAD_AND_EXTRA_DATA1_PATH, file.getOriginalFilename()));
 			model.addAttribute("msg", "File uploaded successfully.");
 		} else {
 			model.addAttribute("msg", "Please select a valid mediaFile..");
@@ -97,16 +90,11 @@ public class FileUploadController {
 	public String singleFileUploadWith(@ModelAttribute MediaVO mediaVO, Model model) throws IOException {
 		MultipartFile file = mediaVO.getMediaFile();
 
+		log.info("mediaVO: {}", mediaVO);
+
 		// Save mediaFile on system
 		if (!file.getOriginalFilename().isEmpty()) {
-			BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(
-					new File(DOWNLOAD_PATH + "/" + SINGLE_FILE_UPLOAD_AND_EXTRA_DATA2_PATH, file.getOriginalFilename())));
-			outputStream.write(file.getBytes());
-			outputStream.flush();
-			outputStream.close();
-
-//			or
-//			file.transferTo(new File(DOWNLOAD_PATH + "/" + "SingleFileUploadWithAdditionalDataWithClassMapping", file.getOriginalFilename()));
+			file.transferTo(new File(DOWNLOAD_PATH + "/" + SINGLE_FILE_UPLOAD_AND_EXTRA_DATA2_PATH, file.getOriginalFilename()));
 
 			model.addAttribute("msg", "File uploaded successfully.");
 		} else {
