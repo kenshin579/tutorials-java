@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spring-unit-test</artifactId>
+    <artifactId>spring-mvc-unit-test</artifactId>
     <packaging>war</packaging>
 
-    <name>spring-unit-test Maven Webapp</name>
+    <name>spring-mvc-unit-test Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
