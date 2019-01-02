@@ -20,48 +20,46 @@ import java.util.List;
 @RequestMapping("/api")
 public class QuoteRestController {
 
-    @Autowired
-    private QuoteService quoteService;
+	@Autowired
+	private QuoteService quoteService;
 
-    @GetMapping("/quotes")
-    public List getAllQuotes() {
-        return quoteService.getAllQuotes();
-    }
+	@GetMapping("/quotes")
+	public List getAllQuotes() {
+		return quoteService.getAllQuotes();
+	}
 
-    @GetMapping("/quote/{id}")
-    public ResponseEntity getQuoteById(@PathVariable("id") Long id) {
+	@GetMapping("/quote/{id}")
+	public ResponseEntity<?> getQuoteById(@PathVariable("id") Long id) {
 
-        Quote Quote = quoteService.getQuoteById(id);
-        if (Quote == null) {
-            return new ResponseEntity("No Quote found for ID " + id, HttpStatus.NOT_FOUND);
-        }
+		Quote Quote = quoteService.getQuoteById(id);
+		if (Quote == null) {
+			return new ResponseEntity<>("No Quote found for ID " + id, HttpStatus.NOT_FOUND);
+		}
 
-        return new ResponseEntity(Quote, HttpStatus.OK);
-    }
+		return new ResponseEntity<>(Quote, HttpStatus.OK);
+	}
 
-    @PostMapping(value = "/quote")
-    public ResponseEntity createQuote(@RequestBody Quote Quote) {
-        quoteService.createQuote(Quote);
-        return new ResponseEntity(Quote, HttpStatus.OK);
-    }
+	@PostMapping(value = "/quote")
+	public ResponseEntity<Quote> createQuote(@RequestBody Quote Quote) {
+		quoteService.createQuote(Quote);
+		return new ResponseEntity<>(Quote, HttpStatus.OK);
+	}
 
-    @DeleteMapping("/quote/{id}")
-    public ResponseEntity deleteQuoteById(@PathVariable Long id) {
-        if (null == quoteService.deleteQuoteById(id)) {
-            return new ResponseEntity("No Quote found for ID " + id, HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity(id, HttpStatus.OK);
+	@DeleteMapping("/quote/{id}")
+	public ResponseEntity<java.io.Serializable> deleteQuoteById(@PathVariable Long id) {
+		if (null == quoteService.deleteQuoteById(id)) {
+			return new ResponseEntity<>("No Quote found for ID " + id, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(id, HttpStatus.OK);
 
-    }
+	}
 
-    @PutMapping("/quote/{id}")
-    public ResponseEntity updateQuoteById(@PathVariable Long id, @RequestBody Quote Quote) {
-        Quote = quoteService.updateQuoteById(id, Quote);
-        if (null == Quote) {
-            return new ResponseEntity("No Quote found for ID " + id, HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity(Quote, HttpStatus.OK);
-    }
-
-
+	@PutMapping("/quote/{id}")
+	public ResponseEntity<?> updateQuoteById(@PathVariable Long id, @RequestBody Quote Quote) {
+		Quote = quoteService.updateQuoteById(id, Quote);
+		if (null == Quote) {
+			return new ResponseEntity<>("No Quote found for ID " + id, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(Quote, HttpStatus.OK);
+	}
 }
