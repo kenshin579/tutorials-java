@@ -15,6 +15,7 @@
         <module>spring-mvc-xml-fileupload</module>
         <module>spring-mvc-hello-world</module>
         <module>spring-mvc-exception-journaldev</module>
+        <module>spring-mvc-mybatis</module>
     </modules>
     <packaging>pom</packaging>
   <name>tutorials-spring-examples</name>
