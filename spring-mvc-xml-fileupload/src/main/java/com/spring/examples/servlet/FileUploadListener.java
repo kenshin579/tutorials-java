@@ -21,11 +21,17 @@ public class FileUploadListener implements ServletContextListener {
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
         log.debug("FileUploadListener ended");
+        deleteTempFolder();
+    }
+
+    private void deleteTempFolder() {
+        log.info("deleting temp folder");
+        FileSystemUtils.deleteRecursively(new File(Constants.DOWNLOAD_PATH));
     }
 
     private void resetTempFolder() {
-        File downloadPath = new File(Constants.DOWNLOAD_PATH);
-        FileSystemUtils.deleteRecursively(downloadPath);
+        log.info("reseting temp folder");
+        FileSystemUtils.deleteRecursively(new File(Constants.DOWNLOAD_PATH));
 
         File newPath;
         for (String folder : Constants.UPLOAD_FOLDER_LIST) {
