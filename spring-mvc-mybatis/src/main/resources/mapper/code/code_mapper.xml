@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.sample.code_mapper">
+
+    <select id="selectCodeList" parameterType="code" resultType="hashmap">
+        SELECT
+        CD_DO,
+        CD_UP,
+        CD_DN,
+        CD_KOR,
+        CD_ENG,
+        CD_DESC,
+        USE_YN,
+        SORT_SEQ,
+        MOD_ID,
+        MOD_DT,
+        CRE_ID,
+        CRE_DT
+        FROM
+        USER.TB_CODE
+        WHERE
+        USE_YN = 'Y'
+        <if test="cdDo != null and cdDo != ''">
+            AND CD_DO = #{cdDo}
+        </if>
+        <if test="cdUp != null and cdUp != ''">
+            AND CD_UP = #{cdUp}
+        </if>
+        <if test="cdDn != null and cdDn != ''">
+            AND CD_DN = #{cdDn}
+        </if>
+    </select>
+
+    <insert id="insertCode" parameterType="code">
+		INSERT
+			INTO
+				USER.TB_CODE(
+					CD_DO,
+					CD_UP,
+					CD_DN,
+					CD_KOR,
+					CD_ENG,
+					CD_DESC,
+					USE_YN,
+					SORT_SEQ,
+					MOD_ID,
+					MOD_DT,
+					CRE_ID,
+					CRE_DT
+				)
+			VALUES(
+				#{cdDo},
+				#{cdUp},
+				#{cdDn},
+				#{cdKor},
+				#{cdEng},
+				#{cdDesc},
+				#{useYn},
+				0,
+				NULL,
+				NULL,
+				#{creId},
+				SYSDATE()
+			)
+	</insert>
+
+    <delete id="deleteCode" parameterType="code">
+		UPDATE
+			USER.TB_CODE
+		SET
+			USE_YN = 'N',
+			MOD_ID = #{modId},
+			MOD_DT = SYSDATE()
+		WHERE
+			CD_DO = #{cdDo}
+			AND CD_UP = #{cdUp}
+			AND CD_DN = #{cdDn}
+	</delete>
+
+</mapper>
