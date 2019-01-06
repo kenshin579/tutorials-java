@@ -14,13 +14,13 @@
         <property name="password" value="${jdbc.password}"/>
     </bean>
 
-    <!--<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">-->
-        <!--<constructor-arg ref="dataSourceSpied"/>-->
-        <!--<property name="logFormatter">-->
-            <!--<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">-->
-                <!--<property name="loggingType" value="MULTI_LINE"/>-->
-            <!--</bean>-->
-        <!--</property>-->
-    <!--</bean>-->
+    <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+        <constructor-arg ref="dataSourceSpied"/>
+        <property name="logFormatter">
+            <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+                <property name="loggingType" value="MULTI_LINE"/>
+            </bean>
+        </property>
+    </bean>
 
 </beans>

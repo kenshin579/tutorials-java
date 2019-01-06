@@ -13,7 +13,7 @@
         <property name="configLocation" value="classpath:config/mybatis/mybatis-config.xml"></property>
     </bean>
 
-    <bean id="selSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSession"/>
     </bean>
 

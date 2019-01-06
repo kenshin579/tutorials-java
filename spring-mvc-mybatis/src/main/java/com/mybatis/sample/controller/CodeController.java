@@ -2,7 +2,6 @@ package com.mybatis.sample.controller;
 
 import com.mybatis.sample.service.CodeService;
 import com.mybatis.sample.vo.CodeVO;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,17 +11,15 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 import java.util.Map;
 
-@Slf4j
 @Controller
 public class CodeController {
-
 	@Autowired
 	private CodeService codeService;
 
 	@RequestMapping(value = "/code/list")
 	public ModelAndView getCodeList(@ModelAttribute CodeVO vo) throws Exception {
 
-		log.info(vo.toString().replaceAll("null", ""));
+		System.out.println(vo.toString().replaceAll("null", ""));
 
 		ModelAndView mv = new ModelAndView();
 
@@ -41,7 +38,7 @@ public class CodeController {
 	@RequestMapping(value = "/code/save")
 	public ModelAndView saveCode(@ModelAttribute CodeVO vo) throws Exception {
 
-		log.info(vo.toString().replaceAll("null", ""));
+		System.out.println(vo.toString().replaceAll("null", ""));
 
 		ModelAndView mv = new ModelAndView();
 
@@ -60,7 +57,7 @@ public class CodeController {
 	@RequestMapping(value = "/code/remove")
 	public ModelAndView removeCode(@ModelAttribute CodeVO vo) throws Exception {
 
-		log.info(vo.toString().replaceAll("null", ""));
+		System.out.println(vo.toString().replaceAll("null", ""));
 
 		ModelAndView mv = new ModelAndView();
 
