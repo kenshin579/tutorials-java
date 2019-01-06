@@ -3,6 +3,7 @@ package com.concretepage.controller;
 import com.concretepage.entity.Address;
 import com.concretepage.entity.Company;
 import com.concretepage.entity.Person;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+@Slf4j
 @RestController
 @RequestMapping("/data")
 public class PersonController {
@@ -84,6 +86,7 @@ public class PersonController {
 		System.out.println("Village:" + address.getVillage() + " District:" + address.getDistrict());
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(builder.path("/location/{id}/{name}").buildAndExpand(id, name).toUri());
+		log.info("headers: {}", headers);
 		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	}
 }
