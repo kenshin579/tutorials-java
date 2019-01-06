@@ -18,6 +18,7 @@
         <module>spring-mvc-mybatis</module>
         <module>spring-resttemplate</module>
         <module>httpclient</module>
+        <module>spring-mvc-xml-mybatis</module>
     </modules>
     <packaging>pom</packaging>
   <name>tutorials-spring-examples</name>
