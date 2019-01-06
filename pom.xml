@@ -17,6 +17,7 @@
         <module>spring-mvc-exception-journaldev</module>
         <module>spring-mvc-mybatis</module>
         <module>spring-resttemplate</module>
+        <module>httpclient</module>
     </modules>
     <packaging>pom</packaging>
   <name>tutorials-spring-examples</name>
