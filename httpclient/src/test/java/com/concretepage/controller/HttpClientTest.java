@@ -1,5 +1,6 @@
 package com.concretepage.controller;
 
+import com.concretepage.util.Utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -18,8 +19,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 public class HttpClientTest {
@@ -80,7 +80,25 @@ public class HttpClientTest {
 		httpPost.setHeader("Content-type", "application/json");
 
 		CloseableHttpResponse response = client.execute(httpPost);
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+		assertThat(response.getStatusLine().getStatusCode()).isEqualTo(200);
 		client.close();
+	}
+
+	@Test
+	public void sendDataViaPost_200_정상인_경우() {
+		String requestUrl = "http://localhost:7070/data/saveJson/123";
+		String requestBody = "{ \"status\": \"finished\", \"cdnUrl\": \"http://localhost:8080/cdn\"}";
+
+		assertThat(Utils.sendDataViaPost(requestUrl, requestBody).getStatusLine().getStatusCode()).isEqualTo(200);
+	}
+
+	//todo: 잘 안됨....
+	@Test
+	public void sendDataViaPost_200이_아닌_경우_retry2() {
+		String requestUrl = "http://localhost:7070/data/1saveJson/123";
+		String requestBody = "{ \"status\": \"finished\", \"cdnUrl\": \"http://localhost:8080/cdn\"}";
+
+		Utils.sendDataViaPost(requestUrl, requestBody);
+
 	}
 }
