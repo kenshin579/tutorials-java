@@ -3,12 +3,14 @@ package com.concretepage.controller;
 import com.concretepage.util.Utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.junit.Test;
+import org.mockserver.integration.ClientAndServer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,6 +25,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 public class HttpClientTest {
+	private ClientAndServer mockServer;
+
+//	@Before
+//	public void startMockServer() {
+//		startClientAndServer(1080)
+//				.when(request("POST")
+//						.withMethod("/data/saveJson/123")
+//				)
+//				.respond(
+//						response()
+//								.withBody("sdf")
+//				);
+//	}
+//
+//	@After
+//	public void stopMockServer() {
+//		mockServer.stop();
+//	}
 
 	@Test
 	public void testHttpUrlConnection() {
@@ -89,16 +109,15 @@ public class HttpClientTest {
 		String requestUrl = "http://localhost:7070/data/saveJson/123";
 		String requestBody = "{ \"status\": \"finished\", \"cdnUrl\": \"http://localhost:8080/cdn\"}";
 
-		assertThat(Utils.sendDataViaPost(requestUrl, requestBody).getStatusLine().getStatusCode()).isEqualTo(200);
+		assertThat(Utils.sendDataViaPost(requestUrl, requestBody).getStatusLine().getStatusCode()).isEqualTo(HttpStatus.SC_OK);
 	}
 
 	//todo: 잘 안됨....
 	@Test
 	public void sendDataViaPost_200이_아닌_경우_retry2() {
 		String requestUrl = "http://localhost:7070/data/1saveJson/123";
-		String requestBody = "{ \"status\": \"finished\", \"cdnUrl\": \"http://localhost:8080/cdn\"}";
+		String requestBody = "{\"status\":\"finished\",\"cdnUrl\":\"http://localhost:8080/cdn\"}";
 
 		Utils.sendDataViaPost(requestUrl, requestBody);
-
 	}
 }
