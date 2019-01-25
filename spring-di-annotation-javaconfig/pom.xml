@@ -3,13 +3,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>tutorials-spring-examples</artifactId>
-        <groupId>com.spring.examples</groupId>
+        <artifactId>tutorials-java</artifactId>
+        <groupId>com.advenoh</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.spring.examples</groupId>
+    <groupId>com.advenoh</groupId>
     <artifactId>spring-di-annotation-javaconfig</artifactId>
 
     <name>spring-di-annotation-javaconfig</name>
