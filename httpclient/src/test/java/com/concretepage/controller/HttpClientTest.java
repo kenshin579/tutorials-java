@@ -10,7 +10,6 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.junit.Test;
-import org.mockserver.integration.ClientAndServer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,24 +24,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 public class HttpClientTest {
-	private ClientAndServer mockServer;
+//	private ClientAndServer mockServer;
 
-//	@Before
-//	public void startMockServer() {
-//		startClientAndServer(1080)
-//				.when(request("POST")
-//						.withMethod("/data/saveJson/123")
-//				)
-//				.respond(
-//						response()
-//								.withBody("sdf")
-//				);
-//	}
-//
-//	@After
-//	public void stopMockServer() {
-//		mockServer.stop();
-//	}
+	//	@Before
+	//	public void startMockServer() {
+	//		startClientAndServer(1080)
+	//				.when(request("POST")
+	//						.withMethod("/data/saveJson/123")
+	//				)
+	//				.respond(
+	//						response()
+	//								.withBody("sdf")
+	//				);
+	//	}
+	//
+	//	@After
+	//	public void stopMockServer() {
+	//		mockServer.stop();
+	//	}
 
 	@Test
 	public void testHttpUrlConnection() {
@@ -92,7 +91,7 @@ public class HttpClientTest {
 
 		HttpPost httpPost = new HttpPost(requestUrl);
 
-		String requestBody = "{ \"status\": \"finished\", \"cdnUrl\": \"http://localhost:8080/cdn\"}";
+		String requestBody = "{ \"transStatus\": \"finished\", \"cdnUrl\": \"http://localhost:8080/cdn\"}";
 		StringEntity entity = new StringEntity(requestBody);
 
 		httpPost.setEntity(entity);

@@ -49,16 +49,16 @@ public class RetryableHttpFetcher {
 		log.info("[FRANK] retryRequest(): exception={}, executionCount={}, maxRetries={}", e.getClass(), executionCount, MAX_RETRIES);
 
 		if (executionCount > MAX_RETRIES) {
-			log.info("[FRANK] give up: {0}", executionCount);
+			log.info("[FRANK] give up: {}", executionCount);
 			return false;
 		}
 
 		if (e instanceof java.net.SocketTimeoutException) {
-			log.info("[FRANK] retry: {0}", e.getMessage());
+			log.info("[FRANK] retry: {}", e.getMessage());
 			return true;
 		}
 
-		log.info("[FRANK] not retry: {0}", e.getMessage());
+		log.info("[FRANK] not retry: {}", e.getMessage());
 		return false;
 	};
 

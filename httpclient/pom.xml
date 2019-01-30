@@ -102,11 +102,11 @@
             <artifactId>fluent-hc</artifactId>
             <version>4.3.2</version>
         </dependency>
-        <dependency>
-            <groupId>org.mock-server</groupId>
-            <artifactId>mockserver-netty</artifactId>
-            <version>5.5.1</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.mock-server</groupId>-->
+            <!--<artifactId>mockserver-netty</artifactId>-->
+            <!--<version>5.5.1</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
