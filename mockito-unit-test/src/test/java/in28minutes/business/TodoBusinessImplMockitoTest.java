@@ -1,4 +1,4 @@
-package in28minutes;
+package in28minutes.business;
 
 import in28minutes.business.TodoBusinessImpl;
 import in28minutes.data.api.TodoService;
