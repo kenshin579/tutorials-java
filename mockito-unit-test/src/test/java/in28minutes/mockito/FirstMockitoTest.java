@@ -1,4 +1,4 @@
-package in28minutes;
+package in28minutes.mockito;
 
 import org.junit.Test;
 
