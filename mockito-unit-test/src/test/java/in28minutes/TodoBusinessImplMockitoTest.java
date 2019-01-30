@@ -3,6 +3,7 @@ package in28minutes;
 import in28minutes.business.TodoBusinessImpl;
 import in28minutes.data.api.TodoService;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.util.Arrays;
 import java.util.List;
@@ -45,6 +46,25 @@ public class TodoBusinessImplMockitoTest {
 
 		//then
 		assertThat(todos.size(), is(2));
+	}
+
+	@Test
+	public void letsTestDeleteNow() {
+		TodoService todoService = mock(TodoService.class);
+
+		List<String> allTodos = Arrays.asList("Learn Spring MVC", "Learn Spring", "Learn to Dance");
+
+		when(todoService.retrieveTodos("Ranga")).thenReturn(allTodos);
+
+		TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoService);
+
+		todoBusinessImpl.deleteTodosNotRelatedToSpring("Ranga");
+
+		verify(todoService).deleteTodo("Learn to Dance");
+		verify(todoService, Mockito.never()).deleteTodo("Learn Spring MVC");
+		verify(todoService, Mockito.never()).deleteTodo("Learn Spring");
+		verify(todoService, Mockito.times(1)).deleteTodo("Learn to Dance");
+		// atLeastOnce, atLeast
 	}
 
 }
