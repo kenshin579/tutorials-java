@@ -1,4 +1,4 @@
-package com.java.examples;
+package com.advenoh;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
