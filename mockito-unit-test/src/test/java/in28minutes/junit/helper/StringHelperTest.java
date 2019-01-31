@@ -9,15 +9,19 @@ import static org.junit.Assert.assertTrue;
 
 public class StringHelperTest {
 
-	// AACD => CD ACD => CD CDEF=>CDEF CDAA => CDAA
+	/*
+	AACD => CD
+	ACD => CD
+	CDEF => CDEF
+	CDAA => CDAA
+	*/
 
 	StringHelper helper;
 
 	@Before
-	public void before(){
+	public void before() {
 		helper = new StringHelper();
 	}
-
 
 	@Test
 	public void testTruncateAInFirst2Positions_AinFirst2Positions() {
@@ -41,6 +45,5 @@ public class StringHelperTest {
 		assertTrue(
 				helper.areFirstAndLastTwoCharactersTheSame("ABAB"));
 	}
-
 
 }

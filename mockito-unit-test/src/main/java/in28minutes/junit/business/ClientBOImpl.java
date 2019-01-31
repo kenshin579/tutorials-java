@@ -11,9 +11,8 @@ import java.util.List;
 
 public class ClientBOImpl implements ClientBO {
 
-	public Amount getClientProductsSum(List<Product> products)
-			throws DifferentCurrenciesException {
-
+	@Override
+	public Amount getClientProductsSum(List<Product> products) throws DifferentCurrenciesException {
 		if (products.size() == 0)
 			return new AmountImpl(BigDecimal.ZERO, Currency.EURO);
 

@@ -16,10 +16,10 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
+import static org.mockito.Matchers.argThat;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.atMost;
@@ -142,9 +142,9 @@ public class PersonMockTest {
 		assertThat(mockList.get(1)).isEqualTo(2);
 	}
 
-	class ListOfTwoElements implements ArgumentMatcher<List> {
-		@Override public boolean matches(List list) {
-			return list.size() == 2;
+	class ListOfTwoElements extends ArgumentMatcher<List> {
+		@Override public boolean matches(Object o) {
+			return ((List) o).size() == 2;
 		}
 	}
 

@@ -12,7 +12,12 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class StringHelperParameterizedTest {
 
-	// AACD => CD ACD => CD CDEF=>CDEF CDAA => CDAA
+	/*
+	AACD => CD
+	ACD => CD
+	CDEF=>CDEF
+	CDAA => CDAA
+	*/
 
 	StringHelper helper = new StringHelper();
 
@@ -34,7 +39,6 @@ public class StringHelperParameterizedTest {
 
 	@Test
 	public void testTruncateAInFirst2Positions() {
-		assertEquals(expectedOutput,
-				helper.truncateAInFirst2Positions(input));
+		assertEquals(expectedOutput, helper.truncateAInFirst2Positions(input));
 	}
 }

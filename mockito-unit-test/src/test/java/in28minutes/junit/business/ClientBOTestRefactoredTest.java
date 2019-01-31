@@ -37,8 +37,7 @@ public class ClientBOTestRefactoredTest {
 	}
 
 	@Test(expected = DifferentCurrenciesException.class)
-	public void testClientProductSum_DifferentCurrencies_ThrowsException()
-			throws DifferentCurrenciesException {
+	public void testClientProductSum_DifferentCurrencies_ThrowsException() throws DifferentCurrenciesException {
 
 		Amount[] amounts = {
 				new AmountImpl(new BigDecimal("5.0"), Currency.EURO),
@@ -52,8 +51,7 @@ public class ClientBOTestRefactoredTest {
 	}
 
 	@Test
-	public void testClientProductSum_NoProducts()
-			throws DifferentCurrenciesException {
+	public void testClientProductSum_NoProducts() throws DifferentCurrenciesException {
 
 		Amount[] amounts = {};
 		Amount expected = new AmountImpl(BigDecimal.ZERO, Currency.EURO);

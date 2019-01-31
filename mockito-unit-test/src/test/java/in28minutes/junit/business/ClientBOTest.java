@@ -22,7 +22,7 @@ public class ClientBOTest {
 	@Test
 	public void testClientProductSum() throws DifferentCurrenciesException {
 
-		List<Product> products = new ArrayList<Product>();
+		List<Product> products = new ArrayList<>();
 
 		products.add(new ProductImpl(100, "Product 15",
 				ProductType.BANK_GUARANTEE, new AmountImpl(
@@ -41,7 +41,7 @@ public class ClientBOTest {
 	@Test(expected = DifferentCurrenciesException.class)
 	public void testClientProductSum1() throws DifferentCurrenciesException {
 
-		List<Product> products = new ArrayList<Product>();
+		List<Product> products = new ArrayList<>();
 
 		products.add(new ProductImpl(100, "Product 15",
 				ProductType.BANK_GUARANTEE, new AmountImpl(
@@ -60,7 +60,7 @@ public class ClientBOTest {
 	@Test
 	public void testClientProductSum2() {
 
-		List<Product> products = new ArrayList<Product>();
+		List<Product> products = new ArrayList<>();
 
 		Amount temp = null;
 

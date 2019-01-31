@@ -39,12 +39,17 @@ public class AbstractClazzTest {
 		assertThat(clazz.sayHello()).isEqualTo("Hello Naresh!");
 	}
 
-	@Test
-	public void shouldCallRealMethodsAndFakeAbstractMethod3() {
-		AbstractClazz2 clazz = mock(AbstractClazz2.class, new AbstractMethodMocker());
-		when(clazz.fetchName()).thenReturn("Naresh");
-		assertThat(clazz.sayHello()).isEqualTo("Hello Naresh!");
-	}
+//	/**
+//	 * pom.xml에서 mockito-core를 제외시킨 다음부터 안됨
+//	 * - powermock과 같이 사용하려면 mockito-all을 사용해야 함
+//	 *
+//	 */
+//	@Test
+//	public void shouldCallRealMethodsAndFakeAbstractMethod3() {
+//		AbstractClazz2 clazz = mock(AbstractClazz2.class, new AbstractMethodMocker());
+//		when(clazz.fetchName()).thenReturn("Naresh");
+//		assertThat(clazz.sayHello()).isEqualTo("Hello Naresh!");
+//	}
 
 	/**
 	 * abstract에 있는 부모 메서드 mock하는 방법
