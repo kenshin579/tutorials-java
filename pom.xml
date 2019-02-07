@@ -4,11 +4,6 @@
     <groupId>com.advenoh</groupId>
     <artifactId>tutorials-java</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>spring-model-attribute</module>
-        <module>spring-model-attribute-method</module>
-        <module>junit-rule</module>
-    </modules>
     <packaging>pom</packaging>
     <name>tutorials-java</name>
 
@@ -58,6 +53,7 @@
                 <module>mockito-unit-test</module>
                 <module>retry-exception-handler</module>
                 <module>powermock-unit-test</module>
+                <module>junit-rule</module>
             </modules>
         </profile>
         <profile>
@@ -81,6 +77,8 @@
                 <module>spring-mybatis-mapper</module>
                 <module>spring-async</module>
                 <module>spring-mybatis-dao</module>
+                <module>spring-model-attribute</module>
+                <module>spring-model-attribute-method</module>
             </modules>
         </profile>
     </profiles>
