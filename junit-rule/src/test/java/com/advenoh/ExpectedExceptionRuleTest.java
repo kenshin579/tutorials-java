@@ -7,18 +7,18 @@ import org.junit.rules.ExpectedException;
 public class ExpectedExceptionRuleTest {
 
 	@Rule
-	public ExpectedException thrown = ExpectedException.none();
+	public ExpectedException exception = ExpectedException.none();
 
 	@Test
-	public void throwsNullPointerException() {
-		thrown.expect(RuntimeException.class);
-		throw new NullPointerException();
+	public void IllegalArgumentException_예외_발생_확인() {
+		exception.expect(IllegalArgumentException.class);
+		throw new IllegalArgumentException();
 	}
 
 	@Test
-	public void throwsRuntimeExceptionWithMessage() {
-		thrown.expect(RuntimeException.class);
-		thrown.expectMessage("failed!");
+	public void RuntimeException_예외_발생시_메시지도_같이_확인() {
+		exception.expect(RuntimeException.class);
+		exception.expectMessage("failed!");
 		throw new RuntimeException("failed!");
 	}
 }

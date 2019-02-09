@@ -16,10 +16,10 @@ public class LoggingRule implements TestRule {
 			@Override
 			public void evaluate() throws Throwable {
 				try {
-					System.out.println("Starting: " + name);
+					System.out.println("시작: " + name);
 					base.evaluate();
 				} finally {
-					System.out.println("finished: " + name);
+					System.out.println("끝: " + name);
 				}
 			}
 		};

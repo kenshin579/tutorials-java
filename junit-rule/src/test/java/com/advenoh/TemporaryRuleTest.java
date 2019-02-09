@@ -15,13 +15,9 @@ public class TemporaryRuleTest {
 	@Rule
 	public TemporaryFolder tmpFolder = new TemporaryFolder();
 
-	/**
-	 * //var/folders/f3/z3w0kdln2sn_7z0_qq6rn4dxrgwgh2/T/junit88560316993858696/test.txt
-	 *
-	 * @throws IOException
-	 */
 	@Test
 	public void test_임시파일_생성하기() throws IOException {
+		//var/folders/f3/z3w0kdln2sn_7z0_qq6rn4dxrgwgh2/T/junit88560316993858696/test.txt
 		File tmpFile = tmpFolder.newFile("test.txt");
 		assertThat(tmpFile.isFile()).isTrue();
 		assertThat(tmpFolder.getRoot()).isEqualTo(tmpFile.getParentFile());

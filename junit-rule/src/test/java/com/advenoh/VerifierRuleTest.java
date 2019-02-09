@@ -8,27 +8,41 @@ import org.junit.rules.Verifier;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 public class VerifierRuleTest {
-	private List<String> errorLog = new ArrayList<>();
+	int MAX_AGE = 25;
+	List<Person> peopleWithAgeGreaterThanMaxAge = new ArrayList<>();
 
 	@Rule
 	public Verifier verifier = new Verifier() {
-		//After each method perform this check
 		@Override public void verify() {
-			assertTrue("Error Log is not Empty!", errorLog.isEmpty());
+			assertThat(peopleWithAgeGreaterThanMaxAge.size()).as("나이 %d가 넘는 사람: %s", MAX_AGE, peopleWithAgeGreaterThanMaxAge).isEqualTo(0);
 		}
 	};
 
 	@Test
-	public void testWritesErrorLog() {
-		errorLog.add("There is an error!");
+	public void personTest1() {
+		Person person = Person.builder()
+				.name("Frank")
+				.age(20)
+				.build();
+
+		if (person.getAge() > MAX_AGE) {
+			peopleWithAgeGreaterThanMaxAge.add(person);
+		}
 	}
 
 	@Test
-	public void anotherTest() {
-		log.info("test");
+	public void personTest2() {
+		Person person = Person.builder()
+				.name("Angela")
+				.age(30)
+				.build();
+
+		if (person.getAge() > MAX_AGE) {
+			peopleWithAgeGreaterThanMaxAge.add(person);
+		}
 	}
 }

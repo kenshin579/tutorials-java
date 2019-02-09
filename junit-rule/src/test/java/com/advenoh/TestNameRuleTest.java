@@ -11,12 +11,12 @@ public class TestNameRuleTest {
 	public TestName name = new TestName();
 
 	@Test
-	public void testOne() {
-		assertEquals("testOne", name.getMethodName());
+	public void 테스트1_이름입니다() {
+		assertEquals("테스트1_이름입니다", name.getMethodName());
 	}
 
 	@Test
-	public void testTwo() {
-		assertEquals("testTwo", name.getMethodName());
+	public void 테스트2_이름입니다() {
+		assertEquals("테스트2_이름입니다", name.getMethodName());
 	}
 }
