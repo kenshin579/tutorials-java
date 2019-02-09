@@ -1,5 +1,6 @@
 package com.advenoh.ExternalResource;
 
+import com.advenoh.Server;
 import org.junit.ClassRule;
 import org.junit.rules.ExternalResource;
 import org.junit.runner.RunWith;
