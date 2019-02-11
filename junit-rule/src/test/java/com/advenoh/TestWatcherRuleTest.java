@@ -12,7 +12,7 @@ import org.junit.runners.model.Statement;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestWatcherRuleTest {
-	private static String watchedLog = null + "\n";
+	private static String watchedLog = "\n";
 
 	@Rule
 	public TestRule watchman = new TestWatcher() {
@@ -24,26 +24,25 @@ public class TestWatcherRuleTest {
 		@Override
 		protected void succeeded(Description description) {
 			watchedLog += description.getDisplayName() + " " + "success!\n";
-			System.out.println("Succeed! Watchlog:\n" + watchedLog);
+			System.out.println(String.format("성공!\nWatchlog: %s", watchedLog));
 		}
 
 		@Override
 		protected void failed(Throwable e, Description description) {
 			watchedLog += description.getDisplayName() + " " + e.getClass().getSimpleName() + "\n";
-			System.out.println("Failed! Watchlog:\n" + watchedLog);
+			System.out.println(String.format("실패!\nWatchlog: %s", watchedLog));
 		}
 
 		@Override
 		protected void starting(Description description) {
 			super.starting(description);
-			System.out.println("Starting test! Watchlog:\n" + watchedLog);
+			System.out.println(String.format("==================== 테스트 시작! ==================== \nWatchlog: %s", watchedLog));
 		}
 
 		@Override
 		protected void finished(Description description) {
 			super.finished(description);
-			System.out.println("Test finished! Watchlog:\n" + watchedLog
-					+ "\n------------------------------------\n");
+			System.out.println(String.format("==================== 테스트 끝! ==================== \nWatchlog: %s", watchedLog));
 		}
 	};
 
