@@ -23,7 +23,7 @@ public class TestWatcherRuleTest {
 
 		@Override
 		protected void succeeded(Description description) {
-			watchedLog += description.getDisplayName() + " " + "success!\n";
+			watchedLog += description.getDisplayName() + "  success!\n";
 			System.out.println(String.format("성공!\nWatchlog: %s", watchedLog));
 		}
 
