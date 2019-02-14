@@ -80,6 +80,7 @@
                 <module>spring-model-attribute</module>
                 <module>spring-model-attribute-method</module>
                 <module>springboot-messaging-socketjs-stomp</module>
+                <module>springboot-messaging-rabbitmq</module>
             </modules>
         </profile>
     </profiles>
