@@ -14,7 +14,8 @@ import java.security.GeneralSecurityException;
 import java.security.cert.X509Certificate;
 
 public class JavaKeyStoreHttpsConnectionTest {
-	final String SSL_API_URL = "https://app.zencoder.com";
+//	final String SSL_API_URL = "https://app.zencoder.com";
+final String SSL_API_URL = "https://api.bcovlive.io";
 
 	/**
 	 * 자바 keystore에 certificate을 import을 하지 않아도 그냥 되어야 함

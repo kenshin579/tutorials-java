@@ -1,5 +1,6 @@
 package com.advenoh;
 
+import com.advenoh.rules.LoggingRule;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Rule;
 import org.junit.Test;
