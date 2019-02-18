@@ -81,6 +81,7 @@
                 <module>spring-model-attribute-method</module>
                 <module>springboot-messaging-socketjs-stomp</module>
                 <module>springboot-messaging-rabbitmq</module>
+                <module>spring-annotation-order</module>
             </modules>
         </profile>
     </profiles>
