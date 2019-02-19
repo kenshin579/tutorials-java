@@ -11,7 +11,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class MockitoTest {
+public class MockitoAnnotationTest {
 	@Mock
 	private List<String> mockList;
 
