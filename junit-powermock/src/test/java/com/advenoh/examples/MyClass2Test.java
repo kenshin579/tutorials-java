@@ -1,30 +1,20 @@
-package powermock;
+package com.advenoh.examples;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import static org.junit.Assert.assertNull;
-import static org.powermock.api.support.membermodification.MemberMatcher.*;
+import static org.powermock.api.support.membermodification.MemberMatcher.constructor;
+import static org.powermock.api.support.membermodification.MemberMatcher.constructorsDeclaredIn;
+import static org.powermock.api.support.membermodification.MemberMatcher.everythingDeclaredIn;
+import static org.powermock.api.support.membermodification.MemberMatcher.methodsDeclaredIn;
 import static org.powermock.api.support.membermodification.MemberModifier.suppress;
-
 
 @PrepareForTest(MyClass2.class)
 @RunWith(PowerMockRunner.class)
 public class MyClass2Test {
-
-    @Before
-    public void setUp() throws Exception {
-
-    }
-
-    @After
-    public void tearDown() throws Exception {
-
-    }
 
     @Test
     public void testSupressingConstructorMethod() throws Exception {

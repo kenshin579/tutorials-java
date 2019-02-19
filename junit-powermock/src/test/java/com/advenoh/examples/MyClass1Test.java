@@ -1,7 +1,5 @@
-package powermock;
+package com.advenoh.examples;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
@@ -18,16 +16,6 @@ import static org.powermock.api.support.membermodification.MemberModifier.stub;
 @PrepareForTest(MyClass1.class)
 @RunWith(PowerMockRunner.class)
 public class MyClass1Test {
-
-    @Before
-    public void setUp() throws Exception {
-
-    }
-
-    @After
-    public void tearDown() throws Exception {
-
-    }
 
     @Test
     public void testStubbingStaticMethod() throws Exception {

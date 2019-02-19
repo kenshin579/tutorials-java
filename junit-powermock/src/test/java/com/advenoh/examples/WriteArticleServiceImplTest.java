@@ -1,13 +1,11 @@
-package com.java.examples.mockito;
+package com.advenoh.examples;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
-
 
 public class WriteArticleServiceImplTest {
 
@@ -20,7 +18,7 @@ public class WriteArticleServiceImplTest {
     }
 
     @Test
-    @Ignore
+//    @Ignore
     public void writeArticle() {
         // mock 객체 생성
         ArticleDao mockedDao = mock(ArticleDao.class);

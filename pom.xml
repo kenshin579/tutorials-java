@@ -16,7 +16,6 @@
                 <module>java-hashcode</module>
                 <module>java-eventlistener</module>
                 <module>java-generics</module>
-                <module>junit-mockito-tests</module>
                 <module>log-commons-logging-log4j</module>
                 <module>log-commons-slf4j-log4j</module>
                 <module>log-slf4j-log4j</module>

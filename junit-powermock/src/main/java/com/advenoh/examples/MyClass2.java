@@ -1,4 +1,4 @@
-package powermock;
+package com.advenoh.examples;
 
 public class MyClass2 {
     private String str;

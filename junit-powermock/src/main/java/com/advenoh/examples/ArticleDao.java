@@ -1,4 +1,4 @@
-package com.java.examples.mockito;
+package com.advenoh.examples;
 
 public class ArticleDao {
     private static int staticInt;
