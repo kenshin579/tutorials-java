@@ -1,0 +1,20 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+archivesBaseName = 'Spring4'
+version = '1' 
+repositories {
+    maven { url "https://repo.spring.io/libs-release" }
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web:1.2.2.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-security:1.2.2.RELEASE'
+    compile 'org.springframework.ldap:spring-ldap-core:2.0.2.RELEASE'
+    compile 'org.springframework.security:spring-security-ldap:4.0.1.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-test:1.2.2.RELEASE'
+    compile 'org.springframework.security:spring-security-test:4.0.1.RELEASE'
+}
+

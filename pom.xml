@@ -82,6 +82,7 @@
                 <module>springboot-messaging-socketjs-stomp</module>
                 <module>springboot-messaging-rabbitmq</module>
                 <module>spring-annotation-order</module>
+                <!--<module>springboot-security-junit-test-withmockuser</module>-->
             </modules>
         </profile>
     </profiles>
