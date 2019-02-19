@@ -10,10 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.advenoh</groupId>
-    <artifactId>mockito-unit-test</artifactId>
+    <artifactId>junit-mockito</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>mockito-unit-test</name>
+    <name>junit-mockito</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 

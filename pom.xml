@@ -50,9 +50,9 @@
                 <module>assertj-unit-test</module>
                 <module>interface-callback</module>
                 <module>java-file-io</module>
-                <module>mockito-unit-test</module>
+                <module>junit-mockito</module>
                 <module>retry-exception-handler</module>
-                <module>powermock-unit-test</module>
+                <module>junit-powermock</module>
                 <module>junit-rule</module>
             </modules>
         </profile>

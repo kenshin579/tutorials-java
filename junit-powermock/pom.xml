@@ -10,10 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.advenoh</groupId>
-    <artifactId>powermock-unit-test</artifactId>
+    <artifactId>junit-powermock</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>powermock-unit-test</name>
+    <name>junit-powermock</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
