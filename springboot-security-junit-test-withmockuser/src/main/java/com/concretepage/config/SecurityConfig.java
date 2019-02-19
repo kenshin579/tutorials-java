@@ -1,6 +1,4 @@
-package com.concretepage.config;  
-
-import java.util.Arrays;
+package com.concretepage.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,18 +16,20 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import java.util.Arrays;
+
 @Configuration
 @ComponentScan("com.concretepage")
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled=true, prePostEnabled=true)
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().
-		antMatchers("/app/admin/**").hasRole("ADMIN").
-		antMatchers("/app/user/**").hasRole("USER").
-		and().formLogin();
+				antMatchers("/app/admin/**").hasRole("ADMIN").
+				antMatchers("/app/user/**").hasRole("USER").
+				and().formLogin();
 	}
 
 	@Configuration
@@ -38,15 +38,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		@Override
 		public void init(AuthenticationManagerBuilder auth) throws Exception {
-			  auth.inMemoryAuthentication().withUser("ravan").password("ravan123").roles("USER");
-			  auth.inMemoryAuthentication().withUser("ram").password("ram123").roles("ADMIN");
+			auth.inMemoryAuthentication().withUser("ravan").password("ravan123").roles("USER");
+			auth.inMemoryAuthentication().withUser("ram").password("ram123").roles("ADMIN");
 
 		}
-	} 
+	}
+
 	@Bean
-	public UserDetailsService userDetailsService(){
+	public UserDetailsService userDetailsService() {
 		GrantedAuthority authority = new SimpleGrantedAuthority("ADMIN");
-		UserDetails userDetails = (UserDetails)new User("ram", "ram123", Arrays.asList(authority));
+		UserDetails userDetails = (UserDetails) new User("ram", "ram123", Arrays.asList(authority));
 		return new InMemoryUserDetailsManager(Arrays.asList(userDetails));
 	}
 }  

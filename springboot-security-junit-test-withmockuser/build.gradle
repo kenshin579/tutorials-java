@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'war'
 archivesBaseName = 'Spring4'
-version = '1' 
+version = '1'
 repositories {
     maven { url "https://repo.spring.io/libs-release" }
     mavenLocal()

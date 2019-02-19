@@ -1,5 +1,7 @@
 package com.concretepage;
 
+import com.concretepage.config.AppConfig;
+import com.concretepage.service.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import com.concretepage.config.AppConfig;
-import com.concretepage.service.IUserService;
-
-@RunWith(SpringJUnit4ClassRunner.class) 
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppConfig.class)
 @WebAppConfiguration
 public class SpringSecurityTest {
@@ -22,16 +21,18 @@ public class SpringSecurityTest {
 	public IUserService userService;
 	@Autowired
 	public UserDetailsService userDetailsService;
-	
+
 	@Test(expected = AuthenticationCredentialsNotFoundException.class)
 	public void testOne() {
 		userService.methodOne();
 	}
+
 	@Test
-	@WithMockUser(roles={"ADMIN"})
+	@WithMockUser(roles = { "ADMIN" })
 	public void testTwo() {
 		userService.methodTwo("This is Admin");
 	}
+
 	@Test
 	@WithMockUser(username = "ravan")
 	public void testThree() {
@@ -39,8 +40,9 @@ public class SpringSecurityTest {
 		user.setUserName("ravan");
 		userService.methodThree(user);
 	}
+
 	@Test
-	@WithUserDetails("ram") 
+	@WithUserDetails("ram")
 	public void testFour() {
 		userService.methodFour();
 	}
