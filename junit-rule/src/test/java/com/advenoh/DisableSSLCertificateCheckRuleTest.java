@@ -1,14 +1,20 @@
 package com.advenoh;
 
+import com.advenoh.rules.DisableSSLCertificateCheckRule;
+import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+@Slf4j
 public class DisableSSLCertificateCheckRuleTest {
-//	final String SSL_API_URL = "https://api.github.com";
+	@Rule
+	public DisableSSLCertificateCheckRule disableSSLRule = new DisableSSLCertificateCheckRule();
+
 	final String SSL_API_URL = "https://api.bcovlive.io";
 
 	@Test
