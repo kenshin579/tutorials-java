@@ -4,9 +4,6 @@
     <groupId>com.advenoh</groupId>
     <artifactId>tutorials-java</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>spring-messaging-websocket</module>
-    </modules>
     <packaging>pom</packaging>
     <name>tutorials-java</name>
 
@@ -85,6 +82,8 @@
                 <module>springboot-messaging-rabbitmq</module>
                 <module>spring-annotation-order</module>
                 <!--<module>springboot-security-junit-test-withmockuser</module>-->
+                <module>spring-messaging-websocket</module>
+                <module>springboot-security</module>
             </modules>
         </profile>
     </profiles>
