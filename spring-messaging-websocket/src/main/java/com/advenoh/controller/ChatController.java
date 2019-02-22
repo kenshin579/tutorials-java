@@ -2,6 +2,7 @@ package com.advenoh.controller;
 
 import com.advenoh.model.Message;
 import com.advenoh.model.OutputMessage;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Slf4j
 @Controller
 public class ChatController {
 
