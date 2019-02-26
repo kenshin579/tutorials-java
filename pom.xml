@@ -4,9 +4,6 @@
     <groupId>com.advenoh</groupId>
     <artifactId>tutorials-java</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>junit-unit-test</module>
-    </modules>
     <packaging>pom</packaging>
     <name>tutorials-java</name>
 
@@ -58,6 +55,7 @@
                 <module>junit-rule</module>
                 <module>junit-unit-test</module>
                 <module>rabbitmq-amqp-client</module>
+                <module>spring-rabbitmq</module>
             </modules>
         </profile>
         <profile>
