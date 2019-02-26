@@ -57,6 +57,7 @@
                 <module>junit-powermock</module>
                 <module>junit-rule</module>
                 <module>junit-unit-test</module>
+                <module>rabbitmq-amqp-client</module>
             </modules>
         </profile>
         <profile>
