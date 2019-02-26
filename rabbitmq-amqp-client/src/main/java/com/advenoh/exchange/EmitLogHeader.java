@@ -1,4 +1,4 @@
-package com.advenoh;
+package com.advenoh.exchange;
 
 import com.rabbitmq.client.*;
 

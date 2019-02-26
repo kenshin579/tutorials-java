@@ -1,4 +1,4 @@
-package com.advenoh;
+package com.advenoh.queue;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
