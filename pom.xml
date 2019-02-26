@@ -56,6 +56,7 @@
                 <module>retry-exception-handler</module>
                 <module>junit-powermock</module>
                 <module>junit-rule</module>
+                <module>junit-unit-test</module>
             </modules>
         </profile>
         <profile>
@@ -87,6 +88,7 @@
                 <!--<module>springboot-security-junit-test-withmockuser</module>-->
                 <module>spring-messaging-websocket</module>
                 <module>springboot-security</module>
+                <module>springboot-data-jpa-h2</module>
             </modules>
         </profile>
     </profiles>
