@@ -11,7 +11,6 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,22 +18,22 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 public class RabbitMQConfig {
 
-	@Value("${rabbitmq.queue.name}")
-	private String queueName;
-	@Value("${rabbitmq.exchange.name}")
-	private String exchangeName;
-	@Value("${rabbitmq.routing.key}")
-	private String routingKey;
-	@Value("${deploy.phase:dev}")
-	private String phase;
-	@Value("${rabbitmq.user.name}")
-	private String rabbitMQUsername;
-	@Value("${rabbitmq.user.password}")
-	private String rabbitMQPassword;
-	@Value("${rabbitmq.virtual.host}")
-	private String rabbitMQVirtualHost;
+	//	@Value("${rabbitmq.queue.name}")
+	//	private String queueName;
+	//	@Value("${rabbitmq.exchange.name}")
+	//	private String exchangeName;
+	//	@Value("${rabbitmq.routing.key}")
+	//	private String routingKey;
+	//	@Value("${deploy.phase:dev}")
+	//	private String phase;
+	//	@Value("${rabbitmq.user.name}")
+	//	private String rabbitMQUsername;
+	//	@Value("${rabbitmq.user.password}")
+	//	private String rabbitMQPassword;
+	//	@Value("${rabbitmq.virtual.host}")
+	//	private String rabbitMQVirtualHost;
 
-	//	final static String queueName = "concretepage";
+	final static String queueName = "concretepage";
 
 	@Autowired
 	RabbitTemplate rabbitTemplate;
