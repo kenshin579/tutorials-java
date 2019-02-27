@@ -4,9 +4,6 @@
     <groupId>com.advenoh</groupId>
     <artifactId>tutorials-java</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>spring-websocket-stomp</module>
-    </modules>
     <packaging>pom</packaging>
     <name>tutorials-java</name>
 
@@ -84,11 +81,12 @@
                 <module>spring-mybatis-dao</module>
                 <module>spring-model-attribute</module>
                 <module>spring-model-attribute-method</module>
+                <module>spring-annotation-order</module>
+                <module>spring-websocket-stomp</module>
+                <module>spring-messaging-websocket</module>
                 <module>springboot-messaging-socketjs-stomp</module>
                 <module>springboot-messaging-rabbitmq</module>
-                <module>spring-annotation-order</module>
                 <!--<module>springboot-security-junit-test-withmockuser</module>-->
-                <module>spring-messaging-websocket</module>
                 <module>springboot-security</module>
                 <module>springboot-data-jpa-h2</module>
             </modules>
