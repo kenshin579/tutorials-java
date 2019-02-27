@@ -1,4 +1,4 @@
-package com.rabbitmq.exchange;
+package com.rabbitmq.exchange.pubsub;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
