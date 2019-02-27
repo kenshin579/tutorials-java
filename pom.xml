@@ -55,7 +55,7 @@
                 <module>junit-rule</module>
                 <module>junit-unit-test</module>
                 <module>rabbitmq-amqp-client</module>
-                <module>spring-rabbitmq</module>
+                <module>concurrency-countdownlatch</module>
             </modules>
         </profile>
         <profile>
@@ -84,6 +84,7 @@
                 <module>spring-annotation-order</module>
                 <module>spring-websocket-stomp</module>
                 <module>spring-messaging-websocket</module>
+                <module>spring-rabbitmq</module>
                 <module>springboot-messaging-socketjs-stomp</module>
                 <module>springboot-messaging-rabbitmq</module>
                 <!--<module>springboot-security-junit-test-withmockuser</module>-->
