@@ -55,7 +55,7 @@
                 <module>junit-rule</module>
                 <module>junit-unit-test</module>
                 <module>rabbitmq-amqp-client</module>
-                <module>concurrency-countdownlatch</module>
+                <module>java-concurrency-countdownlatch</module>
             </modules>
         </profile>
         <profile>
