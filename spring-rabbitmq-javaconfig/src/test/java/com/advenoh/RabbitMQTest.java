@@ -25,6 +25,11 @@ public class RabbitMQTest {
 	@Autowired
 	Queue queue;
 
+	/**
+	 * todo: unit test에서 제대로 receiveMsg가 호출됐는지 체크를 어떻게 할수 있나?
+	 *
+	 * @throws Exception
+	 */
 	@Test
 	public void test_send_and_receive_hello_world() throws Exception {
 		rabbitTemplate.convertAndSend(queue.getName(), "Hello from RabbitMQ!");
