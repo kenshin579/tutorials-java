@@ -1,1 +1,0 @@
-https://www.concretepage.com/spring-4/spring-4-rabbitmq-integration-annotation-example
