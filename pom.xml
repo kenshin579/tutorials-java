@@ -85,6 +85,7 @@
                 <module>spring-websocket-stomp</module>
                 <module>spring-messaging-websocket</module>
                 <module>spring-rabbitmq</module>
+                <module>spring-rabbitmq-javaconfig</module>
                 <module>springboot-messaging-socketjs-stomp</module>
                 <module>springboot-messaging-rabbitmq</module>
                 <!--<module>springboot-security-junit-test-withmockuser</module>-->
