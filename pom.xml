@@ -91,6 +91,7 @@
                 <!--<module>springboot-security-junit-test-withmockuser</module>-->
                 <module>springboot-security</module>
                 <module>springboot-data-jpa-h2</module>
+                <module>springboot-resttemplate</module>
             </modules>
         </profile>
     </profiles>
