@@ -56,6 +56,7 @@
                 <module>junit-unit-test</module>
                 <module>rabbitmq-amqp-client</module>
                 <module>java-concurrency-countdownlatch</module>
+                <module>java-concurrency-atomic</module>
                 <module>google-guava</module>
             </modules>
         </profile>
