@@ -58,6 +58,7 @@
                 <module>java-concurrency-countdownlatch</module>
                 <module>java-concurrency-atomic</module>
                 <module>google-guava</module>
+                <module>scheduler-quartz</module>
             </modules>
         </profile>
         <profile>
