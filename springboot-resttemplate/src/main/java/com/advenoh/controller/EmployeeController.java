@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class EmployeeController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Employee getForObject(@PathVariable Long id) {
+	public Employee getEmployee(@PathVariable Long id) {
 		log.info("id: {}", id);
 
 		Employee employee = Employee.builder()

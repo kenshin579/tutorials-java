@@ -24,7 +24,7 @@ public class EmployeeControllerTest {
 	RestTemplate restTemplate = new RestTemplate();
 
 	/**
-	 * getForObject() : 주어진 URL 주소로 HTTP GET 메서드로 객체로 결과를 반환받는다.
+	 * getEmployee() : 주어진 URL 주소로 HTTP GET 메서드로 객체로 결과를 반환받는다.
 	 * getForEntity() : 주어진 URL 주소로 HTTP GET 메서드로 결과는 ResponseEntity로 반환받는다.
 	 * exchange() : HTTP 헤더를 새로 만들 수 있고 어떤 HTTP 메서드도 사용가능하다.
 	 * postForObject() : POST 요청을 보내고 객체로 결과를 반환받는다.
@@ -43,6 +43,13 @@ public class EmployeeControllerTest {
 
 	@Test
 	public void test_getForEntity() {
+		ResponseEntity<Employee> empEntity = restTemplate.getForEntity(BASE_URL + "/{id}", Employee.class, 25);
+		log.info("statusCode: {}", empEntity.getStatusCode());
+		log.info("getBody: {}", empEntity.getBody());
+	}
+
+	@Test
+	public void test_getForEntity_여러_path_variables을_넘겨주는_경우() {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 		params.add("name", "Frank Oh");
 		params.add("country", "US");
@@ -50,6 +57,11 @@ public class EmployeeControllerTest {
 		ResponseEntity<Employee> empEntity = restTemplate.getForEntity(BASE_URL + "/{name}/{country}", Employee.class, params);
 		log.info("statusCode: {}", empEntity.getStatusCode());
 		log.info("getBody: {}", empEntity.getBody());
+	}
+
+	@Test
+	public void test_get_lists_of_objects() {
+		//https://www.baeldung.com/spring-rest-template-list
 	}
 
 	@Test
