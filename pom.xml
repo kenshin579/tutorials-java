@@ -59,6 +59,7 @@
                 <module>java-concurrency-atomic</module>
                 <module>google-guava</module>
                 <module>scheduler-quartz</module>
+                <module>scheduler-quartz-mysql</module>
             </modules>
         </profile>
         <profile>
