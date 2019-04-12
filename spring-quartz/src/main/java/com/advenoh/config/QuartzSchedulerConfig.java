@@ -1,15 +1,8 @@
 package com.advenoh.config;
 
-import com.advenoh.job.TestJob;
 import com.advenoh.service.SchedulerJobListener;
 import com.advenoh.service.SchedulerTriggerListener;
 import lombok.extern.slf4j.Slf4j;
-import org.quartz.CronScheduleBuilder;
-import org.quartz.JobBuilder;
-import org.quartz.JobDetail;
-import org.quartz.Trigger;
-import org.quartz.TriggerBuilder;
-import org.quartz.TriggerKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.ApplicationContext;
@@ -20,7 +13,6 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.Properties;
@@ -30,6 +22,9 @@ import java.util.Properties;
 @PropertySource({ "classpath:jdbc.properties" })
 @EnableTransactionManagement
 public class QuartzSchedulerConfig {
+
+	@Autowired
+	DataSource dataSource;
 
 	@Autowired
 	private ApplicationContext applicationContext;
@@ -44,13 +39,13 @@ public class QuartzSchedulerConfig {
 	private SchedulerFactoryBean schedulerFactoryBean;
 
 	@Bean
-	public SchedulerFactoryBean schedulerFactoryBean(DataSource dataSource) throws IOException {
+	public SchedulerFactoryBean schedulerFactoryBean() throws IOException {
 		log.info("[FRANK] schedulerFactoryBean");
 		SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();
 		schedulerFactoryBean.setQuartzProperties(quartzProperties());
 		schedulerFactoryBean.setOverwriteExistingJobs(true);
 		schedulerFactoryBean.setDataSource(dataSource);
-//		schedulerFactoryBean.setNonTransactionalDataSource(dataSource);
+		schedulerFactoryBean.setNonTransactionalDataSource(dataSource);
 		schedulerFactoryBean.setWaitForJobsToCompleteOnShutdown(true);
 
 		//Register listeners to get notification on Trigger misfire etc
@@ -102,26 +97,26 @@ public class QuartzSchedulerConfig {
 	//
 	//			return dataSource;
 	//		}
-
-	@PostConstruct
-	private void initialize() throws Exception {
-		JobDetail jobDetail;
-		Trigger trigger;
-		int max = 5;
-		for (int i = 0; i < max; i++) {
-			jobDetail = JobBuilder
-					.newJob(TestJob.class)
-					.withIdentity("simple" + i, "group" + i).build();
-			trigger = TriggerBuilder
-					.newTrigger()
-					.withIdentity("simple" + i, "group" + i)
-					.forJob(jobDetail)
-					.withSchedule(CronScheduleBuilder.cronSchedule("0/20 * * * * ?"))
-					.startNow().build();
-
-			if (!schedulerFactoryBean.getScheduler().checkExists(new TriggerKey("simple" + i, "group" + i))) {
-				schedulerFactoryBean.getScheduler().scheduleJob(jobDetail, trigger);
-			}
-		}
-	}
+	//
+	//	@PostConstruct
+	//	private void initialize() throws Exception {
+	//		JobDetail jobDetail;
+	//		Trigger trigger;
+	//		int max = 5;
+	//		for (int i = 0; i < max; i++) {
+	//			jobDetail = JobBuilder
+	//					.newJob(TestJob.class)
+	//					.withIdentity("simple" + i, "group" + i).build();
+	//			trigger = TriggerBuilder
+	//					.newTrigger()
+	//					.withIdentity("simple" + i, "group" + i)
+	//					.forJob(jobDetail)
+	//					.withSchedule(CronScheduleBuilder.cronSchedule("0/20 * * * * ?"))
+	//					.startNow().build();
+	//
+	//			if (!schedulerFactoryBean.getScheduler().checkExists(new TriggerKey("simple" + i, "group" + i))) {
+	//				schedulerFactoryBean.getScheduler().scheduleJob(jobDetail, trigger);
+	//			}
+	//		}
+	//	}
 }
