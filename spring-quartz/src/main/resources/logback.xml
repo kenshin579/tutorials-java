@@ -6,7 +6,7 @@
             <pattern>%5p &lt;%d{yyyy-MM-dd HH:mm:ss}&gt;[%C:%L] [%thread] %m%n</pattern>
         </encoder>
     </appender>
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="stdout"/>
     </root>
 </configuration>
