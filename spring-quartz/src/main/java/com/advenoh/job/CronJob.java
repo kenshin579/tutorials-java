@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Slf4j
 public class CronJob extends QuartzJobBean implements InterruptableJob {
-	private volatile boolean isJobInterrupted = true;
+	private volatile boolean isJobInterrupted = false;
 
 	private volatile Thread currThread;
 
@@ -25,7 +25,7 @@ public class CronJob extends QuartzJobBean implements InterruptableJob {
 				+ " ,Time now :" + new Date());
 
 		try {
-			log.info("");
+			log.info("working....");
 		} finally {
 			if (isJobInterrupted) {
 				log.info("Job " + key.getName() + " did not complete");
