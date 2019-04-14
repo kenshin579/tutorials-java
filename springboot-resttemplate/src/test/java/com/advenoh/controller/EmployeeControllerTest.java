@@ -1,10 +1,12 @@
 package com.advenoh.controller;
 
+import com.advenoh.model.Address;
 import com.advenoh.model.Employee;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -15,11 +17,15 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class EmployeeControllerTest {
-	final String BASE_URL = "http://localhost:8080/employee";
+	final String BASE_URL = "http://localhost:8080";
 
 	RestTemplate restTemplate = new RestTemplate();
 
@@ -35,17 +41,19 @@ public class EmployeeControllerTest {
 	 * put() : 주어진 URL 주소로 HTTP PUT 메서드를 실행한다.
 	 * execute():
 	 */
+
+	//GET
 	@Test
 	public void test_getForObject() {
-		Employee employee = restTemplate.getForObject(BASE_URL + "/{id}", Employee.class, 25);
+		Employee employee = restTemplate.getForObject(BASE_URL + "/employee/{id}", Employee.class, 25);
 		log.info("employee: {}", employee);
 	}
 
 	@Test
 	public void test_getForEntity() {
-		ResponseEntity<Employee> empEntity = restTemplate.getForEntity(BASE_URL + "/{id}", Employee.class, 25);
-		log.info("statusCode: {}", empEntity.getStatusCode());
-		log.info("getBody: {}", empEntity.getBody());
+		ResponseEntity<String> responseEntity = restTemplate.getForEntity(BASE_URL + "/employee/{id}", String.class, 25);
+		log.info("statusCode: {}", responseEntity.getStatusCode());
+		log.info("getBody: {}", responseEntity.getBody());
 	}
 
 	@Test
@@ -54,26 +62,42 @@ public class EmployeeControllerTest {
 		params.add("name", "Frank Oh");
 		params.add("country", "US");
 
-		ResponseEntity<Employee> empEntity = restTemplate.getForEntity(BASE_URL + "/{name}/{country}", Employee.class, params);
-		log.info("statusCode: {}", empEntity.getStatusCode());
-		log.info("getBody: {}", empEntity.getBody());
+		ResponseEntity<Employee> responseEntity = restTemplate.getForEntity(BASE_URL + "/employee/{name}/{country}", Employee.class, params);
+		log.info("statusCode: {}", responseEntity.getStatusCode());
+		log.info("getBody: {}", responseEntity.getBody());
 	}
 
+	//POST
 	@Test
-	public void test_get_lists_of_objects() {
-		//https://www.baeldung.com/spring-rest-template-list
+	public void testPostForObject() {
+		Employee newEmployee = Employee.builder().name("Frank").address(Address.builder().country("US").build()).build();
+
+//		final HttpEntity<Employee> request = new HttpEntity<>(newEmployee);
+		Employee employee = restTemplate.postForObject(BASE_URL, newEmployee, Employee.class, 23);
+		log.info("employee: {}", employee);
 	}
 
-	@Test
-	public void test_exchange() {
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.APPLICATION_JSON);
-		HttpEntity<String> entity = new HttpEntity<>("Hello World!", headers);
-		log.info("entity: {}", entity);
-
-		ResponseEntity<Employee> empEntity = restTemplate.exchange(BASE_URL + "/exchange/{id}", HttpMethod.GET, entity, Employee.class, 50);
-		log.info("empEntity: {}", empEntity);
-	}
+	//	@Test
+	//	public void testPostForEntity() {
+	//		String url = "http://localhost:8080/data/saveinfo/{id}/{name}";
+	//		Map<String, String> map = new HashMap<>();
+	//		map.put("id", "111");
+	//		map.put("name", "Shyam");
+	//		Address address = new Address("Dhananjaypur", "Varanasi", "UP");
+	//		ResponseEntity<Person> entity = restTemplate.postForEntity(url, address, Person.class, map);
+	//		System.out.println(entity.getBody().getName());
+	//		System.out.println(entity.getBody().getAddress().getVillage());
+	//	}
+	//
+	//	@Test
+	//	public void testPostForLocation() {
+	//		String url = "http://localhost:8080/data/location/{id}/{name}";
+	//		Address address = new Address("Dhananjaypur", "Varanasi", "UP");
+	//		URI uri = restTemplate.postForLocation(url, address, 111, "Shyam");
+	//		log.info("uri: {}", uri);
+	//		System.out.println(uri.getPath());
+	//	}
+	//
 
 	//	@Test
 	//	public void testExchange() {
@@ -96,41 +120,7 @@ public class EmployeeControllerTest {
 	//		System.out.println(httpHeaders.getDate());
 	//		System.out.println(httpHeaders.getContentType());
 	//	}
-	//
-	//
-	//	@Test
-	//	public void testPostForObject() {
-	//		String url = "http://localhost:8080/data/saveinfo/{id}/{name}";
-	//		Map<String, String> map = new HashMap<>();
-	//		map.put("id", "111");
-	//		map.put("name", "Shyam");
-	//		Address address = new Address("Dhananjaypur", "Varanasi", "UP");
-	//		Person person = restTemplate.postForObject(url, address, Person.class, map);
-	//		System.out.println(person.getName());
-	//		System.out.println(person.getAddress().getVillage());
-	//	}
-	//
-	//	@Test
-	//	public void testPostForEntity() {
-	//		String url = "http://localhost:8080/data/saveinfo/{id}/{name}";
-	//		Map<String, String> map = new HashMap<>();
-	//		map.put("id", "111");
-	//		map.put("name", "Shyam");
-	//		Address address = new Address("Dhananjaypur", "Varanasi", "UP");
-	//		ResponseEntity<Person> entity = restTemplate.postForEntity(url, address, Person.class, map);
-	//		System.out.println(entity.getBody().getName());
-	//		System.out.println(entity.getBody().getAddress().getVillage());
-	//	}
-	//
-	//	@Test
-	//	public void testPostForLocation() {
-	//		String url = "http://localhost:8080/data/location/{id}/{name}";
-	//		Address address = new Address("Dhananjaypur", "Varanasi", "UP");
-	//		URI uri = restTemplate.postForLocation(url, address, 111, "Shyam");
-	//		log.info("uri: {}", uri);
-	//		System.out.println(uri.getPath());
-	//	}
-	//
+
 	//	@Test
 	//	public void testDelete() {
 	//		String url = "http://localhost:8080/data/delete/{name}/{village}";
@@ -149,4 +139,23 @@ public class EmployeeControllerTest {
 	//		Address address = new Address("Dhananjaypur", "Varanasi", "UP");
 	//		restTemplate.put(url, address, map);
 	//	}
+
+	@Test
+	public void test_exchange() {
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		HttpEntity<String> entity = new HttpEntity<>("Hello World!", headers);
+		log.info("entity: {}", entity);
+
+		ResponseEntity<Employee> empEntity = restTemplate.exchange(BASE_URL + "/exchange/{id}", HttpMethod.GET, entity, Employee.class, 50);
+		log.info("empEntity: {}", empEntity);
+	}
+
+	@Test
+	public void test_get_lists_of_objects() {
+		ResponseEntity<List<Employee>> responseEntity = restTemplate
+				.exchange(BASE_URL + "/employees", HttpMethod.GET, null, new ParameterizedTypeReference<List<Employee>>() {
+				});
+		log.info("responseEntity: {}", responseEntity);
+	}
 }

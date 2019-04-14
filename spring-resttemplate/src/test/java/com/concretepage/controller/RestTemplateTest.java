@@ -75,7 +75,6 @@ public class RestTemplateTest {
 		System.out.println(httpHeaders.getContentType());
 	}
 
-
 	@Test
 	public void testPostForObject() {
 		String url = "http://localhost:8080/data/saveinfo/{id}/{name}";
