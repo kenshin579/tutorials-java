@@ -97,6 +97,7 @@
                 <module>springboot-security</module>
                 <module>springboot-data-jpa-h2</module>
                 <module>springboot-resttemplate</module>
+                <module>springboot-quartz-reactjs-angularjs</module>
             </modules>
         </profile>
     </profiles>
