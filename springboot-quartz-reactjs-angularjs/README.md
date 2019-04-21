@@ -1,0 +1,1 @@
+http://javabypatel.blogspot.sg/2017/10/quartz-scheduler-spring-boot-example.html
