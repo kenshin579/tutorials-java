@@ -1,6 +1,8 @@
-.App {
-  text-align: center;
-}
+@import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css);
+
+/*.App {*/
+/*  text-align: center;*/
+/*}*/
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
