@@ -25,6 +25,7 @@
         </property>
         <property name="applicationContextSchedulerContextKey" value="applicationContext"/>
         <property name="dataSource" ref="dataSource"/>
+        <property name="overwriteExistingJobs" value="true"/>
         <property name="configLocation" value="classpath:quartz.properties"/>
         <property name="triggers">
             <list>
@@ -35,10 +36,11 @@
 
     <bean name="cronJob1" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
         <property name="jobClass" value="com.advenoh.job.CronJob"/>
+        <property name="Durability" value="true"/>
     </bean>
     <bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="cronJob1"/>
-        <property name="cronExpression" value="0/10 * * ? * *"/>
+        <property name="cronExpression" value="0/20 * * ? * *"/>
     </bean>
 
 </beans>
