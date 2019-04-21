@@ -79,26 +79,42 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(value = "/employee", method = RequestMethod.POST)
-	public ResponseEntity<String> saveEmployee(@RequestBody Employee employee) {
+	public ResponseEntity<Employee> saveEmployee(
+			@RequestHeader(value = "headerTest", required = false) String headerTest,
+			@RequestBody Employee employee) {
+		log.info("headerTest: {}", headerTest);
 		log.info("employee: {}", employee);
-		return new ResponseEntity(HttpStatus.CREATED);
+		return new ResponseEntity<>(employee, HttpStatus.CREATED);
 	}
 
-	//	@RequestMapping(value = "/location/{id}/{name}", method = RequestMethod.POST)
-	//	public ResponseEntity<Void> locationURI(@PathVariable(value = "id") Integer id,
-	//			@PathVariable(value = "name") String name, @RequestBody Address address,
-	//			UriComponentsBuilder builder) {
-	//		System.out.println("Id:" + id + " Name:" + name);
-	//		System.out.println("Village:" + address.getVillage() + " District:" + address.getDistrict());
-	//		HttpHeaders headers = new HttpHeaders();
-	//		headers.setLocation(builder.path("/location/{id}/{name}").buildAndExpand(id, name).toUri());
-	//		log.info("headers: {}", headers);
-	//		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
-	//	}
+	@RequestMapping(value = "/employee/location", method = RequestMethod.POST)
+	public ResponseEntity<Void> locationURI(
+			@RequestBody Employee employee,
+			UriComponentsBuilder builder) {
 
-	@RequestMapping(method = RequestMethod.GET, value = "/exchange/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Employee> getEmployeeByExchangeMethod(@PathVariable Long id, @RequestBody String body, @RequestHeader HttpHeaders headers) {
-		log.info("body: {} headers: {}", body, headers);
+		HttpHeaders headers = new HttpHeaders();
+		headers.setLocation(builder.path("/location/{name}").buildAndExpand(employee.getName()).toUri());
+
+		log.info("headers: {}", headers);
+		return new ResponseEntity<>(headers, HttpStatus.CREATED);
+	}
+
+	@RequestMapping(value = "/employee/{name}", method = RequestMethod.DELETE)
+	public void deleteEmployeeByName(@PathVariable(value = "name") String name) {
+		log.info("deleting employee: {}", name);
+	}
+
+	@RequestMapping(value = "/employee/{name}", method = RequestMethod.PUT)
+	public void updateEmployee(@PathVariable(value = "name") String name, @RequestBody Address address) {
+		log.info("name : {} address {}", name, address);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/exchange/employee/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Employee> getEmployeeByExchangeMethod(
+			@PathVariable Long id,
+			@RequestHeader HttpHeaders headers) {
+		log.info("id : {} headers: {}", id, headers);
+
 		Employee employee = Employee.builder()
 				.name("Frank")
 				.address(Address.builder()
@@ -107,7 +123,7 @@ public class EmployeeController {
 				.build();
 
 		log.info("employee: {}", employee);
-		return new ResponseEntity<Employee>(employee, HttpStatus.OK);
+		return new ResponseEntity<>(employee, HttpStatus.OK);
 	}
 
 	//	@RequestMapping(value = "/exchange/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -116,13 +132,7 @@ public class EmployeeController {
 	//		Employee Employee = new Employee(id, "Mahesh", address);
 	//		return new ResponseEntity<Employee>(Employee, HttpStatus.OK);
 	//	}
-	//
-	//	@RequestMapping(value = "/delete/{name}/{village}", method = RequestMethod.DELETE)
-	//	public void deleteData(@PathVariable(value = "name") String name,
-	//			@PathVariable(value = "village") String village) {
-	//		System.out.println("Delete Employee with name:" + name + " and village:" + village);
-	//	}
-	//
+
 	//	@RequestMapping(value = "/fetch/{id}", method = RequestMethod.HEAD)
 	//	public ResponseEntity<Void> fetch(@PathVariable(value = "id") Integer id) {
 	//		System.out.println("Id:" + id);
@@ -131,12 +141,5 @@ public class EmployeeController {
 	//		return new ResponseEntity<Void>(headers, HttpStatus.NO_CONTENT);
 	//	}
 	//
-	//	@RequestMapping(value = "/putdata/{id}/{name}", method = RequestMethod.PUT)
-	//	public void putData(@PathVariable(value = "id") String id,
-	//			@PathVariable(value = "name") String name, @RequestBody Address address) {
-	//		System.out.println("Id:" + id + " Name:" + name);
-	//		System.out.println("District:" + address.getDistrict());
-	//		System.out.println("Village:" + address.getVillage());
-	//	}
 
 }
