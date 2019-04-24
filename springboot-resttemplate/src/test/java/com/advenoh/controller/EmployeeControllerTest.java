@@ -30,19 +30,6 @@ public class EmployeeControllerTest {
 
 	RestTemplate restTemplate = new RestTemplate();
 
-	/**
-	 * getEmployee() : 주어진 URL 주소로 HTTP GET 메서드로 객체로 결과를 반환받는다.
-	 * getForEntity() : 주어진 URL 주소로 HTTP GET 메서드로 결과는 ResponseEntity로 반환받는다.
-	 * exchange() : HTTP 헤더를 새로 만들 수 있고 어떤 HTTP 메서드도 사용가능하다.
-	 * postForObject() : POST 요청을 보내고 객체로 결과를 반환받는다.
-	 * postForEntity() : POST 요청을 보내고 결과로 ResponseEntity로 반환받는다
-	 * postForLocation() : POST 요청을 보내고 결과로 헤더에 저장된 URI를 결과로 반환받는다
-	 * headForHeaders() : 헤더의 모든 정보를 얻을 수 있으면 HTTP HEAD 메서드를 사용한다.
-	 * delete() : 주어진 URL 주소로 HTTP DELETE 메서드를 실행한다.
-	 * put() : 주어진 URL 주소로 HTTP PUT 메서드를 실행한다.
-	 * execute():
-	 */
-
 	//GET
 	@Test
 	public void test_getForObject() {
@@ -129,15 +116,17 @@ public class EmployeeControllerTest {
 		log.info("location: {}", location);
 	}
 
+	//DELETE
 	@Test
-	public void testDelete() {
+	public void test_Delete() {
 		Map<String, String> params = new HashMap<>();
 		params.put("name", "Frank");
 		restTemplate.delete(BASE_URL + "/employee/{name}", params);
 	}
 
+	//PUT
 	@Test
-	public void testPut() {
+	public void test_Put() {
 		Map<String, String> params = new HashMap<>();
 		params.put("name", "Frank");
 		Address address = Address.builder()
@@ -158,6 +147,19 @@ public class EmployeeControllerTest {
 		log.info("empEntity: {}", empEntity);
 	}
 
+	@Test
+	public void test_get_lists_of_objects() {
+		ResponseEntity<List<Employee>> responseEntity = restTemplate
+				.exchange(BASE_URL + "/employees", HttpMethod.GET, null, new ParameterizedTypeReference<List<Employee>>() {
+				});
+		log.info("responseEntity: {}", responseEntity);
+	}
+
+	@Test
+	public void testExecute() {
+
+	}
+
 	//	@Test
 	//	public void testHeadForHeaders() {
 	//		String url = "http://localhost:8080/data/fetch/{id}";
@@ -166,13 +168,4 @@ public class EmployeeControllerTest {
 	//		System.out.println(httpHeaders.getContentType());
 	//	}
 
-
-
-	@Test
-	public void test_get_lists_of_objects() {
-		ResponseEntity<List<Employee>> responseEntity = restTemplate
-				.exchange(BASE_URL + "/employees", HttpMethod.GET, null, new ParameterizedTypeReference<List<Employee>>() {
-				});
-		log.info("responseEntity: {}", responseEntity);
-	}
 }
