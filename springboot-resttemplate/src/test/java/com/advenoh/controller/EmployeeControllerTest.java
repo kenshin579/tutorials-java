@@ -12,15 +12,22 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.ClientHttpRequestFactory;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Slf4j
 @RunWith(SpringRunner.class)
@@ -156,16 +163,44 @@ public class EmployeeControllerTest {
 	}
 
 	@Test
+	public void test_optionsForAllow() {
+		final Set<HttpMethod> optionsForAllow = restTemplate.optionsForAllow(BASE_URL + "/employee");
+		log.info("optionsForAllow: {}", optionsForAllow);
+	}
+
+	@Test
+	public void test_timeout() {
+		SimpleClientHttpRequestFactory
+
+		final ClientHttpRequestFactory requestFactory = getRequestFactory();
+		final RestTemplate restTemplateTimeout = new RestTemplate(requestFactory);
+
+		assertThatThrownBy(() -> restTemplateTimeout.getForObject(BASE_URL + "/timeout/{id}", Employee.class, 25))
+				.isInstanceOf(ResourceAccessException.class);
+	}
+
+	@Test
+	public void test_patchForObject() {
+
+	}
+
+	@Test
 	public void testExecute() {
 
 	}
 
-	//	@Test
-	//	public void testHeadForHeaders() {
-	//		String url = "http://localhost:8080/data/fetch/{id}";
-	//		HttpHeaders httpHeaders = restTemplate.headForHeaders(url, 100);
-	//		System.out.println(httpHeaders.getDate());
-	//		System.out.println(httpHeaders.getContentType());
-	//	}
+	/**
+	 * connection timeout : 5초
+	 * read timeout : 5초
+	 *
+	 * @return
+	 */
+	ClientHttpRequestFactory getRequestFactory() {
+		final int timeoutInSecs = 5;
 
+		final HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
+		clientHttpRequestFactory.setConnectTimeout(timeoutInSecs * 1000);
+		clientHttpRequestFactory.setReadTimeout(timeoutInSecs * 1000);
+		return clientHttpRequestFactory;
+	}
 }

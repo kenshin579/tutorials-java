@@ -18,6 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @RestController
@@ -124,6 +125,15 @@ public class EmployeeController {
 
 		log.info("employee: {}", employee);
 		return new ResponseEntity<>(employee, HttpStatus.OK);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/timeout/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Employee getEmployeeTimeout(@PathVariable Long id) throws InterruptedException {
+		int timeout = 10;
+		log.info("sleeping... {} 초", timeout);
+		TimeUnit.SECONDS.sleep(timeout); //10초
+
+		return new Employee();
 	}
 
 	//	@RequestMapping(value = "/exchange/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
