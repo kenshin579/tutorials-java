@@ -14,7 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -170,8 +169,6 @@ public class EmployeeControllerTest {
 
 	@Test
 	public void test_timeout() {
-		SimpleClientHttpRequestFactory
-
 		final ClientHttpRequestFactory requestFactory = getRequestFactory();
 		final RestTemplate restTemplateTimeout = new RestTemplate(requestFactory);
 
