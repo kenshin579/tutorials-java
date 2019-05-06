@@ -106,7 +106,9 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(value = "/employee/{name}", method = RequestMethod.PUT)
-	public void updateEmployee(@PathVariable(value = "name") String name, @RequestBody Address address) {
+	public void updateEmployee(@PathVariable(value = "name") String name, @RequestBody Address address,
+			@RequestHeader HttpHeaders headers) {
+		log.info("headers : {}", headers);
 		log.info("name : {} address {}", name, address);
 	}
 
@@ -136,20 +138,8 @@ public class EmployeeController {
 		return new Employee();
 	}
 
-	//	@RequestMapping(value = "/exchange/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	//	public ResponseEntity<Employee> exchangeData(@PathVariable(value = "id") Integer id) {
-	//		Address address = new Address("Dhananjaypur", "Varanasi", "UP");
-	//		Employee Employee = new Employee(id, "Mahesh", address);
-	//		return new ResponseEntity<Employee>(Employee, HttpStatus.OK);
-	//	}
-
-	//	@RequestMapping(value = "/fetch/{id}", method = RequestMethod.HEAD)
-	//	public ResponseEntity<Void> fetch(@PathVariable(value = "id") Integer id) {
-	//		System.out.println("Id:" + id);
-	//		HttpHeaders headers = new HttpHeaders();
-	//		headers.setContentType(MediaType.APPLICATION_JSON);
-	//		return new ResponseEntity<Void>(headers, HttpStatus.NO_CONTENT);
-	//	}
-	//
-
+	@RequestMapping(value = "/employee/{name}", method = RequestMethod.PATCH)
+	public void partialUpdateEmployee(@PathVariable(value = "name") String name, @RequestBody Address address) {
+		log.info("name : {} address {}", name, address);
+	}
 }

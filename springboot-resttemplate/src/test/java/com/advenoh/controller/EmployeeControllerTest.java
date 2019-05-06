@@ -2,6 +2,7 @@ package com.advenoh.controller;
 
 import com.advenoh.model.Address;
 import com.advenoh.model.Employee;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +18,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
@@ -176,14 +178,38 @@ public class EmployeeControllerTest {
 				.isInstanceOf(ResourceAccessException.class);
 	}
 
+	//PATCH
 	@Test
 	public void test_patchForObject() {
+		final RestTemplate patchRestTemplate = new RestTemplate(getRequestFactory());
 
+		Address address = Address.builder()
+				.city("Columbus")
+				.country("US")
+				.build();
+
+		patchRestTemplate.patchForObject(BASE_URL + "/employee/{name}", address, Address.class, "frank");
 	}
 
 	@Test
 	public void testExecute() {
+		Address address = Address.builder()
+				.city("Columbus")
+				.country("US")
+				.build();
+		restTemplate.execute(BASE_URL + "/employee/{name}", HttpMethod.PUT, requestCallback(address), clientHttpResponse -> null, "frank");
+	}
 
+	RequestCallback requestCallback(final Address address) {
+		return clientHttpRequest -> {
+			log.info("address : {}", address);
+			ObjectMapper mapper = new ObjectMapper();
+			mapper.writeValue(clientHttpRequest.getBody(), address);
+			clientHttpRequest.getHeaders().add(
+					HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+			clientHttpRequest.getHeaders().add(
+					HttpHeaders.AUTHORIZATION, "Basic " + "testpasswd");
+		};
 	}
 
 	/**
