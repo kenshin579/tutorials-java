@@ -4,10 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringbootQuartzInMemoryApplication {
-
+public class SpringbootQuartzApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(SpringbootQuartzInMemoryApplication.class, args);
+		SpringApplication.run(SpringbootQuartzApplication.class, args);
 	}
-
 }
