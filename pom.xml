@@ -98,6 +98,7 @@
                 <module>springboot-data-jpa-h2</module>
                 <module>springboot-resttemplate</module>
                 <module>springboot-quartz-reactjs-angularjs</module>
+                <module>springboot-quartz-in-memory</module>
             </modules>
         </profile>
     </profiles>
