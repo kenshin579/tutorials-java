@@ -23,7 +23,7 @@ public class CronJob extends QuartzJobBean {
 		log.info("CronJob started :: jobKey : {} - {}", jobKey, currThread.getName());
 
 		IntStream.range(0, 10).forEach(i -> {
-			log.info("Counting - {}", i);
+			log.info("CronJob Counting - {}", i);
 			try {
 				TimeUnit.SECONDS.sleep(MAX_SLEEP_IN_SECONDS);
 			} catch (InterruptedException e) {
