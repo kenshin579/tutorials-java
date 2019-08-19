@@ -1,13 +1,12 @@
 package com.advenoh.service;
 
 import com.advenoh.dto.JobRequest;
+import com.advenoh.dto.JobStatusResponse;
 import org.quartz.JobKey;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
-import java.util.Map;
-
 public interface ScheduleService {
-    Map<String, Object> getAllJobs();
+    JobStatusResponse getAllJobs();
 
     boolean isJobRunning(JobKey jobKey);
 
@@ -20,4 +19,6 @@ public interface ScheduleService {
     boolean pauseJob(JobKey jobKey);
 
     boolean resumeJob(JobKey jobKey);
+
+    String getJobState(JobKey jobKey);
 }
