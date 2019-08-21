@@ -4,6 +4,7 @@ import com.advenoh.model.audit.DateAudit;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,15 +14,14 @@ import javax.persistence.Table;
 
 @Getter
 @Setter
-@Entity
-@Table(name = "job_history")
+@ToString
 @NoArgsConstructor
-public class JobHistory extends DateAudit {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+@Entity
+@Table(name = "job_status_log")
+public class JobStatusLog extends DateAudit {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private String jobName;
-	private String jobGroup;
-	//	private
+    private String jobStatus;
 }
