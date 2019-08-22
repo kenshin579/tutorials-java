@@ -23,9 +23,11 @@ import java.util.List;
 @Setter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "job_history_log")
 public class JobHistoryLog extends DateAudit {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -39,11 +41,11 @@ public class JobHistoryLog extends DateAudit {
     @Column(length = 5)
     private String jobType; //cron, simple
 
-    @OneToMany(
-            mappedBy = "job_history_log",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER,
-            orphanRemoval = true
-    )
-    private List<JobStatusLog> jobStatusLogList;
+//    @OneToMany(
+//            mappedBy = "job_history_log",
+//            cascade = CascadeType.ALL,
+//            fetch = FetchType.EAGER,
+//            orphanRemoval = true
+//    )
+//    private List<JobStatusLog> jobStatusLogList;
 }
