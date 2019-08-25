@@ -36,6 +36,62 @@ public class ScheduleServiceImpl implements ScheduleService {
 	private ApplicationContext context;
 
 	@Override
+	public boolean addJob(JobRequest jobRequest, Class<? extends QuartzJobBean> jobClass) {
+		JobKey jobKey = null;
+		JobDetail jobDetail;
+		Trigger trigger;
+
+		try {
+			trigger = JobUtils.createTrigger(jobRequest);
+			jobDetail = JobUtils.createJob(jobRequest, jobClass, context);
+			jobKey = JobKey.jobKey(jobRequest.getJobName(), jobRequest.getJobGroup());
+
+			Date dt = schedulerFactoryBean.getScheduler().scheduleJob(jobDetail, trigger);
+			log.debug("Job with jobKey : {} scheduled successfully at date : {}", jobDetail.getKey(), dt);
+			return true;
+		} catch (SchedulerException e) {
+			log.error("error occurred while scheduling with jobKey : {}", jobKey, e);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteJob(JobKey jobKey) {
+		log.debug("[schedulerdebug] deleting job with jobKey : {}", jobKey);
+		try {
+			return schedulerFactoryBean.getScheduler().deleteJob(jobKey);
+		} catch (SchedulerException e) {
+			log.error("[schedulerdebug] error occurred while deleting job with jobKey : {}", jobKey, e);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean pauseJob(JobKey jobKey) {
+		log.debug("[schedulerdebug] pausing job with jobKey : {}", jobKey);
+		try {
+			schedulerFactoryBean.getScheduler().pauseJob(jobKey);
+			return true;
+		} catch (SchedulerException e) {
+			log.error("[schedulerdebug] error occurred while deleting job with jobKey : {}", jobKey, e);
+		}
+		return false;
+	}
+
+	@Override
+	public boolean resumeJob(JobKey jobKey) {
+		log.debug("[schedulerdebug] resuming job with jobKey : {}", jobKey);
+		try {
+			schedulerFactoryBean.getScheduler().resumeJob(jobKey);
+			return true;
+		} catch (SchedulerException e) {
+			log.error("[schedulerdebug] error occurred while resuming job with jobKey : {}", jobKey, e);
+		}
+		return false;
+	}
+
+
+	@Override
 	public JobStatusResponse getAllJobs() {
 		JobResponse jobResponse;
 		JobStatusResponse jobStatusResponse = new JobStatusResponse();
@@ -113,61 +169,6 @@ public class ScheduleServiceImpl implements ScheduleService {
 			}
 		} catch (SchedulerException e) {
 			log.error("[schedulerdebug] error occurred while checking job exists :: jobKey : {}", jobKey, e);
-		}
-		return false;
-	}
-
-	@Override
-	public boolean addJob(JobRequest jobRequest, Class<? extends QuartzJobBean> jobClass) {
-		JobKey jobKey = null;
-		JobDetail jobDetail;
-		Trigger trigger;
-
-		try {
-			trigger = JobUtils.createTrigger(jobRequest);
-			jobDetail = JobUtils.createJob(jobRequest, jobClass, context);
-			jobKey = JobKey.jobKey(jobRequest.getJobName(), jobRequest.getJobGroup());
-
-			Date dt = schedulerFactoryBean.getScheduler().scheduleJob(jobDetail, trigger);
-			log.debug("Job with jobKey : {} scheduled successfully at date : {}", jobDetail.getKey(), dt);
-			return true;
-		} catch (SchedulerException e) {
-			log.error("error occurred while scheduling with jobKey : {}", jobKey, e);
-		}
-		return false;
-	}
-
-	@Override
-	public boolean deleteJob(JobKey jobKey) {
-		log.debug("[schedulerdebug] deleting job with jobKey : {}", jobKey);
-		try {
-			return schedulerFactoryBean.getScheduler().deleteJob(jobKey);
-		} catch (SchedulerException e) {
-			log.error("[schedulerdebug] error occurred while deleting job with jobKey : {}", jobKey, e);
-		}
-		return false;
-	}
-
-	@Override
-	public boolean pauseJob(JobKey jobKey) {
-		log.debug("[schedulerdebug] pausing job with jobKey : {}", jobKey);
-		try {
-			schedulerFactoryBean.getScheduler().pauseJob(jobKey);
-			return true;
-		} catch (SchedulerException e) {
-			log.error("[schedulerdebug] error occurred while deleting job with jobKey : {}", jobKey, e);
-		}
-		return false;
-	}
-
-	@Override
-	public boolean resumeJob(JobKey jobKey) {
-		log.debug("[schedulerdebug] resuming job with jobKey : {}", jobKey);
-		try {
-			schedulerFactoryBean.getScheduler().resumeJob(jobKey);
-			return true;
-		} catch (SchedulerException e) {
-			log.error("[schedulerdebug] error occurred while resuming job with jobKey : {}", jobKey, e);
 		}
 		return false;
 	}

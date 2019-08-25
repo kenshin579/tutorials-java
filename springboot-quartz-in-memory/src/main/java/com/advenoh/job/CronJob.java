@@ -1,6 +1,7 @@
 package com.advenoh.job;
 
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.query.criteria.internal.expression.function.AggregationFunction;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.quartz.JobKey;
@@ -11,7 +12,7 @@ import java.util.stream.IntStream;
 
 @Slf4j
 public class CronJob extends QuartzJobBean {
-	final int MAX_SLEEP_IN_SECONDS = 5;
+	private int MAX_SLEEP_IN_SECONDS = 5;
 
 	private volatile Thread currThread;
 
@@ -20,7 +21,7 @@ public class CronJob extends QuartzJobBean {
 		JobKey jobKey = context.getJobDetail().getKey();
 		currThread = Thread.currentThread();
 		log.info("============================================================================");
-		log.info("CronJob started :: jobKey : {} - {}", jobKey, currThread.getName());
+		log.info("CronJob started :: sleep : {} jobKey : {} - {}", MAX_SLEEP_IN_SECONDS, jobKey, currThread.getName());
 
 		IntStream.range(0, 10).forEach(i -> {
 			log.info("CronJob Counting - {}", i);

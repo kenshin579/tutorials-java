@@ -27,105 +27,95 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(ScheduleController.class)
 public class ScheduleControllerTest {
-	private final String BASE_PATH = "/scheduler";
-	@Autowired
-	private MockMvc mvc;
+    private final String BASE_PATH = "/scheduler";
+    @Autowired
+    private MockMvc mvc;
 
-	@MockBean
-	private ScheduleService scheduleService;
+    @MockBean
+    private ScheduleService scheduleService;
 
-	//    @Test
-	//    public void whenPostEmployee_thenCreateEmployee() throws Exception {
-	//        Employee alex = new Employee("alex");
-	//        given(service.save(Mockito.any())).willReturn(alex);
-	//
-	//        mvc.perform(post("/api/employees").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJson(alex))).andExpect(status().isCreated()).andExpect(jsonPath("$.name", is("alex")));
-	//        verify(service, VerificationModeFactory.times(1)).save(Mockito.any());
-	//        reset(service);
-	//    }
+    @Test
+    public void addScheduleJob_simpleJob() throws Exception {
+        given(scheduleService.addJob(anyObject(), eq(SimpleJob.class))).willReturn(true);
+        given(scheduleService.isJobExists(anyObject())).willReturn(false);
 
-	@Test
-	public void addScheduleJob_simpleJob() throws Exception {
-		given(scheduleService.addJob(anyObject(), eq(SimpleJob.class))).willReturn(true);
-		given(scheduleService.isJobExists(anyObject())).willReturn(false);
+        mvc.perform(post(BASE_PATH + "/job")
+                .param("jobName", "job1")
+                .param("jobGroup", "testGroup"))
+                .andDo(print())
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.success", is(true)));
 
-		mvc.perform(post(BASE_PATH + "/job")
-				.param("jobName", "job1")
-				.param("jobGroup", "testGroup"))
-				.andDo(print())
-				.andExpect(status().isCreated())
-				.andExpect(jsonPath("$.success", is(true)));
-
-		verify(scheduleService).addJob(anyObject(), eq(SimpleJob.class));
-		verify(scheduleService).isJobExists(anyObject());
-	}
-
-	@Test
-	public void deleteScheduleJob() throws Exception {
-		given(scheduleService.deleteJob(anyObject())).willReturn(true);
-		given(scheduleService.isJobExists(anyObject())).willReturn(true);
-		given(scheduleService.isJobRunning(anyObject())).willReturn(false);
-
-		mvc.perform(delete(BASE_PATH + "/job")
-				.param("jobName", "job1")
-				.param("jobGroup", "testGroup"))
-				.andDo(print())
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.success", is(true)));
-
-		verify(scheduleService).deleteJob(anyObject());
-		verify(scheduleService).isJobExists(anyObject());
-		verify(scheduleService).isJobRunning(anyObject());
-	}
-
-	@Test
-	public void getAllJobs() throws Exception {
-		JobStatusResponse jobStatusResponse = new JobStatusResponse();
-		jobStatusResponse.setNumOfAllJobs(1);
-
-		given(scheduleService.getAllJobs()).willReturn(jobStatusResponse);
-
-		mvc.perform(get(BASE_PATH + "/jobs"))
-				.andDo(print())
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.numOfAllJobs", is(1)));
-
-		verify(scheduleService).getAllJobs();
-	}
-
-	@Test
-	public void pauseJob() throws Exception {
-		given(scheduleService.pauseJob(anyObject())).willReturn(true);
-		given(scheduleService.isJobExists(anyObject())).willReturn(true);
-		given(scheduleService.isJobRunning(anyObject())).willReturn(false);
-
-		mvc.perform(put(BASE_PATH + "/job/pause")
-				.param("jobName", "job1")
-				.param("jobGroup", "testGroup"))
-				.andDo(print())
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.success", is(true)));
-
-		verify(scheduleService).pauseJob(anyObject());
-		verify(scheduleService).isJobExists(anyObject());
-		verify(scheduleService).isJobRunning(anyObject());
-	}
-
-	@Test
-	public void resumeJob() throws Exception {
-		given(scheduleService.resumeJob(anyObject())).willReturn(true);
-        given(scheduleService.isJobExists(anyObject())).willReturn(true);
-		given(scheduleService.getJobState(anyObject())).willReturn("PAUSED");
-
-		mvc.perform(put(BASE_PATH + "/job/resume")
-				.param("jobName", "job1")
-				.param("jobGroup", "testGroup"))
-				.andDo(print())
-				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.success", is(true)));
-
-		verify(scheduleService).resumeJob(anyObject());
+        verify(scheduleService).addJob(anyObject(), eq(SimpleJob.class));
         verify(scheduleService).isJobExists(anyObject());
-		verify(scheduleService).getJobState(anyObject());
-	}
+    }
+
+    @Test
+    public void deleteScheduleJob() throws Exception {
+        given(scheduleService.deleteJob(anyObject())).willReturn(true);
+        given(scheduleService.isJobExists(anyObject())).willReturn(true);
+        given(scheduleService.isJobRunning(anyObject())).willReturn(false);
+
+        mvc.perform(delete(BASE_PATH + "/job")
+                .param("jobName", "job1")
+                .param("jobGroup", "testGroup"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success", is(true)));
+
+        verify(scheduleService).deleteJob(anyObject());
+        verify(scheduleService).isJobExists(anyObject());
+        verify(scheduleService).isJobRunning(anyObject());
+    }
+
+    @Test
+    public void getAllJobs() throws Exception {
+        JobStatusResponse jobStatusResponse = new JobStatusResponse();
+        jobStatusResponse.setNumOfAllJobs(1);
+
+        given(scheduleService.getAllJobs()).willReturn(jobStatusResponse);
+
+        mvc.perform(get(BASE_PATH + "/jobs"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.numOfAllJobs", is(1)));
+
+        verify(scheduleService).getAllJobs();
+    }
+
+    @Test
+    public void pauseJob() throws Exception {
+        given(scheduleService.pauseJob(anyObject())).willReturn(true);
+        given(scheduleService.isJobExists(anyObject())).willReturn(true);
+        given(scheduleService.isJobRunning(anyObject())).willReturn(false);
+
+        mvc.perform(put(BASE_PATH + "/job/pause")
+                .param("jobName", "job1")
+                .param("jobGroup", "testGroup"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success", is(true)));
+
+        verify(scheduleService).pauseJob(anyObject());
+        verify(scheduleService).isJobExists(anyObject());
+        verify(scheduleService).isJobRunning(anyObject());
+    }
+
+    @Test
+    public void resumeJob() throws Exception {
+        given(scheduleService.resumeJob(anyObject())).willReturn(true);
+        given(scheduleService.isJobExists(anyObject())).willReturn(true);
+        given(scheduleService.getJobState(anyObject())).willReturn("PAUSED");
+
+        mvc.perform(put(BASE_PATH + "/job/resume")
+                .param("jobName", "job1")
+                .param("jobGroup", "testGroup"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success", is(true)));
+
+        verify(scheduleService).resumeJob(anyObject());
+        verify(scheduleService).isJobExists(anyObject());
+        verify(scheduleService).getJobState(anyObject());
+    }
 }
