@@ -1,6 +1,7 @@
 package com.advenoh.model.audit;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
@@ -14,16 +15,17 @@ import java.time.Instant;
 
 @Getter
 @Setter
+@AllArgsConstructor
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(
-		value = { "createdAt", "updatedAt" },
-		allowGetters = true
+        value = {"createdAt", "updatedAt"},
+        allowGetters = true
 )
 public abstract class DateAudit implements Serializable {
-	@CreatedDate
-	private Instant createdAt;
+    @CreatedDate
+    private Instant createdAt;
 
-	@LastModifiedDate
-	private Instant updatedAt;
+    @LastModifiedDate
+    private Instant updatedAt;
 }

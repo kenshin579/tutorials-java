@@ -4,26 +4,20 @@ import com.advenoh.model.audit.DateAudit;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.util.List;
+import java.time.Instant;
 
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "job_history_log")
 public class JobHistoryLog extends DateAudit {
@@ -38,8 +32,8 @@ public class JobHistoryLog extends DateAudit {
     @Column(length = 50)
     private String jobGroup;
 
-    @Column(length = 5)
-    private String jobType; //cron, simple
+    //todo: enum 은 jpa에서 어떻게 저장하나?
+    private JobType jobType; //cron, simple
 
 //    @OneToMany(
 //            mappedBy = "job_history_log",
@@ -48,4 +42,11 @@ public class JobHistoryLog extends DateAudit {
 //            orphanRemoval = true
 //    )
 //    private List<JobStatusLog> jobStatusLogList;
+
+    public JobHistoryLog(String jobName, String jobGroup, JobType jobType, Instant createdAt, Instant updateAt) {
+        super(createdAt, updateAt);
+        this.jobName = jobName;
+        this.jobGroup = jobGroup;
+        this.jobType = jobType;
+    }
 }

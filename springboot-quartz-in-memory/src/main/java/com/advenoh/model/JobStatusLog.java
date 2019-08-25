@@ -1,6 +1,6 @@
 //package com.advenoh.model;
 //
-//import com.advenoh.model.audit.DateAudit;
+//import com.advenoh.model.entity.audit.DateAudit;
 //import lombok.Getter;
 //import lombok.NoArgsConstructor;
 //import lombok.Setter;
