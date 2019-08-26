@@ -1,7 +1,5 @@
 package com.advenoh.repository;
 
-import com.advenoh.model.JobHistoryLog;
-import com.advenoh.model.JobType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,15 +8,13 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Optional;
-
 @Slf4j
 @RunWith(SpringRunner.class)
 @DataJpaTest
 //@Transactional
 //@TestPropertySource(locations = "classpath:application.properties")
 //@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class JobHistoryRepositoryTest {
+public class JobHistoryLogRepositoryTest {
     @Autowired
     private TestEntityManager entityManager;
 

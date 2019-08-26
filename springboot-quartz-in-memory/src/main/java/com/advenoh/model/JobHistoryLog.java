@@ -1,28 +1,26 @@
 package com.advenoh.model;
 
 import com.advenoh.model.audit.DateAudit;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @ToString
 @Entity
 @Table(name = "job_history_log")
 public class JobHistoryLog extends DateAudit {
 
     @Id
+    @Column(name = "job_history_seqno")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -32,16 +30,11 @@ public class JobHistoryLog extends DateAudit {
     @Column(length = 50)
     private String jobGroup;
 
-    //todo: enum 은 jpa에서 어떻게 저장하나?
-    private JobType jobType; //cron, simple
+    @Enumerated(value = EnumType.STRING)
+    private JobType jobType;
 
-//    @OneToMany(
-//            mappedBy = "job_history_log",
-//            cascade = CascadeType.ALL,
-//            fetch = FetchType.EAGER,
-//            orphanRemoval = true
-//    )
-//    private List<JobStatusLog> jobStatusLogList;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "jobHistoryLog")
+    private List<JobStatusLog> jobStatusLogList = new ArrayList<>();
 
     public JobHistoryLog(String jobName, String jobGroup, JobType jobType, Instant createdAt, Instant updateAt) {
         super(createdAt, updateAt);
