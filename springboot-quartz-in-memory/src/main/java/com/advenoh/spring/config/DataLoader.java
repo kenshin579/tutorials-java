@@ -42,6 +42,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
             jobStatusLog2.setJobHistoryLog(jobHistoryLog);
 
             jobHistoryRepository.save(jobHistoryLog);
+            jobStatusRepository.save(jobStatusLog1);
+            jobStatusRepository.save(jobStatusLog2);
 
             List<JobHistoryLog> jobHistoryLogList = jobHistoryRepository.findAll();
             log.info("jobHistoryLogList :{}", jobHistoryLogList);
