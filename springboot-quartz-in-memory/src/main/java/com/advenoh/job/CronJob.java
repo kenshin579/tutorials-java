@@ -1,7 +1,6 @@
 package com.advenoh.job;
 
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.query.criteria.internal.expression.function.AggregationFunction;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.quartz.JobKey;
