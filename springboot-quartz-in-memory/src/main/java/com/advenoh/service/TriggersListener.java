@@ -11,38 +11,32 @@ import org.springframework.stereotype.Component;
 @Component
 public class TriggersListener implements TriggerListener {
 
-	@Override
-	public String getName() {
-		return "globalTrigger";
-	}
+    @Override
+    public String getName() {
+        return "globalTrigger";
+    }
 
-	@Override
-	public void triggerFired(Trigger trigger, JobExecutionContext context) {
-		JobKey jobKey = trigger.getJobKey();
-		log.info("triggerFired at {} :: jobKey : {}", trigger.getStartTime(), jobKey);
-	}
+    @Override
+    public void triggerFired(Trigger trigger, JobExecutionContext context) {
+        JobKey jobKey = trigger.getJobKey();
+        log.info("triggerFired at {} :: jobKey : {}", trigger.getStartTime(), jobKey);
+    }
 
-	/**
-	 * 이 메서드의 반환값이 true이면 JobsListener.jobExecutionVetoed()가 실행됨
-	 *
-	 * @param trigger the trigger
-	 * @param context the context
-	 * @return boolean
-	 */
-	@Override
-	public boolean vetoJobExecution(Trigger trigger, JobExecutionContext context) {
-		return false;
-	}
+    @Override
+    public boolean vetoJobExecution(Trigger trigger, JobExecutionContext context) {
+        return false;
+    }
 
-	@Override
-	public void triggerMisfired(Trigger trigger) {
-		JobKey jobKey = trigger.getJobKey();
-		log.info("triggerMisfired at {} :: jobKey : {}", trigger.getStartTime(), jobKey);
-	}
+    @Override
+    public void triggerMisfired(Trigger trigger) {
+        JobKey jobKey = trigger.getJobKey();
+        log.info("triggerMisfired at {} :: jobKey : {}", trigger.getStartTime(), jobKey);
+    }
 
-	@Override
-	public void triggerComplete(Trigger trigger, JobExecutionContext context, Trigger.CompletedExecutionInstruction triggerInstructionCode) {
-		JobKey jobKey = trigger.getJobKey();
-		log.info("triggerComplete at {} :: jobKey : {}", trigger.getStartTime(), jobKey);
-	}
+    @Override
+    public void triggerComplete(Trigger trigger, JobExecutionContext context,
+								Trigger.CompletedExecutionInstruction triggerInstructionCode) {
+        JobKey jobKey = trigger.getJobKey();
+        log.info("triggerComplete at {} :: jobKey : {}", trigger.getStartTime(), jobKey);
+    }
 }
