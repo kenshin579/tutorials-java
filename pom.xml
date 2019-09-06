@@ -91,6 +91,7 @@
                 <module>spring-rabbitmq-xml</module>
                 <module>spring-rabbitmq-javaconfig</module>
                 <module>spring-quartz</module>
+                <module>spring-poi-excel-download</module>
                 <module>springboot-messaging-socketjs-stomp</module>
                 <module>springboot-messaging-rabbitmq</module>
                 <!--<module>springboot-security-junit-test-withmockuser</module>-->
