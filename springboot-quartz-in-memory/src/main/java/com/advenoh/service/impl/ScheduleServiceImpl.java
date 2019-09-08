@@ -88,7 +88,6 @@ public class ScheduleServiceImpl implements ScheduleService {
         return false;
     }
 
-
     @Override
     public JobStatusResponse getAllJobs() {
         JobResponse jobResponse;
@@ -100,23 +99,17 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         try {
             Scheduler scheduler = schedulerFactoryBean.getScheduler();
-
             for (String groupName : scheduler.getJobGroupNames()) {
                 numOfGroups++;
-
                 for (JobKey jobKey : scheduler.getJobKeys(GroupMatcher.jobGroupEquals(groupName))) {
-
                     List<Trigger> triggers = (List<Trigger>) scheduler.getTriggersOfJob(jobKey);
-                    String scheduleTime = DateTimeUtils.toString(triggers.get(0).getStartTime());
-                    String nextFireTime = DateTimeUtils.toString(triggers.get(0).getNextFireTime());
-                    String lastFiredTime = DateTimeUtils.toString(triggers.get(0).getPreviousFireTime());
 
                     jobResponse = JobResponse.builder()
                             .jobName(jobKey.getName())
                             .groupName(jobKey.getGroup())
-                            .scheduleTime(scheduleTime)
-                            .lastFiredTime(lastFiredTime)
-                            .nextFireTime(nextFireTime)
+                            .scheduleTime(DateTimeUtils.toString(triggers.get(0).getStartTime()))
+                            .lastFiredTime(DateTimeUtils.toString(triggers.get(0).getPreviousFireTime()))
+                            .nextFireTime(DateTimeUtils.toString(triggers.get(0).getNextFireTime()))
                             .build();
 
                     if (isJobRunning(jobKey)) {
