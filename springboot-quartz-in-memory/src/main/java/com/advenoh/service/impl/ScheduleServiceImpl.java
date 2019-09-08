@@ -16,7 +16,6 @@ import org.quartz.SchedulerException;
 import org.quartz.Trigger;
 import org.quartz.impl.matchers.GroupMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Component;
@@ -29,7 +28,6 @@ import java.util.List;
 @Component
 public class ScheduleServiceImpl implements ScheduleService {
     @Autowired
-    @Qualifier("schedulerFactoryBean")
     private SchedulerFactoryBean schedulerFactoryBean;
 
     @Autowired
