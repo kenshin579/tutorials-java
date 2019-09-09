@@ -37,28 +37,11 @@ public class QuartzConfiguration {
 		schedulerFactoryBean.setJobFactory(jobFactory);
 
 		schedulerFactoryBean.setApplicationContext(applicationContext);
-		Properties quartzProperties = quartzProperties();
 
 		schedulerFactoryBean.setGlobalTriggerListeners(triggersListener);
 		schedulerFactoryBean.setGlobalJobListeners(jobsListener);
 		schedulerFactoryBean.setOverwriteExistingJobs(true);
 		schedulerFactoryBean.setWaitForJobsToCompleteOnShutdown(true);
-		schedulerFactoryBean.setQuartzProperties(quartzProperties);
 		return schedulerFactoryBean;
-	}
-
-	@Bean
-	public Properties quartzProperties() {
-		PropertiesFactoryBean propertiesFactoryBean = new PropertiesFactoryBean();
-		propertiesFactoryBean.setLocation(new ClassPathResource("/quartz.properties"));
-
-		Properties properties = null;
-		try {
-			propertiesFactoryBean.afterPropertiesSet();
-			properties = propertiesFactoryBean.getObject();
-		} catch (Exception e) {
-			log.warn("Cannot load quartz.properties");
-		}
-		return properties;
 	}
 }

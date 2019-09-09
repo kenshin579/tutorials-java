@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.quartz.JobDataMap;
 import org.quartz.JobExecutionException;
 import org.quartz.Scheduler;
 import org.springframework.test.util.ReflectionTestUtils;
@@ -29,9 +30,11 @@ public class CronJobTest {
     public void executeInternal() throws JobExecutionException {
         ReflectionTestUtils.setField(cronJob, "MAX_SLEEP_IN_SECONDS", MAX_SLEEP_IN_SECONDS);
 
+        JobDataMap jobDataMap = new JobDataMap();
+        jobDataMap.put("jobId", 1231231);
         cronJob.executeInternal(TestUtils.createJobExecutionContext(scheduler, newJob(CronJob.class)
+                .usingJobData(jobDataMap)
                 .withIdentity(TEST_NAME, TEST_GROUP)
                 .build(), CronJob.class));
-
     }
 }

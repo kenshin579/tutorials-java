@@ -2,6 +2,7 @@ package com.advenoh.utils;
 
 import com.advenoh.dto.JobRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.quartz.Job;
 import org.quartz.JobDetail;
 import org.quartz.SimpleTrigger;
 import org.quartz.Trigger;
@@ -25,7 +26,7 @@ public final class JobUtils {
     private JobUtils() {
     }
 
-    public static JobDetail createJob(JobRequest jobRequest, Class<? extends QuartzJobBean> jobClass, ApplicationContext context) {
+    public static JobDetail createJob(JobRequest jobRequest, Class<? extends Job> jobClass, ApplicationContext context) {
         JobDetailFactoryBean factoryBean = new JobDetailFactoryBean();
         factoryBean.setJobClass(jobClass);
         factoryBean.setDurability(false);

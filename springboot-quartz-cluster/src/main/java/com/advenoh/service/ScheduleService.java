@@ -2,6 +2,7 @@ package com.advenoh.service;
 
 import com.advenoh.dto.JobRequest;
 import com.advenoh.dto.JobStatusResponse;
+import org.quartz.Job;
 import org.quartz.JobKey;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
@@ -12,7 +13,9 @@ public interface ScheduleService {
 
     boolean isJobExists(JobKey jobKey);
 
-    boolean addJob(JobRequest jobRequest, Class<? extends QuartzJobBean> jobClass);
+//    boolean addJob(JobRequest jobRequest, Class<? extends QuartzJobBean> jobClass);
+
+    boolean addJob(JobRequest jobRequest, Class<? extends Job> jobClass);
 
     boolean deleteJob(JobKey jobKey);
 
