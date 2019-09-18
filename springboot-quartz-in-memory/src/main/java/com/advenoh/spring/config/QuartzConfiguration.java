@@ -4,11 +4,10 @@ import com.advenoh.service.JobsListener;
 import com.advenoh.service.TriggersListener;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.springframework.boot.autoconfigure.quartz.QuartzProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 import java.util.Properties;
@@ -21,6 +20,9 @@ public class QuartzConfiguration {
 
 	@Autowired
 	private JobsListener jobsListener;
+
+	@Autowired
+	private QuartzProperties quartzProperties;
 
 	/**
 	 * Quartz 관련 설정
@@ -38,9 +40,13 @@ public class QuartzConfiguration {
 
 		schedulerFactoryBean.setApplicationContext(applicationContext);
 
+		Properties properties = new Properties();
+		properties.putAll(quartzProperties.getProperties());
+
 		schedulerFactoryBean.setGlobalTriggerListeners(triggersListener);
 		schedulerFactoryBean.setGlobalJobListeners(jobsListener);
 		schedulerFactoryBean.setOverwriteExistingJobs(true);
+		schedulerFactoryBean.setQuartzProperties(properties);
 		schedulerFactoryBean.setWaitForJobsToCompleteOnShutdown(true);
 		return schedulerFactoryBean;
 	}
