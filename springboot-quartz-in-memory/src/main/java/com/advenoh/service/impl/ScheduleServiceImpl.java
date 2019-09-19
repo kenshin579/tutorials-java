@@ -35,6 +35,8 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public boolean addJob(JobRequest jobRequest, Class<? extends Job> jobClass) {
+        //todo : job history에도 기록하도록 함.
+
         JobKey jobKey = null;
         JobDetail jobDetail;
         Trigger trigger;
@@ -55,6 +57,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public boolean deleteJob(JobKey jobKey) {
+        //todo : job history에도 기록하도록 함.
         log.debug("[schedulerdebug] deleting job with jobKey : {}", jobKey);
         try {
             return schedulerFactoryBean.getScheduler().deleteJob(jobKey);
@@ -66,6 +69,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public boolean pauseJob(JobKey jobKey) {
+        //todo : job history에도 기록하도록 함.
         log.debug("[schedulerdebug] pausing job with jobKey : {}", jobKey);
         try {
             schedulerFactoryBean.getScheduler().pauseJob(jobKey);
@@ -78,6 +82,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     @Override
     public boolean resumeJob(JobKey jobKey) {
+        //todo : job history에도 기록하도록 함.
         log.debug("[schedulerdebug] resuming job with jobKey : {}", jobKey);
         try {
             schedulerFactoryBean.getScheduler().resumeJob(jobKey);
