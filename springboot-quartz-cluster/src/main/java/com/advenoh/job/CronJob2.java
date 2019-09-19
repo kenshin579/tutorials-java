@@ -5,7 +5,6 @@ import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.quartz.JobKey;
-import org.springframework.scheduling.quartz.QuartzJobBean;
 
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
