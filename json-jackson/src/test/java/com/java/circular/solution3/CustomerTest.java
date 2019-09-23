@@ -12,7 +12,7 @@ public class CustomerTest {
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
-    public void infinite_recursion_해결책3_JsonIgnore() throws JsonProcessingException {
+    public void infinite_recursion_해결책_JsonIgnore() throws JsonProcessingException {
         Order order = new Order();
         order.setOrderId(1);
         order.setItemIds(List.of(10, 30));

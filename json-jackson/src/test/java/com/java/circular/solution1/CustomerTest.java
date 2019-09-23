@@ -14,7 +14,7 @@ public class CustomerTest {
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
-    public void infinite_recursion_해결책1_JsonIdentityReference() throws JsonProcessingException {
+    public void infinite_recursion_해결책_JsonIdentityReference() throws JsonProcessingException {
         Order order = new Order();
         order.setOrderId(1);
         order.setItemIds(List.of(10, 30));
