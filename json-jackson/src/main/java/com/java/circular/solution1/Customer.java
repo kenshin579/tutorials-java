@@ -10,8 +10,8 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
-//        property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 @JsonIdentityReference(alwaysAsId = true)
 public class Customer {
     private int id;

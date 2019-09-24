@@ -12,6 +12,5 @@ import java.util.List;
 public class Order {
     private int orderId;
     private List<Integer> itemIds;
-
     private Customer customer;
 }

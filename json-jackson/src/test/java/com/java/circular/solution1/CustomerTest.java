@@ -27,6 +27,7 @@ public class CustomerTest {
 
         log.info("customer(toString) : {}", customer);
         log.info("customer(serialized json) : {}", objectMapper.writeValueAsString(customer));
+        log.info("order(serialized json) : {}", objectMapper.writeValueAsString(order));
     }
 
     @Test
@@ -34,7 +35,9 @@ public class CustomerTest {
         Customer customer = new Customer();
         customer.setId(1);
         customer.setName("Frank");
-        assertThat(objectMapper.writeValueAsString(customer)).isEqualTo("1");
+        String jsonOutput = objectMapper.writeValueAsString(customer);
+        log.info("jsonOutput :{}", jsonOutput);
+        assertThat(jsonOutput).isEqualTo("1");
     }
 
     @Test
@@ -42,6 +45,8 @@ public class CustomerTest {
         CustomerWithoutIdentityReference customer = new CustomerWithoutIdentityReference();
         customer.setId(1);
         customer.setName("Frank");
-        assertThat(objectMapper.writeValueAsString(customer)).isEqualTo("{\"id\":1,\"name\":\"Frank\",\"order\":null}");
+        String jsonOutput = objectMapper.writeValueAsString(customer);
+        log.info("jsonOutput :{}", jsonOutput);
+        assertThat(jsonOutput).isEqualTo("{\"id\":1,\"name\":\"Frank\",\"order\":null}");
     }
 }
