@@ -14,5 +14,5 @@ public class Order {
     private int orderId;
     private List<Integer> itemIds;
     @JsonIgnore
-    private Customer customer;
+    private Customer customer; //직렬화시 무시됨
 }

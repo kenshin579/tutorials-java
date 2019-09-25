@@ -25,6 +25,6 @@ public class CustomerTest {
 
         log.info("customer(toString) : {}", customer);
         log.info("customer(serialized json) : {}", objectMapper.writeValueAsString(customer));
-        log.info("order(serialized json) : {}", objectMapper.writeValueAsString(order));
+        log.info("order(serialized json) : {}", objectMapper.writeValueAsString(order)); //customer 정보는 제외됨
     }
 }
