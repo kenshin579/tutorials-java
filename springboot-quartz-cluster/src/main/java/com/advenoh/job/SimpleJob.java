@@ -22,7 +22,7 @@ public class SimpleJob extends QuartzJobBean {
 		log.info("============================================================================");
 		log.info("SimpleJob started :: jobKey : {} - {}", jobKey, currThread.getName());
 
-		IntStream.range(0, 5).forEach(i -> {
+		IntStream.range(0, 2).forEach(i -> {
 			log.info("SimpleJob Counting - {}", i);
 			try {
 				TimeUnit.SECONDS.sleep(MAX_SLEEP_IN_SECONDS);

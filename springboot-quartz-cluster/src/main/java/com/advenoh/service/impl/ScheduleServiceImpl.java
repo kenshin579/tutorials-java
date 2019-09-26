@@ -3,6 +3,9 @@ package com.advenoh.service.impl;
 import com.advenoh.dto.JobRequest;
 import com.advenoh.dto.JobResponse;
 import com.advenoh.dto.JobStatusResponse;
+import com.advenoh.model.JobHistory;
+import com.advenoh.model.JobType;
+import com.advenoh.service.JobHistoryService;
 import com.advenoh.service.ScheduleService;
 import com.advenoh.utils.DateTimeUtils;
 import com.advenoh.utils.JobUtils;
@@ -31,6 +34,9 @@ public class ScheduleServiceImpl implements ScheduleService {
     private SchedulerFactoryBean schedulerFactoryBean;
 
     @Autowired
+    private JobHistoryService jobHistoryService;
+
+    @Autowired
     private ApplicationContext context;
 
     @Override
@@ -45,7 +51,11 @@ public class ScheduleServiceImpl implements ScheduleService {
             jobKey = JobKey.jobKey(jobRequest.getJobName(), jobRequest.getJobGroup());
 
             Date dt = schedulerFactoryBean.getScheduler().scheduleJob(jobDetail, trigger);
+
             log.debug("Job with jobKey : {} scheduled successfully at date : {}", jobDetail.getKey(), dt);
+
+            JobHistory jobHistory = jobHistoryService.addJob(jobRequest, JobType.SIMPLE);
+            log.debug("jobHistory : {}", jobHistory);
             return true;
         } catch (SchedulerException e) {
             log.error("error occurred while scheduling with jobKey : {}", jobKey, e);
@@ -84,6 +94,17 @@ public class ScheduleServiceImpl implements ScheduleService {
             return true;
         } catch (SchedulerException e) {
             log.error("[schedulerdebug] error occurred while resuming job with jobKey : {}", jobKey, e);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean stopJob(JobKey jobKey) {
+        log.debug("[schedulerdebug] stopping job with jobKey : {}", jobKey);
+        try {
+            return schedulerFactoryBean.getScheduler().interrupt(jobKey);
+        } catch (SchedulerException e) {
+            log.error("[schedulerdebug] error occurred while stopping job with jobKey : {}", jobKey, e);
         }
         return false;
     }

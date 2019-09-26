@@ -23,4 +23,6 @@ public interface ScheduleService {
     boolean resumeJob(JobKey jobKey);
 
     String getJobState(JobKey jobKey);
+
+    boolean stopJob(JobKey jobKey);
 }
