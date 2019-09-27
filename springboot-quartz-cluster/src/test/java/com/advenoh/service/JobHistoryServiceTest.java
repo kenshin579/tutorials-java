@@ -13,7 +13,9 @@ import org.quartz.JobKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -54,6 +56,42 @@ public class JobHistoryServiceTest {
         assertThat(jobStatus.getJobHistory().getJobName()).isEqualTo(testJobName);
         assertThat(jobStatus.getJobHistory().getJobGroup()).isEqualTo(testGroupName);
         assertThat(jobStatus.getJobState()).isEqualTo(StateType.DELETE);
+    }
+
+    @Test
+    @Transactional
+    public void pauseJob() {
+        createJobHistory(testJobName, testGroupName, testJobType);
+
+        JobKey jobKey = new JobKey(testJobName, testGroupName);
+        JobStatus jobStatus = jobHistoryService.pauseJob(jobKey);
+        assertThat(jobStatus.getJobHistory().getJobName()).isEqualTo(testJobName);
+        assertThat(jobStatus.getJobHistory().getJobGroup()).isEqualTo(testGroupName);
+        assertThat(jobStatus.getJobState()).isEqualTo(StateType.PAUSE);
+    }
+
+    @Test
+    @Transactional
+    public void resumeJob() {
+        createJobHistory(testJobName, testGroupName, testJobType);
+
+        JobKey jobKey = new JobKey(testJobName, testGroupName);
+        JobStatus jobStatus = jobHistoryService.resumeJob(jobKey);
+        assertThat(jobStatus.getJobHistory().getJobName()).isEqualTo(testJobName);
+        assertThat(jobStatus.getJobHistory().getJobGroup()).isEqualTo(testGroupName);
+        assertThat(jobStatus.getJobState()).isEqualTo(StateType.RESUME);
+    }
+
+    @Test
+    @Transactional
+    public void stopJob() {
+        createJobHistory(testJobName, testGroupName, testJobType);
+
+        JobKey jobKey = new JobKey(testJobName, testGroupName);
+        JobStatus jobStatus = jobHistoryService.stopJob(jobKey);
+        assertThat(jobStatus.getJobHistory().getJobName()).isEqualTo(testJobName);
+        assertThat(jobStatus.getJobHistory().getJobGroup()).isEqualTo(testGroupName);
+        assertThat(jobStatus.getJobState()).isEqualTo(StateType.STOP);
     }
 
     private JobHistory createJobHistory(String testJobName, String testGroupName, JobType jobType) {

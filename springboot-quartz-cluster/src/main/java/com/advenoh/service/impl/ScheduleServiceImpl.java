@@ -78,6 +78,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     public boolean pauseJob(JobKey jobKey) {
         log.debug("[schedulerdebug] pausing job with jobKey : {}", jobKey);
         try {
+            jobHistoryService.pauseJob(jobKey);
             schedulerFactoryBean.getScheduler().pauseJob(jobKey);
             return true;
         } catch (SchedulerException e) {
@@ -90,6 +91,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     public boolean resumeJob(JobKey jobKey) {
         log.debug("[schedulerdebug] resuming job with jobKey : {}", jobKey);
         try {
+            jobHistoryService.resumeJob(jobKey);
             schedulerFactoryBean.getScheduler().resumeJob(jobKey);
             return true;
         } catch (SchedulerException e) {
@@ -102,6 +104,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     public boolean stopJob(JobKey jobKey) {
         log.debug("[schedulerdebug] stopping job with jobKey : {}", jobKey);
         try {
+            jobHistoryService.stopJob(jobKey);
             return schedulerFactoryBean.getScheduler().interrupt(jobKey);
         } catch (SchedulerException e) {
             log.error("[schedulerdebug] error occurred while stopping job with jobKey : {}", jobKey, e);

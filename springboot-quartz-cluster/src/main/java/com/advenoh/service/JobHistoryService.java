@@ -37,13 +37,30 @@ public class JobHistoryService {
     }
 
     public JobStatus deleteJob(JobKey jobKey) {
+        return saveJobStatus(jobKey, StateType.DELETE);
+    }
+
+    public JobStatus pauseJob(JobKey jobKey) {
+        return saveJobStatus(jobKey, StateType.PAUSE);
+    }
+
+    public JobStatus resumeJob(JobKey jobKey) {
+        return saveJobStatus(jobKey, StateType.RESUME);
+    }
+
+    public JobStatus stopJob(JobKey jobKey) {
+        return saveJobStatus(jobKey, StateType.STOP);
+    }
+
+    private JobStatus saveJobStatus(JobKey jobKey, StateType delete) {
         JobHistory jobHistory = jobHistoryRepository
                 .findFirstByJobNameAndJobGroupOrderByHistoryIdDesc(jobKey.getName(), jobKey.getGroup())
                 .orElseThrow(IllegalAccessError::new);
 
         JobStatus jobStatus = new JobStatus();
-        jobStatus.setJobState(StateType.DELETE);
+        jobStatus.setJobState(delete);
         jobStatus.setJobHistory(jobHistory);
         return jobStatusRepository.save(jobStatus);
     }
+
 }
