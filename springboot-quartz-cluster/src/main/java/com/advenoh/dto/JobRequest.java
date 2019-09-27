@@ -1,5 +1,6 @@
 package com.advenoh.dto;
 
+import com.advenoh.model.JobType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -23,4 +24,12 @@ public class JobRequest {
 
     private String cronExpression;
     private JobDataMap jobDataMap;
+
+    public boolean isJobTypeSimple() {
+        return this.cronExpression == null;
+    }
+
+    public JobType getCurrentJobType() {
+        return isJobTypeSimple() ? JobType.SIMPLE : JobType.CRON;
+    }
 }

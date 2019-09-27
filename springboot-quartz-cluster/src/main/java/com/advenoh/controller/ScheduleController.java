@@ -27,9 +27,6 @@ public class ScheduleController {
     @Autowired
     private ScheduleService scheduleService;
 
-    @Autowired
-    private JobHistoryService jobHistoryService;
-
     @RequestMapping(value = "/job", method = RequestMethod.POST)
     public ResponseEntity<?> addScheduleJob(@ModelAttribute JobRequest jobRequest) {
         log.debug("add schedule job :: jobRequest : {}", jobRequest);
@@ -40,9 +37,8 @@ public class ScheduleController {
 
         JobKey jobKey = new JobKey(jobRequest.getJobName(), jobRequest.getJobGroup());
         if (!scheduleService.isJobExists(jobKey)) {
-            if (jobRequest.getCronExpression() == null) {
+            if (jobRequest.isJobTypeSimple()) {
                 scheduleService.addJob(jobRequest, SimpleJob.class);
-
             } else {
                 scheduleService.addJob(jobRequest, CronJob.class);
             }

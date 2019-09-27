@@ -25,7 +25,7 @@ public class JobHistory extends DateAudit {
     @Id
     @Column(name = "history_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long history_id;
+    private Long historyId;
 
     @NotNull
     @Column(name = "job_name", length = 50)

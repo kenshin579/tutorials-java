@@ -50,12 +50,11 @@ public class ScheduleServiceImpl implements ScheduleService {
             jobDetail = JobUtils.createJob(jobRequest, jobClass, context);
             jobKey = JobKey.jobKey(jobRequest.getJobName(), jobRequest.getJobGroup());
 
-            Date dt = schedulerFactoryBean.getScheduler().scheduleJob(jobDetail, trigger);
-
-            log.debug("Job with jobKey : {} scheduled successfully at date : {}", jobDetail.getKey(), dt);
-
-            JobHistory jobHistory = jobHistoryService.addJob(jobRequest, JobType.SIMPLE);
+            JobHistory jobHistory = jobHistoryService.addJob(jobRequest, jobRequest.getCurrentJobType());
             log.debug("jobHistory : {}", jobHistory);
+
+            Date dt = schedulerFactoryBean.getScheduler().scheduleJob(jobDetail, trigger);
+            log.debug("Job with jobKey : {} scheduled successfully at date : {}", jobDetail.getKey(), dt);
             return true;
         } catch (SchedulerException e) {
             log.error("error occurred while scheduling with jobKey : {}", jobKey, e);
@@ -67,6 +66,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     public boolean deleteJob(JobKey jobKey) {
         log.debug("[schedulerdebug] deleting job with jobKey : {}", jobKey);
         try {
+            jobHistoryService.deleteJob(jobKey);
             return schedulerFactoryBean.getScheduler().deleteJob(jobKey);
         } catch (SchedulerException e) {
             log.error("[schedulerdebug] error occurred while deleting job with jobKey : {}", jobKey, e);

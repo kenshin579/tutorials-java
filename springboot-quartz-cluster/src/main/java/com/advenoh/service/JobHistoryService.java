@@ -8,11 +8,12 @@ import com.advenoh.model.StateType;
 import com.advenoh.repository.JobHistoryRepository;
 import com.advenoh.repository.JobStatusRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.quartz.JobKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Slf4j
-@Service
+@Service("jobHistoryService")
 public class JobHistoryService {
 
     @Autowired
@@ -33,5 +34,16 @@ public class JobHistoryService {
         jobStatus.setJobHistory(jobHistory);
         jobStatusRepository.save(jobStatus);
         return jobHistory;
+    }
+
+    public JobStatus deleteJob(JobKey jobKey) {
+        JobHistory jobHistory = jobHistoryRepository
+                .findFirstByJobNameAndJobGroupOrderByHistoryIdDesc(jobKey.getName(), jobKey.getGroup())
+                .orElseThrow(IllegalAccessError::new);
+
+        JobStatus jobStatus = new JobStatus();
+        jobStatus.setJobState(StateType.DELETE);
+        jobStatus.setJobHistory(jobHistory);
+        return jobStatusRepository.save(jobStatus);
     }
 }
