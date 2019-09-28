@@ -4,7 +4,6 @@ import com.advenoh.dto.JobRequest;
 import com.advenoh.dto.JobResponse;
 import com.advenoh.dto.JobStatusResponse;
 import com.advenoh.model.JobHistory;
-import com.advenoh.model.JobType;
 import com.advenoh.service.JobHistoryService;
 import com.advenoh.service.ScheduleService;
 import com.advenoh.utils.DateTimeUtils;
@@ -17,6 +16,7 @@ import org.quartz.JobKey;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.Trigger;
+import org.quartz.TriggerKey;
 import org.quartz.impl.matchers.GroupMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -70,6 +70,26 @@ public class ScheduleServiceImpl implements ScheduleService {
             return schedulerFactoryBean.getScheduler().deleteJob(jobKey);
         } catch (SchedulerException e) {
             log.error("[schedulerdebug] error occurred while deleting job with jobKey : {}", jobKey, e);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateJob(JobRequest jobRequest) {
+        JobKey jobKey = null;
+        Trigger newTrigger;
+
+        try {
+            newTrigger = JobUtils.createTrigger(jobRequest);
+            jobKey = JobKey.jobKey(jobRequest.getJobName(), jobRequest.getJobGroup());
+
+            jobHistoryService.updateJob(jobKey);
+
+            Date dt = schedulerFactoryBean.getScheduler().rescheduleJob(TriggerKey.triggerKey(jobRequest.getJobName()), newTrigger);
+            log.debug("Job with jobKey : {} rescheduled successfully at date : {}", jobKey, dt);
+            return true;
+        } catch (SchedulerException e) {
+            log.error("error occurred while scheduling with jobKey : {}", jobKey, e);
         }
         return false;
     }

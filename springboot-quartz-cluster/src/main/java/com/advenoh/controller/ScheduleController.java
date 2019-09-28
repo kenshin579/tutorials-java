@@ -64,6 +64,28 @@ public class ScheduleController {
         return new ResponseEntity<>(new ApiResponse(true, "Job deleted successfully"), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/job/update", method = RequestMethod.PUT)
+    public ResponseEntity<?> updateScheduleJob(@ModelAttribute JobRequest jobRequest) {
+        log.debug("update schedule job :: jobRequest : {}", jobRequest);
+        if (jobRequest.getJobName() == null) {
+            return new ResponseEntity<>(new ApiResponse(false, "Require jobName"),
+                    HttpStatus.BAD_REQUEST);
+        }
+
+        JobKey jobKey = new JobKey(jobRequest.getJobName(), jobRequest.getJobGroup());
+        if (scheduleService.isJobExists(jobKey)) {
+            if (jobRequest.isJobTypeSimple()) {
+                scheduleService.updateJob(jobRequest);
+            } else {
+                scheduleService.updateJob(jobRequest);
+            }
+        } else {
+            return new ResponseEntity<>(new ApiResponse(false, "Job does not exits"),
+                    HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(new ApiResponse(true, "Job updated successfully"), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/jobs", method = RequestMethod.GET)
     public JobStatusResponse getAllJobs() {
         return scheduleService.getAllJobs();
@@ -113,6 +135,6 @@ public class ScheduleController {
         } else {
             return new ResponseEntity<>(new ApiResponse(false, "Job does not exits"), HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(new ApiResponse(true, "Job resumed successfully"), HttpStatus.OK);
+        return new ResponseEntity<>(new ApiResponse(true, "Job stopped successfully"), HttpStatus.OK);
     }
 }

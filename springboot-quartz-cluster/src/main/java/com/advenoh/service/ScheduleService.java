@@ -12,8 +12,6 @@ public interface ScheduleService {
 
     boolean isJobExists(JobKey jobKey);
 
-//    boolean addJob(JobRequest jobRequest, Class<? extends QuartzJobBean> jobClass);
-
     boolean addJob(JobRequest jobRequest, Class<? extends Job> jobClass);
 
     boolean deleteJob(JobKey jobKey);
@@ -25,4 +23,6 @@ public interface ScheduleService {
     String getJobState(JobKey jobKey);
 
     boolean stopJob(JobKey jobKey);
+
+    boolean updateJob(JobRequest jobRequest);
 }
