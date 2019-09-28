@@ -15,6 +15,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -92,6 +96,15 @@ public class JobHistoryServiceTest {
         assertThat(jobStatus.getJobHistory().getJobName()).isEqualTo(testJobName);
         assertThat(jobStatus.getJobHistory().getJobGroup()).isEqualTo(testGroupName);
         assertThat(jobStatus.getJobState()).isEqualTo(StateType.STOP);
+    }
+
+    @Test
+    public void getAllJobs() {
+//        Pageable pageRequest = new PageRequest(, );
+//        Page<JobHistory> jobHistories = jobHistoryService.getAllJobs();
+//        log.info("jobHistories : {}", jobHistories);
+
+
     }
 
     private JobHistory createJobHistory(String testJobName, String testGroupName, JobType jobType) {

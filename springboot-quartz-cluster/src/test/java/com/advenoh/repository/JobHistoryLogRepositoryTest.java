@@ -75,6 +75,11 @@ public class JobHistoryLogRepositoryTest {
         assertThat(result.getJobGroup()).isEqualTo(testGroupName);
     }
 
+    @Test
+    public void name() {
+
+    }
+
     private JobHistory createJobHistory(String testJobName, String testGroupName, JobType jobType) {
         JobHistory jobHistory = new JobHistory();
         jobHistory.setJobName(testJobName);

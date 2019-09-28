@@ -69,6 +69,22 @@ public class ScheduleControllerTest {
     }
 
     @Test
+    public void updateScheduleJob() throws Exception {
+        given(scheduleService.updateJob(anyObject())).willReturn(true);
+        given(scheduleService.isJobExists(anyObject())).willReturn(true);
+
+        mvc.perform(put(BASE_PATH + "/job/update")
+                .param("jobName", "job1")
+                .param("jobGroup", "testGroup"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success", is(true)));
+
+        verify(scheduleService).updateJob(anyObject());
+        verify(scheduleService).isJobExists(anyObject());
+    }
+
+    @Test
     public void getAllJobs() throws Exception {
         JobStatusResponse jobStatusResponse = new JobStatusResponse();
         jobStatusResponse.setNumOfAllJobs(1);
