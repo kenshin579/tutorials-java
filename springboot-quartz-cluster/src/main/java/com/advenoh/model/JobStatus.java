@@ -28,10 +28,7 @@ public class JobStatus extends DateAudit {
     @Enumerated(value = EnumType.STRING)
     private StateType jobState;
 
-//    @NotNull
-//    private String instance;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "history_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private JobHistory jobHistory;

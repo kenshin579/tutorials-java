@@ -5,6 +5,7 @@ import com.advenoh.model.JobStatus;
 import com.advenoh.model.JobType;
 import com.advenoh.model.StateType;
 import com.advenoh.repository.JobHistoryRepository;
+import com.advenoh.repository.JobStatusRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,16 +14,15 @@ import org.quartz.JobKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,6 +38,9 @@ public class JobHistoryServiceTest {
 
     @Autowired
     private JobHistoryRepository jobHistoryRepository;
+
+    @Autowired
+    private JobStatusRepository jobStatusRepository;
 
     private String testJobName;
     private String testGroupName;
@@ -99,19 +102,27 @@ public class JobHistoryServiceTest {
     }
 
     @Test
+    @Transactional
     public void getAllJobs() {
-//        Pageable pageRequest = new PageRequest(, );
-//        Page<JobHistory> jobHistories = jobHistoryService.getAllJobs();
-//        log.info("jobHistories : {}", jobHistories);
-
-
+        createJobHistory(testJobName, testGroupName, testJobType);
+        Pageable pageRequest = PageRequest.of(0, 5, Sort.by("statusId").descending());
+        Page<JobStatus> statusPage = jobHistoryService.getAllJobs(pageRequest);
+        assertThat(statusPage.getContent().get(0).getJobHistory().getJobName()).isEqualTo(testJobName);
+        assertThat(statusPage.getContent().get(0).getJobHistory().getJobGroup()).isEqualTo(testGroupName);
+        assertThat(statusPage.getContent().get(0).getJobState()).isEqualTo(StateType.CREATE);
     }
 
-    private JobHistory createJobHistory(String testJobName, String testGroupName, JobType jobType) {
+    private void createJobHistory(String testJobName, String testGroupName, JobType jobType) {
         JobHistory jobHistory = new JobHistory();
         jobHistory.setJobName(testJobName);
         jobHistory.setJobGroup(testGroupName);
         jobHistory.setJobType(jobType);
-        return jobHistoryRepository.save(jobHistory);
+        jobHistoryRepository.save(jobHistory);
+
+        JobStatus jobStatus = new JobStatus();
+        jobStatus.setCreateDt(new Date());
+        jobStatus.setJobState(StateType.CREATE);
+        jobStatus.setJobHistory(jobHistory);
+        jobStatusRepository.save(jobStatus);
     }
 }

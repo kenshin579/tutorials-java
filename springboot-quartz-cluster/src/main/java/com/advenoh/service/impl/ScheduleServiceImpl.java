@@ -1,8 +1,8 @@
 package com.advenoh.service.impl;
 
-import com.advenoh.dto.JobRequest;
-import com.advenoh.dto.JobResponse;
-import com.advenoh.dto.JobStatusResponse;
+import com.advenoh.dto.scheduler.JobRequest;
+import com.advenoh.dto.scheduler.JobResponse;
+import com.advenoh.dto.scheduler.StatusResponse;
 import com.advenoh.model.JobHistory;
 import com.advenoh.service.JobHistoryService;
 import com.advenoh.service.ScheduleService;
@@ -50,7 +50,7 @@ public class ScheduleServiceImpl implements ScheduleService {
             jobDetail = JobUtils.createJob(jobRequest, jobClass, context);
             jobKey = JobKey.jobKey(jobRequest.getJobName(), jobRequest.getJobGroup());
 
-            JobHistory jobHistory = jobHistoryService.addJob(jobRequest, jobRequest.getCurrentJobType());
+            JobHistory jobHistory = jobHistoryService.addJob(jobRequest);
             log.debug("jobHistory : {}", jobHistory);
 
             Date dt = schedulerFactoryBean.getScheduler().scheduleJob(jobDetail, trigger);
@@ -133,9 +133,9 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     @Override
-    public JobStatusResponse getAllJobs() {
+    public StatusResponse getAllJobs() {
         JobResponse jobResponse;
-        JobStatusResponse jobStatusResponse = new JobStatusResponse();
+        StatusResponse statusResponse = new StatusResponse();
         List<JobResponse> jobs = new ArrayList<>();
         int numOfRunningJobs = 0;
         int numOfGroups = 0;
@@ -171,11 +171,11 @@ public class ScheduleServiceImpl implements ScheduleService {
             log.error("[schedulerdebug] error while fetching all job info", e);
         }
 
-        jobStatusResponse.setNumOfAllJobs(numOfAllJobs);
-        jobStatusResponse.setNumOfRunningJobs(numOfRunningJobs);
-        jobStatusResponse.setNumOfGroups(numOfGroups);
-        jobStatusResponse.setJobs(jobs);
-        return jobStatusResponse;
+        statusResponse.setNumOfAllJobs(numOfAllJobs);
+        statusResponse.setNumOfRunningJobs(numOfRunningJobs);
+        statusResponse.setNumOfGroups(numOfGroups);
+        statusResponse.setJobs(jobs);
+        return statusResponse;
     }
 
     @Override

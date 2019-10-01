@@ -1,5 +1,6 @@
 package com.advenoh.dto;
 
+import com.advenoh.dto.scheduler.JobRequest;
 import com.advenoh.model.JobType;
 import org.junit.Test;
 

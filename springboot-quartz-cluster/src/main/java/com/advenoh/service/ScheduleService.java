@@ -1,12 +1,12 @@
 package com.advenoh.service;
 
-import com.advenoh.dto.JobRequest;
-import com.advenoh.dto.JobStatusResponse;
+import com.advenoh.dto.scheduler.JobRequest;
+import com.advenoh.dto.scheduler.StatusResponse;
 import org.quartz.Job;
 import org.quartz.JobKey;
 
 public interface ScheduleService {
-    JobStatusResponse getAllJobs();
+    StatusResponse getAllJobs();
 
     boolean isJobRunning(JobKey jobKey);
 

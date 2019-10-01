@@ -1,6 +1,6 @@
 package com.advenoh.controller;
 
-import com.advenoh.dto.JobStatusResponse;
+import com.advenoh.dto.scheduler.StatusResponse;
 import com.advenoh.job.SimpleJob;
 import com.advenoh.service.ScheduleService;
 import org.junit.Test;
@@ -86,10 +86,10 @@ public class ScheduleControllerTest {
 
     @Test
     public void getAllJobs() throws Exception {
-        JobStatusResponse jobStatusResponse = new JobStatusResponse();
-        jobStatusResponse.setNumOfAllJobs(1);
+        StatusResponse statusResponse = new StatusResponse();
+        statusResponse.setNumOfAllJobs(1);
 
-        given(scheduleService.getAllJobs()).willReturn(jobStatusResponse);
+        given(scheduleService.getAllJobs()).willReturn(statusResponse);
 
         mvc.perform(get(BASE_PATH + "/jobs"))
                 .andDo(print())

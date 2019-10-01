@@ -1,6 +1,6 @@
 package com.advenoh.controller;
 
-import com.advenoh.model.JobHistory;
+import com.advenoh.model.JobStatus;
 import com.advenoh.service.JobHistoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +18,7 @@ public class JobHistoryController {
     private JobHistoryService jobHistoryService;
 
     @GetMapping("/jobs")
-    public Page<JobHistory> getAllHistoryJobs(Pageable pageable) {
-        Page<JobHistory> allJobs = jobHistoryService.getAllJobs(pageable);
-        log.info("allJobs : {}", allJobs);
-        return allJobs;
+    public Page<JobStatus> getAllHistoryStatusJobs(Pageable pageable) {
+        return jobHistoryService.getAllJobs(pageable);
     }
 }

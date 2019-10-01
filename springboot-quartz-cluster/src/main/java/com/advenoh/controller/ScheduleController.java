@@ -1,13 +1,10 @@
 package com.advenoh.controller;
 
-import com.advenoh.dto.ApiResponse;
-import com.advenoh.dto.JobRequest;
-import com.advenoh.dto.JobStatusResponse;
+import com.advenoh.dto.scheduler.ApiResponse;
+import com.advenoh.dto.scheduler.JobRequest;
+import com.advenoh.dto.scheduler.StatusResponse;
 import com.advenoh.job.CronJob;
 import com.advenoh.job.SimpleJob;
-import com.advenoh.model.JobHistory;
-import com.advenoh.model.JobType;
-import com.advenoh.service.JobHistoryService;
 import com.advenoh.service.ScheduleService;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.JobKey;
@@ -87,7 +84,7 @@ public class ScheduleController {
     }
 
     @RequestMapping(value = "/jobs", method = RequestMethod.GET)
-    public JobStatusResponse getAllJobs() {
+    public StatusResponse getAllJobs() {
         return scheduleService.getAllJobs();
     }
 

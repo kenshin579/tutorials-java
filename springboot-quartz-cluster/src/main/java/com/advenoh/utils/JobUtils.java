@@ -1,6 +1,6 @@
 package com.advenoh.utils;
 
-import com.advenoh.dto.JobRequest;
+import com.advenoh.dto.scheduler.JobRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.Job;
 import org.quartz.JobDetail;
@@ -9,7 +9,6 @@ import org.quartz.Trigger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
 import org.springframework.scheduling.quartz.JobDetailFactoryBean;
-import org.springframework.scheduling.quartz.QuartzJobBean;
 import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
 import org.springframework.util.StringUtils;
 

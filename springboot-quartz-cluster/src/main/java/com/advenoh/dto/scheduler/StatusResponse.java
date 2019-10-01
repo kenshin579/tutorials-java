@@ -1,4 +1,4 @@
-package com.advenoh.dto;
+package com.advenoh.dto.scheduler;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class JobStatusResponse {
+public class StatusResponse {
 	private int numOfAllJobs;
 	private int numOfGroups;
 	private int numOfRunningJobs;

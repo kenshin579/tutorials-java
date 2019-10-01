@@ -1,4 +1,4 @@
-package com.advenoh.dto;
+package com.advenoh.dto.scheduler;
 
 import com.advenoh.model.JobType;
 import lombok.Getter;
