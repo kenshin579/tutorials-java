@@ -1,6 +1,7 @@
 package com.advenoh.job;
 
 import lombok.extern.slf4j.Slf4j;
+import org.quartz.InterruptableJob;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -11,7 +12,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 @Slf4j
-public class CronJob extends QuartzJobBean {
+public class CronJob extends QuartzJobBean implements InterruptableJob {
+	private volatile boolean isJobInterrupted = false;
 	private int MAX_SLEEP_IN_SECONDS = 5;
 
 	private volatile Thread currThread;
@@ -37,6 +39,15 @@ public class CronJob extends QuartzJobBean {
 			});
 			log.info("CronJob ended :: jobKey : {} - {}", jobKey, currThread.getName());
 			log.info("============================================================================");
+		}
+	}
+
+	@Override
+	public void interrupt() {
+		isJobInterrupted = true;
+		if (currThread != null) {
+			log.info("interrupting - {}", currThread.getName());
+			currThread.interrupt();
 		}
 	}
 }
