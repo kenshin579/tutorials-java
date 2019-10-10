@@ -4,6 +4,7 @@ import com.advenoh.dto.scheduler.ApiResponse;
 import com.advenoh.dto.scheduler.JobRequest;
 import com.advenoh.dto.scheduler.StatusResponse;
 import com.advenoh.job.CronJob;
+import com.advenoh.job.CronJob2;
 import com.advenoh.job.SimpleJob;
 import com.advenoh.service.ScheduleService;
 import lombok.extern.slf4j.Slf4j;
@@ -37,7 +38,7 @@ public class ScheduleController {
             if (jobRequest.isJobTypeSimple()) {
                 scheduleService.addJob(jobRequest, SimpleJob.class);
             } else {
-                scheduleService.addJob(jobRequest, CronJob.class);
+                scheduleService.addJob(jobRequest, CronJob2.class);
             }
         } else {
             return new ResponseEntity<>(new ApiResponse(false, "Job already exits"),

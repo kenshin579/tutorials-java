@@ -23,7 +23,7 @@ public class CronJob2 implements Job {
 		log.info("CronJob started :: sleep : {} jobKey : {} - {}", MAX_SLEEP_IN_SECONDS, jobKey, currThread.getName());
 
 		IntStream.range(0, 3).forEach(i -> {
-			log.info("CronJob Counting - {}", i);
+			log.info("CronJob Counting : {} = {}", i, currThread.getName());
 			try {
 				TimeUnit.SECONDS.sleep(MAX_SLEEP_IN_SECONDS);
 			} catch (InterruptedException e) {
