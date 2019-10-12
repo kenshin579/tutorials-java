@@ -21,7 +21,7 @@ public class CronJob extends QuartzJobBean implements InterruptableJob {
 	@Override
 	protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
 		JobDataMap jobDataMap = context.getJobDetail().getJobDataMap();
-		if (jobDataMap.size() > 0) {
+		if (jobDataMap.size() > 0 && !isJobInterrupted) {
 			int jobId = jobDataMap.getInt("jobId");
 			JobKey jobKey = context.getJobDetail().getKey();
 

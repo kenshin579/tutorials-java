@@ -20,21 +20,23 @@ public class SimpleJob extends QuartzJobBean implements InterruptableJob {
     @Override
     protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
         JobKey jobKey = context.getJobDetail().getKey();
-        currThread = Thread.currentThread();
-        log.info("============================================================================");
-        log.info("SimpleJob started :: jobKey : {} - {}", jobKey, currThread.getName());
+        if (!isJobInterrupted) {
+            currThread = Thread.currentThread();
+            log.info("============================================================================");
+            log.info("SimpleJob started :: jobKey : {} - {}", jobKey, currThread.getName());
 
-        IntStream.range(0, 2).forEach(i -> {
-            log.info("SimpleJob Counting - {}", i);
-            try {
-                TimeUnit.SECONDS.sleep(MAX_SLEEP_IN_SECONDS);
-            } catch (InterruptedException e) {
-                log.error(e.getMessage(), e);
-            }
-        });
+            IntStream.range(0, 2).forEach(i -> {
+                log.info("SimpleJob Counting - {}", i);
+                try {
+                    TimeUnit.SECONDS.sleep(MAX_SLEEP_IN_SECONDS);
+                } catch (InterruptedException e) {
+                    log.error(e.getMessage(), e);
+                }
+            });
 
-        log.info("SimpleJob ended :: jobKey : {} - {}", jobKey, currThread.getName());
-        log.info("============================================================================");
+            log.info("SimpleJob ended :: jobKey : {} - {}", jobKey, currThread.getName());
+            log.info("============================================================================");
+        }
     }
 
     @Override
