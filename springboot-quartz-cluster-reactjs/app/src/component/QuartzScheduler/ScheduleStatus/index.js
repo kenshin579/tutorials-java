@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import SchedulerService from '../../../service/SchedulerService';
 import StatusItem from "../StatusItem";
-import {MAX_INTERVAL_SECONDS} from "../../../constants";
 import {Row} from "react-bootstrap";
 
 
@@ -14,25 +12,25 @@ class ScheduleStatus extends Component {
         this.loadStatusInfo = this.loadStatusInfo.bind(this);
     }
 
-    loadStatusInfo() {
-        SchedulerService.getStatus()
-            .then(response => {
-                this.setState({
-                    jobStatus: response.data.data,
-                });
-            }).catch(error => {
-            console.error('error occurred while getting status info', error);
-        })
-    }
-
-    componentDidMount() {
-        this.loadStatusInfo();
-        this.interval = setInterval(() => this.loadStatusInfo(), MAX_INTERVAL_SECONDS);
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
+    // loadStatusInfo() {
+    //     SchedulerService.getStatus()
+    //         .then(response => {
+    //             this.setState({
+    //                 jobStatus: response.data.data,
+    //             });
+    //         }).catch(error => {
+    //         console.error('error occurred while getting status info', error);
+    //     })
+    // }
+    //
+    // componentDidMount() {
+    //     this.loadStatusInfo();
+    //     this.interval = setInterval(() => this.loadStatusInfo(), MAX_INTERVAL_SECONDS);
+    // }
+    //
+    // componentWillUnmount() {
+    //     clearInterval(this.interval);
+    // }
 
     render() {
         const statusView = [];

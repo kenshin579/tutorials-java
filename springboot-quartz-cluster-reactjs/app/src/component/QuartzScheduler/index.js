@@ -1,18 +1,34 @@
 import React, {Component} from 'react';
-import ScheduleList from './ScheduleList';
-import ScheduleStatus from './ScheduleStatus';
+import {MAX_INTERVAL_SECONDS} from "../../constants";
+import SchedulerService from "../../service/SchedulerService";
 
 class QuartzScheduler extends Component {
+    componentDidMount() {
+        this.refreshSchedules();
+        this.interval = setInterval(() => this.refreshSchedules(), MAX_INTERVAL_SECONDS);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
+    refreshSchedules() {
+        SchedulerService.getAllJobs()
+            .then(response => {
+                    console.log('get all jobs :: response', response);
+                    this.setState({schedulers: response.data.data.result.jobs})
+                }
+            ).catch(error => {
+                console.error('error occurred while getting all jobs', error);
+            }
+        );
+    }
+
     render() {
-        /*
-        todo : 개선 작업
-        - as-as : ScheduleStatus와 ScheduleList 각각 다른 API로 호출함
-        - to-be : 여기에서 API (/api/schedulers/jobs)를 한번만 호출하도록 변경작업 필요 (redux 사용하기)
-         */
         return (
             <div className="container-fluid">
-                <ScheduleStatus/>
-                <ScheduleList/>
+                {/*<ScheduleStatus/>*/}
+                {/*<ScheduleList/>*/}
             </div>
         )
     }

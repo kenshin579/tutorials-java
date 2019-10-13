@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import SchedulerService from '../../../service/SchedulerService';
 import './ScheduleList.css';
 import ScheduleItem from "../ScheduleItem";
-import {DELAY_TIME_FOR_MESSAGE, MAX_INTERVAL_SECONDS} from "../../../constants";
+import {DELAY_TIME_FOR_MESSAGE} from "../../../constants";
 import SchedulerAddModal from "../ScheduleAdd/SchedulerAdd";
 import {Alert, Button, Card, Table} from "react-bootstrap";
 
@@ -22,27 +22,6 @@ class ScheduleList extends Component {
         this.refreshSchedules = this.refreshSchedules.bind(this);
         this.hideModal = this.hideModal.bind(this);
         this.showModal = this.showModal.bind(this);
-    }
-
-    componentDidMount() {
-        this.refreshSchedules();
-        this.interval = setInterval(() => this.refreshSchedules(), MAX_INTERVAL_SECONDS);
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
-
-    refreshSchedules() {
-        SchedulerService.getAllJobs()
-            .then(response => {
-                    console.log('get all jobs :: response', response);
-                    this.setState({schedulers: response.data.data.result.jobs})
-                }
-            ).catch(error => {
-                console.error('error occurred while getting all jobs', error);
-            }
-        );
     }
 
     deleteScheduleClicked(jobName) {
