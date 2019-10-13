@@ -11,7 +11,6 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-@Deprecated
 public class JobHistoryStatusResponse {
     private Long statusId;
     private StateType jobState;
