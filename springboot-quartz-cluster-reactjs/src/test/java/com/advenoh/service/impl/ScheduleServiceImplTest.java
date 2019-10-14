@@ -2,6 +2,7 @@ package com.advenoh.service.impl;
 
 import com.advenoh.dto.scheduler.JobRequest;
 import com.advenoh.dto.scheduler.StatusResponse;
+import com.advenoh.exception.ExceptionCode;
 import com.advenoh.job.CronJob;
 import com.advenoh.model.JobHistory;
 import com.advenoh.model.JobStatus;
@@ -35,8 +36,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import static org.assertj.core.api.Assertions.anyOf;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
@@ -90,6 +91,20 @@ public class ScheduleServiceImplTest {
     }
 
     @Test
+    public void addJob_Exception시_Throw하는지_체크() {
+        JobRequest jobRequest = new JobRequest();
+        jobRequest.setCronExpression("0/10 * * ? * *");
+        jobRequest.setJobName(testJobName);
+        jobRequest.setJobGroup(testGroupName);
+
+        when(schedulerFactoryBean.getScheduler()).thenAnswer(invocation -> {
+            throw new SchedulerException();
+        });
+
+        assertThatThrownBy(() -> scheduleService.addJob(jobRequest, CronJob.class)).hasMessage(ExceptionCode.SCHEDULER_ADD_FAIL.getMessage());
+    }
+
+    @Test
     public void deleteJob() throws SchedulerException {
         JobKey jobKey = new JobKey(testJobName, testGroupName);
 
@@ -105,6 +120,17 @@ public class ScheduleServiceImplTest {
         verify(jobHistoryService).deleteJob(jobKey);
         verify(schedulerFactoryBean).getScheduler();
         verify(scheduler).deleteJob(jobKey);
+    }
+
+    @Test
+    public void deleteJob_Exception시_Throw하는지_체크() {
+        JobKey jobKey = new JobKey(testJobName, testGroupName);
+
+        when(schedulerFactoryBean.getScheduler()).thenAnswer(invocation -> {
+            throw new SchedulerException();
+        });
+
+        assertThatThrownBy(() -> scheduleService.deleteJob(jobKey)).hasMessage(ExceptionCode.SCHEDULER_DELETE_FAIL.getMessage());
     }
 
     @Test
@@ -207,6 +233,15 @@ public class ScheduleServiceImplTest {
         verify(scheduler).getJobDetail(anyObject());
         verify(scheduler, times(2)).getTriggersOfJob(anyObject());
         verify(scheduler).getTriggerState(anyObject());
+    }
+
+    @Test
+    public void getAllJobs_Exception시_Throw하는지_체크() {
+        when(schedulerFactoryBean.getScheduler()).thenAnswer(invocation -> {
+            throw new SchedulerException();
+        });
+
+        assertThatThrownBy(() -> scheduleService.getAllJobs()).hasMessage(ExceptionCode.SCHEDULER_GET_FAIL.getMessage());
     }
 
     @Test
