@@ -3,7 +3,6 @@ package com.advenoh.controller;
 import com.advenoh.dto.scheduler.ApiResponse;
 import com.advenoh.dto.scheduler.JobRequest;
 import com.advenoh.dto.scheduler.StatusResponse;
-import com.advenoh.job.CronJob;
 import com.advenoh.job.CronJob2;
 import com.advenoh.job.SimpleJob;
 import com.advenoh.service.ScheduleService;

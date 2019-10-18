@@ -2,6 +2,7 @@ package com.advenoh.service.impl;
 
 import com.advenoh.dto.scheduler.JobRequest;
 import com.advenoh.dto.scheduler.JobResponse;
+import com.advenoh.dto.scheduler.StatsResponse;
 import com.advenoh.dto.scheduler.StatusResponse;
 import com.advenoh.model.JobHistory;
 import com.advenoh.service.JobHistoryService;
@@ -135,7 +136,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Override
     public StatusResponse getAllJobs() {
         JobResponse jobResponse;
-        StatusResponse statusResponse = new StatusResponse();
+
         List<JobResponse> jobs = new ArrayList<>();
         int numOfRunningJobs = 0;
         int numOfGroups = 0;
@@ -171,11 +172,14 @@ public class ScheduleServiceImpl implements ScheduleService {
             log.error("[schedulerdebug] error while fetching all job info", e);
         }
 
-        statusResponse.setNumOfAllJobs(numOfAllJobs);
-        statusResponse.setNumOfRunningJobs(numOfRunningJobs);
-        statusResponse.setNumOfGroups(numOfGroups);
-        statusResponse.setJobs(jobs);
-        return statusResponse;
+        return StatusResponse.builder()
+                .jobs(jobs)
+                .stats(StatsResponse.builder()
+                        .numOfAllJobs(numOfAllJobs)
+                        .numOfRunningJobs(numOfRunningJobs)
+                        .numOfGroups(numOfGroups)
+                        .build())
+                .build();
     }
 
     @Override

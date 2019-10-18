@@ -1,5 +1,6 @@
 package com.advenoh.controller;
 
+import com.advenoh.dto.scheduler.StatsResponse;
 import com.advenoh.dto.scheduler.StatusResponse;
 import com.advenoh.job.SimpleJob;
 import com.advenoh.service.ScheduleService;
@@ -86,15 +87,18 @@ public class ScheduleControllerTest {
 
     @Test
     public void getAllJobs() throws Exception {
-        StatusResponse statusResponse = new StatusResponse();
-        statusResponse.setNumOfAllJobs(1);
+        StatusResponse statsResponse = StatusResponse.builder()
+                .stats(StatsResponse.builder()
+                        .numOfAllJobs(1)
+                        .build())
+                .build();
 
-        given(scheduleService.getAllJobs()).willReturn(statusResponse);
+        given(scheduleService.getAllJobs()).willReturn(statsResponse);
 
         mvc.perform(get(BASE_PATH + "/jobs"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.numOfAllJobs", is(1)));
+                .andExpect(jsonPath("$.stats.numOfAllJobs", is(1)));
 
         verify(scheduleService).getAllJobs();
     }
