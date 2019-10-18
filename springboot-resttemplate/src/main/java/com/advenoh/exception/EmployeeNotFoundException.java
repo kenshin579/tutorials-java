@@ -1,7 +1,13 @@
 package com.advenoh.exception;
 
 public class EmployeeNotFoundException extends RuntimeException {
-//	public EmployeeNotFoundException(Long id) {
-//		super("Could not find employee " + id);
-//	}
+	private static final long serialVersionUID = 5664296823995347411L;
+
+	public EmployeeNotFoundException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+	public EmployeeNotFoundException(String message) {
+		super(message);
+	}
 }

@@ -4,6 +4,7 @@ import com.advenoh.dto.scheduler.JobRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.Job;
 import org.quartz.JobDetail;
+import org.quartz.JobKey;
 import org.quartz.SimpleTrigger;
 import org.quartz.Trigger;
 import org.springframework.context.ApplicationContext;

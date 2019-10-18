@@ -142,4 +142,9 @@ public class EmployeeController {
 	public void partialUpdateEmployee(@PathVariable(value = "name") String name, @RequestBody Address address) {
 		log.info("name : {} address {}", name, address);
 	}
+
+	@RequestMapping(value = "/error", method = RequestMethod.GET)
+	public void throwRunTimeException() {
+		throw new NullPointerException("throwing a null poiter exception");
+	}
 }
