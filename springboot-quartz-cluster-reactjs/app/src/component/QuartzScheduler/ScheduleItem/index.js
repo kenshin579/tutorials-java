@@ -10,11 +10,12 @@ class ScheduleItem extends Component {
         return (
             <tr>
                 <td className="item-small">{schedule.jobName}</td>
+                <td className="item-small">{schedule.groupName}</td>
                 <td className="item-small">{moment(schedule.scheduleTime).format(DATE_TIME_FORMAT)}</td>
                 <td className="item-small">{schedule.lastFiredTime != null ? moment(schedule.lastFiredTime).format(DATE_TIME_FORMAT) : 'N/A'}</td>
                 <td className="item-small">{moment(schedule.nextFireTime).format(DATE_TIME_FORMAT)}</td>
                 <td className="item-small">
-                    <button className="btn btn-secondary btn-sm item-xx-small" onClick={() => onDelete(schedule.jobName)}>Delete</button>
+                    <button className="btn btn-secondary btn-sm item-xx-small" onClick={() => onDelete(schedule.jobName, schedule.groupName)}>Delete</button>
                 </td>
                 <td className="item-small">{schedule.jobStatus}</td>
             </tr>
