@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @ToString
 public class JobRequest {
 
-    private String jobGroup = "DEFAULT";
+    private String groupName = "DEFAULT";
     private String jobName;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

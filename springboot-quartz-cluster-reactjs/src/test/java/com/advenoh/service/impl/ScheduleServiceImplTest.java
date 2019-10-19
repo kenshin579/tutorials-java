@@ -75,7 +75,7 @@ public class ScheduleServiceImplTest {
         JobRequest jobRequest = new JobRequest();
         jobRequest.setCronExpression("0/10 * * ? * *");
         jobRequest.setJobName(testJobName);
-        jobRequest.setJobGroup(testGroupName);
+        jobRequest.setGroupName(testGroupName);
 
         JobHistory jobHistory = new JobHistory();
         jobHistory.setJobName(testJobName);
@@ -95,7 +95,7 @@ public class ScheduleServiceImplTest {
         JobRequest jobRequest = new JobRequest();
         jobRequest.setCronExpression("0/10 * * ? * *");
         jobRequest.setJobName(testJobName);
-        jobRequest.setJobGroup(testGroupName);
+        jobRequest.setGroupName(testGroupName);
 
         when(schedulerFactoryBean.getScheduler()).thenAnswer(invocation -> {
             throw new SchedulerException();
@@ -140,7 +140,7 @@ public class ScheduleServiceImplTest {
         JobRequest jobRequest = new JobRequest();
         jobRequest.setCronExpression("0/10 * * ? * *");
         jobRequest.setJobName(testJobName);
-        jobRequest.setJobGroup(testGroupName);
+        jobRequest.setGroupName(testGroupName);
 
         JobStatus jobStatus = new JobStatus();
 

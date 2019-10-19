@@ -32,7 +32,7 @@ public class ScheduleController {
                     HttpStatus.BAD_REQUEST);
         }
 
-        JobKey jobKey = new JobKey(jobRequest.getJobName(), jobRequest.getJobGroup());
+        JobKey jobKey = new JobKey(jobRequest.getJobName(), jobRequest.getGroupName());
         if (!scheduleService.isJobExists(jobKey)) {
             if (jobRequest.isJobTypeSimple()) {
                 scheduleService.addJob(jobRequest, SimpleJob.class);
@@ -48,7 +48,9 @@ public class ScheduleController {
 
     @RequestMapping(value = "/job", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteScheduleJob(@ModelAttribute JobRequest jobRequest) {
-        JobKey jobKey = new JobKey(jobRequest.getJobName(), jobRequest.getJobGroup());
+        log.info("[FRANK] jobRequest : {}", jobRequest);
+
+        JobKey jobKey = new JobKey(jobRequest.getJobName(), jobRequest.getGroupName());
         if (scheduleService.isJobExists(jobKey)) {
             if (!scheduleService.isJobRunning(jobKey)) {
                 scheduleService.deleteJob(jobKey);
@@ -69,7 +71,7 @@ public class ScheduleController {
                     HttpStatus.BAD_REQUEST);
         }
 
-        JobKey jobKey = new JobKey(jobRequest.getJobName(), jobRequest.getJobGroup());
+        JobKey jobKey = new JobKey(jobRequest.getJobName(), jobRequest.getGroupName());
         if (scheduleService.isJobExists(jobKey)) {
             if (jobRequest.isJobTypeSimple()) {
                 scheduleService.updateJob(jobRequest);
@@ -90,7 +92,7 @@ public class ScheduleController {
 
     @RequestMapping(value = "/job/pause", method = RequestMethod.PUT)
     public ResponseEntity<?> pauseJob(@ModelAttribute JobRequest jobRequest) {
-        JobKey jobKey = new JobKey(jobRequest.getJobName(), jobRequest.getJobGroup());
+        JobKey jobKey = new JobKey(jobRequest.getJobName(), jobRequest.getGroupName());
         if (scheduleService.isJobExists(jobKey)) {
             if (!scheduleService.isJobRunning(jobKey)) {
                 scheduleService.pauseJob(jobKey);
@@ -105,7 +107,7 @@ public class ScheduleController {
 
     @RequestMapping(value = "/job/resume", method = RequestMethod.PUT)
     public ResponseEntity<?> resumeJob(@ModelAttribute JobRequest jobRequest) {
-        JobKey jobKey = new JobKey(jobRequest.getJobName(), jobRequest.getJobGroup());
+        JobKey jobKey = new JobKey(jobRequest.getJobName(), jobRequest.getGroupName());
         if (scheduleService.isJobExists(jobKey)) {
             String jobState = scheduleService.getJobState(jobKey);
 
@@ -122,7 +124,7 @@ public class ScheduleController {
 
     @RequestMapping(value = "/job/stop", method = RequestMethod.PUT)
     public ResponseEntity<?> stopJob(@ModelAttribute JobRequest jobRequest) {
-        JobKey jobKey = new JobKey(jobRequest.getJobName(), jobRequest.getJobGroup());
+        JobKey jobKey = new JobKey(jobRequest.getJobName(), jobRequest.getGroupName());
         if (scheduleService.isJobExists(jobKey)) {
             if (scheduleService.isJobRunning(jobKey)) {
                 scheduleService.stopJob(jobKey);

@@ -1,11 +1,9 @@
 package com.advenoh.service;
 
-import com.advenoh.dto.history.JobHistoryStatusResponse;
 import com.advenoh.dto.scheduler.JobRequest;
 import com.advenoh.exception.ResourceNotFoundException;
 import com.advenoh.model.JobHistory;
 import com.advenoh.model.JobStatus;
-import com.advenoh.model.JobType;
 import com.advenoh.model.StateType;
 import com.advenoh.repository.JobHistoryRepository;
 import com.advenoh.repository.JobStatusRepository;
@@ -17,10 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Service("jobHistoryService")
@@ -35,7 +30,7 @@ public class JobHistoryService {
     public JobHistory addJob(JobRequest jobRequest) {
         JobHistory jobHistory = new JobHistory();
         jobHistory.setJobName(jobRequest.getJobName());
-        jobHistory.setJobGroup(jobRequest.getJobGroup());
+        jobHistory.setJobGroup(jobRequest.getGroupName());
         jobHistory.setJobType(jobRequest.getCurrentJobType());
         jobHistory = jobHistoryRepository.save(jobHistory);
 

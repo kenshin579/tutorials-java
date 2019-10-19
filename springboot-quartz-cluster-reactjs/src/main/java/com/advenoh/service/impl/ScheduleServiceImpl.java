@@ -51,7 +51,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         try {
             trigger = JobUtils.createTrigger(jobRequest);
             jobDetail = JobUtils.createJob(jobRequest, jobClass, context);
-            jobKey = JobKey.jobKey(jobRequest.getJobName(), jobRequest.getJobGroup());
+            jobKey = JobKey.jobKey(jobRequest.getJobName(), jobRequest.getGroupName());
 
             Date dt = schedulerFactoryBean.getScheduler().scheduleJob(jobDetail, trigger);
             log.debug("Job with jobKey : {} scheduled successfully at date : {}", jobDetail.getKey(), dt);
@@ -87,7 +87,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         try {
             newTrigger = JobUtils.createTrigger(jobRequest);
-            jobKey = JobKey.jobKey(jobRequest.getJobName(), jobRequest.getJobGroup());
+            jobKey = JobKey.jobKey(jobRequest.getJobName(), jobRequest.getGroupName());
 
             Date dt = schedulerFactoryBean.getScheduler().rescheduleJob(TriggerKey.triggerKey(jobRequest.getJobName()), newTrigger);
             log.debug("Job with jobKey : {} rescheduled successfully at date : {}", jobKey, dt);

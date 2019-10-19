@@ -25,7 +25,7 @@ public class JobUtilsTest {
     public void buildTrigger_cronTrigger인_경우() {
         JobRequest jobRequest = new JobRequest();
         jobRequest.setJobName(JOB_NAME);
-        jobRequest.setJobGroup(GROUP_NAME);
+        jobRequest.setGroupName(GROUP_NAME);
         jobRequest.setCronExpression(CRON_EXPRESSION_EVERY_10_SECONDS);
 
         Trigger trigger = JobUtils.createTrigger(jobRequest);
@@ -37,7 +37,7 @@ public class JobUtilsTest {
     public void buildTrigger_simpleTrigger인_경우() {
         JobRequest jobRequest = new JobRequest();
         jobRequest.setJobName(JOB_NAME);
-        jobRequest.setJobGroup(GROUP_NAME);
+        jobRequest.setGroupName(GROUP_NAME);
         jobRequest.setStartDateAt(LocalDateTime.now());
 
         Trigger trigger = JobUtils.createTrigger(jobRequest);
@@ -51,7 +51,7 @@ public class JobUtilsTest {
 
         JobRequest jobRequest = new JobRequest();
         jobRequest.setJobName(JOB_NAME);
-        jobRequest.setJobGroup(GROUP_NAME);
+        jobRequest.setGroupName(GROUP_NAME);
         jobRequest.setStartDateAt(LocalDateTime.now());
         jobRequest.setJobDataMap(jobDataMap);
 
