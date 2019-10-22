@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @RestController
 public class EmployeeController {
+	final String LIVE_API_ENDPOINT = "https://api.bcovlive.io/v1/jobs";
 
 	@RequestMapping(method = RequestMethod.GET, value = "/employee/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Employee getEmployee(@PathVariable Long id) {
@@ -144,7 +145,10 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(value = "/error", method = RequestMethod.GET)
-	public void throwRunTimeException() {
-		throw new NullPointerException("throwing a null poiter exception");
+	public Object throwRunTimeException() {
+		String msg = "{\n"
+				+ "  \"error\": \"not working\"\n"
+				+ "}";
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(msg);
 	}
 }

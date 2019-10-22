@@ -28,7 +28,7 @@ public class RestTemplateResponseErrorHandler
 		} else if (httpResponse.getStatusCode().series() == HttpStatus.Series.CLIENT_ERROR) {
 			//Handle CLIENT_ERROR
 			if (httpResponse.getStatusCode() == HttpStatus.NOT_FOUND) {
-				throw new EmployeeNotFoundException();
+				throw new EmployeeNotFoundException("Not Found");
 			}
 		}
 	}

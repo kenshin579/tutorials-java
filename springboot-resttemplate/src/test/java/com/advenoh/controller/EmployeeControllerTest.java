@@ -2,6 +2,7 @@ package com.advenoh.controller;
 
 import com.advenoh.model.Address;
 import com.advenoh.model.Employee;
+import com.advenoh.util.ApiCallResponseExtractor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -20,6 +21,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.ResourceAccessException;
+import org.springframework.web.client.ResponseExtractor;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
@@ -198,6 +200,14 @@ public class EmployeeControllerTest {
 				.country("US")
 				.build();
 		restTemplate.execute(BASE_URL + "/employee/{name}", HttpMethod.PUT, requestCallback(address), clientHttpResponse -> null, "frank");
+	}
+
+	@Test
+	public void test() {
+		ResponseExtractor<String> responseExtractor = new ApiCallResponseExtractor(String.class, restTemplate.getMessageConverters());
+
+		String response = restTemplate.execute(BASE_URL + "/error", HttpMethod.GET, null, responseExtractor);
+		log.info("response :{}", response);
 	}
 
 	RequestCallback requestCallback(final Address address) {
