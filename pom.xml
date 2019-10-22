@@ -102,6 +102,7 @@
                 <module>springboot-quartz-cluster-reactjs</module>
                 <module>springboot-quartz-reactjs-angularjs</module>
                 <module>springboot-quartz-in-memory</module>
+                <module>springboot-jpa-one-to-many-undirectional</module>
             </modules>
         </profile>
     </profiles>
