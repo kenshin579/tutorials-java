@@ -1,4 +1,4 @@
-package kr.pe.advenoh.dto.scheduler;
+package com.advenoh.dto.scheduler;
 
 import kr.pe.advenoh.model.JobType;
 import lombok.Getter;

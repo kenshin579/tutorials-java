@@ -1,4 +1,4 @@
-package kr.pe.advenoh.exception.handler;
+package com.advenoh.exception.handler;
 
 import kr.pe.advenoh.exception.EmployeeNotFoundException;
 import org.springframework.http.HttpStatus;

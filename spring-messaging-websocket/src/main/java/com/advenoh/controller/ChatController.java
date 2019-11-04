@@ -1,4 +1,4 @@
-package kr.pe.advenoh.controller;
+package com.advenoh.controller;
 
 import kr.pe.advenoh.model.Message;
 import kr.pe.advenoh.model.OutputMessage;

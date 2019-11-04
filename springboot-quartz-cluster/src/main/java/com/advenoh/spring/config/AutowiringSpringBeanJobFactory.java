@@ -1,4 +1,4 @@
-package kr.pe.advenoh.spring.config;
+package com.advenoh.spring.config;
 
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.BeansException;

@@ -1,4 +1,4 @@
-package kr.pe.advenoh.controller;
+package com.advenoh.controller;
 
 import kr.pe.advenoh.dto.ApiResponse;
 import kr.pe.advenoh.dto.JobRequest;

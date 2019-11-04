@@ -1,4 +1,4 @@
-package kr.pe.advenoh;
+package com.advenoh;
 
 import kr.pe.advenoh.rules.LoggingRule;
 import org.junit.Rule;

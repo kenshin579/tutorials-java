@@ -1,4 +1,4 @@
-package kr.pe.advenoh;
+package com.advenoh;
 
 import kr.pe.advenoh.rules.DisableSSLCertificateCheckRule;
 import lombok.extern.slf4j.Slf4j;

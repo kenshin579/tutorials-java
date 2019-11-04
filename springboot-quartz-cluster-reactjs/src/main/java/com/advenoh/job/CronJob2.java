@@ -1,4 +1,4 @@
-package kr.pe.advenoh.job;
+package com.advenoh.job;
 
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.InterruptableJob;

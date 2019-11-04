@@ -1,4 +1,4 @@
-package kr.pe.advenoh;
+package com.advenoh;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;

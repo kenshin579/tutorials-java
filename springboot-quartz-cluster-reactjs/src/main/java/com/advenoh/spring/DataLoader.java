@@ -1,4 +1,4 @@
-package kr.pe.advenoh.spring;
+package com.advenoh.spring;
 
 import kr.pe.advenoh.model.JobType;
 import kr.pe.advenoh.service.ScheduleService;

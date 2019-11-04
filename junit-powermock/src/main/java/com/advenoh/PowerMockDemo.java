@@ -1,4 +1,4 @@
-package kr.pe.advenoh;
+package com.advenoh;
 
 public class PowerMockDemo {
 	private int privateMethod(int x, int y) {

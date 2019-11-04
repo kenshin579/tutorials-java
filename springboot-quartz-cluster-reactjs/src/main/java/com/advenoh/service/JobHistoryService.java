@@ -1,4 +1,4 @@
-package kr.pe.advenoh.service;
+package com.advenoh.service;
 
 import kr.pe.advenoh.dto.scheduler.JobRequest;
 import kr.pe.advenoh.exception.ResourceNotFoundException;

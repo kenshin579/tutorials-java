@@ -1,4 +1,4 @@
-package kr.pe.advenoh.spring.config;
+package com.advenoh.spring.config;
 
 import kr.pe.advenoh.service.JobsListener;
 import kr.pe.advenoh.service.TriggersListener;

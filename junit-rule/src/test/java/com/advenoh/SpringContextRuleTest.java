@@ -1,4 +1,4 @@
-package kr.pe.advenoh;
+package com.advenoh;
 
 import kr.pe.advenoh.rules.SpringContextRule;
 import org.junit.Rule;

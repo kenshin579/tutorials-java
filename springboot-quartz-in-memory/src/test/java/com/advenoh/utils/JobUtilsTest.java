@@ -1,4 +1,4 @@
-package kr.pe.advenoh.utils;
+package com.advenoh.utils;
 
 import kr.pe.advenoh.dto.JobRequest;
 import kr.pe.advenoh.job.SimpleJob;

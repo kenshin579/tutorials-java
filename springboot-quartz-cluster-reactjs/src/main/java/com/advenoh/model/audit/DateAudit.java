@@ -1,4 +1,4 @@
-package kr.pe.advenoh.model.audit;
+package com.advenoh.model.audit;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

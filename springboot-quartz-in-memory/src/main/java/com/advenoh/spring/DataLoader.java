@@ -1,4 +1,4 @@
-package kr.pe.advenoh.spring;
+package com.advenoh.spring;
 
 import kr.pe.advenoh.dto.JobRequest;
 import kr.pe.advenoh.job.CronJob;

@@ -1,4 +1,4 @@
-package kr.pe.advenoh.controller;
+package com.advenoh.controller;
 
 import kr.pe.advenoh.model.JobStatus;
 import kr.pe.advenoh.service.JobHistoryService;

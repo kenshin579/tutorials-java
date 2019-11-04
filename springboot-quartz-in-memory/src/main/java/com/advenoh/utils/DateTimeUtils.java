@@ -1,4 +1,4 @@
-package kr.pe.advenoh.utils;
+package com.advenoh.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package kr.pe.advenoh.dto;
+package com.advenoh.dto;
 
 import kr.pe.advenoh.dto.scheduler.JobRequest;
 import kr.pe.advenoh.model.JobType;

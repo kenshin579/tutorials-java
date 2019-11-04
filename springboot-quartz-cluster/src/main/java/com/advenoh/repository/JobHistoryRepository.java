@@ -1,4 +1,4 @@
-package kr.pe.advenoh.repository;
+package com.advenoh.repository;
 
 import kr.pe.advenoh.model.JobHistory;
 import org.springframework.data.domain.Page;

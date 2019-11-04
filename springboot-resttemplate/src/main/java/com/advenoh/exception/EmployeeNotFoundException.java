@@ -1,4 +1,4 @@
-package kr.pe.advenoh.exception;
+package com.advenoh.exception;
 
 public class EmployeeNotFoundException extends RuntimeException {
 	private static final long serialVersionUID = 5664296823995347411L;

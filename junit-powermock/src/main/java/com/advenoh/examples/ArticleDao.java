@@ -1,4 +1,4 @@
-package kr.pe.advenoh.examples;
+package com.advenoh.examples;
 
 public class ArticleDao {
     private static int staticInt;

@@ -1,4 +1,4 @@
-package kr.pe.advenoh.model;
+package com.advenoh.model;
 
 import kr.pe.advenoh.model.audit.DateAudit;
 import lombok.Getter;

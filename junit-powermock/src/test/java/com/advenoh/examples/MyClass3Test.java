@@ -1,4 +1,4 @@
-package kr.pe.advenoh.examples;
+package com.advenoh.examples;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

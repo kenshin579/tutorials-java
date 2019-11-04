@@ -1,4 +1,4 @@
-package kr.pe.advenoh.exception;
+package com.advenoh.exception;
 
 public enum ExceptionCode {
 	SCHEDULER_ADD_FAIL("10000", "스케줄 추가기 문제가 발생했습니다."),

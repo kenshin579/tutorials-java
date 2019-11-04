@@ -1,4 +1,4 @@
-package kr.pe.advenoh.model;
+package com.advenoh.model;
 
 public enum Gender {
 	FEMALE, MALE;

@@ -1,4 +1,4 @@
-package kr.pe.advenoh;
+package com.advenoh;
 
 import kr.pe.advenoh.queue.simple.Receiver;
 import lombok.extern.slf4j.Slf4j;

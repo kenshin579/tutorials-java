@@ -1,4 +1,4 @@
-package kr.pe.advenoh;
+package com.advenoh;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.rules.TestRule;

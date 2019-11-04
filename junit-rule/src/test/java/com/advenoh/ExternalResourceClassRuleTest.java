@@ -1,4 +1,4 @@
-package kr.pe.advenoh;
+package com.advenoh;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.ClassRule;

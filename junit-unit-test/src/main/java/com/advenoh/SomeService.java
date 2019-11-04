@@ -1,4 +1,4 @@
-package kr.pe.advenoh;
+package com.advenoh;
 
 public class SomeService {
 	public String someMethod(SomeEntity someEntity) {

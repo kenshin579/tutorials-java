@@ -1,4 +1,4 @@
-package kr.pe.advenoh.model;
+package com.advenoh.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;

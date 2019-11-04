@@ -1,4 +1,4 @@
-package kr.pe.advenoh.service;
+package com.advenoh.service;
 
 import kr.pe.advenoh.dto.JobRequest;
 import kr.pe.advenoh.dto.JobStatusResponse;

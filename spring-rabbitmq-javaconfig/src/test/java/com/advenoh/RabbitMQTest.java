@@ -1,4 +1,4 @@
-package kr.pe.advenoh;
+package com.advenoh;
 
 import kr.pe.advenoh.config.RabbitMQConfig;
 import kr.pe.advenoh.queue.simple.Receiver;

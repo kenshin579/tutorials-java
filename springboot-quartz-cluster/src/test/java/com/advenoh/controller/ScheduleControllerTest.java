@@ -1,4 +1,4 @@
-package kr.pe.advenoh.controller;
+package com.advenoh.controller;
 
 import kr.pe.advenoh.dto.scheduler.StatusResponse;
 import kr.pe.advenoh.job.SimpleJob;

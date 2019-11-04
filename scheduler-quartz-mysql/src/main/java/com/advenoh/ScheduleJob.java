@@ -1,4 +1,4 @@
-package kr.pe.advenoh;
+package com.advenoh;
 
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;

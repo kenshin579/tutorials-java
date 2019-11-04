@@ -1,4 +1,4 @@
-package kr.pe.advenoh.controller;
+package com.advenoh.controller;
 
 import com.google.gson.Gson;
 import org.springframework.messaging.handler.annotation.MessageExceptionHandler;
