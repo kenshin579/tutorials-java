@@ -1,6 +1,6 @@
-package com.advenoh;
+package kr.pe.advenoh;
 
-import com.advenoh.impl.ChildImpl;
+import kr.pe.advenoh.impl.ChildImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;

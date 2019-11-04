@@ -1,4 +1,4 @@
-package com.advenoh.controller;
+package kr.pe.advenoh.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.advenoh;
+package kr.pe.advenoh;
 
 /**
  * https://coderunch.wordpress.com/2018/03/12/how-to-write-unit-test-cases-for-an-abstract-class/

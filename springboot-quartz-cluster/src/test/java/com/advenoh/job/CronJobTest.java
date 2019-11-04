@@ -1,6 +1,6 @@
-package com.advenoh.job;
+package kr.pe.advenoh.job;
 
-import com.advenoh.utils.TestUtils;
+import kr.pe.advenoh.utils.TestUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

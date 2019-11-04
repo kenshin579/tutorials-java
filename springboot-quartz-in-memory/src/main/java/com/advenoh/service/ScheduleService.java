@@ -1,7 +1,7 @@
-package com.advenoh.service;
+package kr.pe.advenoh.service;
 
-import com.advenoh.dto.JobRequest;
-import com.advenoh.dto.JobStatusResponse;
+import kr.pe.advenoh.dto.JobRequest;
+import kr.pe.advenoh.dto.JobStatusResponse;
 import org.quartz.Job;
 import org.quartz.JobKey;
 import org.springframework.scheduling.quartz.QuartzJobBean;

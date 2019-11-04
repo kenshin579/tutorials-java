@@ -1,7 +1,7 @@
-package com.advenoh.repository;
+package kr.pe.advenoh.repository;
 
-import com.advenoh.model.JobHistory;
-import com.advenoh.model.JobStatus;
+import kr.pe.advenoh.model.JobHistory;
+import kr.pe.advenoh.model.JobStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

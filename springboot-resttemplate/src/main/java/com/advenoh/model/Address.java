@@ -1,4 +1,4 @@
-package com.advenoh.model;
+package kr.pe.advenoh.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.advenoh;
+package kr.pe.advenoh;
 
 public class SomeEntity {
 	String someProperty;

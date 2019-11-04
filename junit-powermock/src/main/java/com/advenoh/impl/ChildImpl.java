@@ -1,6 +1,6 @@
-package com.advenoh.impl;
+package kr.pe.advenoh.impl;
 
-import com.advenoh.Parent;
+import kr.pe.advenoh.Parent;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

@@ -1,8 +1,8 @@
-package com.advenoh.controller;
+package kr.pe.advenoh.controller;
 
-import com.advenoh.model.Address;
-import com.advenoh.model.Employee;
-import com.advenoh.model.Gender;
+import kr.pe.advenoh.model.Address;
+import kr.pe.advenoh.model.Employee;
+import kr.pe.advenoh.model.Gender;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

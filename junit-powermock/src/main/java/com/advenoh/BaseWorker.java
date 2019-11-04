@@ -1,6 +1,6 @@
-package com.advenoh;
+package kr.pe.advenoh;
 
-import com.advenoh.model.User;
+import kr.pe.advenoh.model.User;
 
 public abstract class BaseWorker {
 //	public void JDBCConnection connection;

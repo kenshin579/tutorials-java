@@ -1,4 +1,4 @@
-package com.advenoh.examples;
+package kr.pe.advenoh.examples;
 
 public class MyClass3 {
 

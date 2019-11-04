@@ -1,4 +1,4 @@
-package com.advenoh.service;
+package kr.pe.advenoh.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.JobExecutionContext;

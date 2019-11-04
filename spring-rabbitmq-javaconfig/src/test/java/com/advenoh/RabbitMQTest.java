@@ -1,7 +1,7 @@
-package com.advenoh;
+package kr.pe.advenoh;
 
-import com.advenoh.config.RabbitMQConfig;
-import com.advenoh.queue.simple.Receiver;
+import kr.pe.advenoh.config.RabbitMQConfig;
+import kr.pe.advenoh.queue.simple.Receiver;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.amqp.core.Queue;

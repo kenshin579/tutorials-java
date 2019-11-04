@@ -1,4 +1,4 @@
-//package com.advenoh.config;
+//package kr.pe.advenoh.config;
 //
 //import com.fasterxml.jackson.databind.DeserializationFeature;
 //import com.fasterxml.jackson.databind.ObjectMapper;

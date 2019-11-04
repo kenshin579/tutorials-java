@@ -1,4 +1,4 @@
-package com.advenoh.examples;
+package kr.pe.advenoh.examples;
 
 /**
  * http://www.jayway.com/2013/03/05/beyond-mocking-with-powermock/

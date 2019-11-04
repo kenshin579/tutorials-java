@@ -1,4 +1,4 @@
-package com.advenoh;
+package kr.pe.advenoh;
 
 import lombok.Builder;
 import lombok.Data;

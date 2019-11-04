@@ -1,6 +1,6 @@
-package com.advenoh.dto.scheduler;
+package kr.pe.advenoh.dto.scheduler;
 
-import com.advenoh.model.JobType;
+import kr.pe.advenoh.model.JobType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

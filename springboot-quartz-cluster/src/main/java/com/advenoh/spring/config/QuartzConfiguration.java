@@ -1,7 +1,7 @@
-package com.advenoh.spring.config;
+package kr.pe.advenoh.spring.config;
 
-import com.advenoh.service.JobsListener;
-import com.advenoh.service.TriggersListener;
+import kr.pe.advenoh.service.JobsListener;
+import kr.pe.advenoh.service.TriggersListener;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.quartz.QuartzProperties;

@@ -1,7 +1,7 @@
-package com.advenoh.dto;
+package kr.pe.advenoh.dto;
 
-import com.advenoh.dto.scheduler.JobRequest;
-import com.advenoh.model.JobType;
+import kr.pe.advenoh.dto.scheduler.JobRequest;
+import kr.pe.advenoh.model.JobType;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

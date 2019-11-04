@@ -1,4 +1,4 @@
-package com.advenoh.queue.simple;
+package kr.pe.advenoh.queue.simple;
 
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;

@@ -1,6 +1,6 @@
-package com.advenoh.model;
+package kr.pe.advenoh.model;
 
-import com.advenoh.model.audit.DateAudit;
+import kr.pe.advenoh.model.audit.DateAudit;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

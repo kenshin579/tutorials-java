@@ -1,4 +1,4 @@
-package com.advenoh;
+package kr.pe.advenoh;
 
 public abstract class AbstractClazz2 {
 	public String sayHello() {

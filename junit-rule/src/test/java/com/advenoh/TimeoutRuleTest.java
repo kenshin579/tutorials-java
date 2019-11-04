@@ -1,4 +1,4 @@
-package com.advenoh;
+package kr.pe.advenoh;
 
 import org.junit.Rule;
 import org.junit.Test;

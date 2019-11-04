@@ -1,6 +1,6 @@
-package com.advenoh;
+package kr.pe.advenoh;
 
-import com.advenoh.rules.DisableSSLCertificateCheckRule;
+import kr.pe.advenoh.rules.DisableSSLCertificateCheckRule;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.ClassRule;

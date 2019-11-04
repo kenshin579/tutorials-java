@@ -1,7 +1,7 @@
-package com.advenoh.spring;
+package kr.pe.advenoh.spring;
 
-import com.advenoh.model.JobType;
-import com.advenoh.service.ScheduleService;
+import kr.pe.advenoh.model.JobType;
+import kr.pe.advenoh.service.ScheduleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;

@@ -1,4 +1,4 @@
-package com.advenoh.config;
+package kr.pe.advenoh.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.server.ServerHttpRequest;

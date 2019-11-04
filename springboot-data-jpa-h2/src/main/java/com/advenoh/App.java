@@ -1,4 +1,4 @@
-package com.advenoh;
+package kr.pe.advenoh;
 
 /**
  * Hello world!

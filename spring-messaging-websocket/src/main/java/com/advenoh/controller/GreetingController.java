@@ -1,7 +1,7 @@
-package com.advenoh.controller;
+package kr.pe.advenoh.controller;
 
-import com.advenoh.model.Greeting;
-import com.advenoh.model.HelloMessage;
+import kr.pe.advenoh.model.Greeting;
+import kr.pe.advenoh.model.HelloMessage;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;

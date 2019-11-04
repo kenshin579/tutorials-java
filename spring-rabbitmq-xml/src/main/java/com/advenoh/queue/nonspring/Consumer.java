@@ -1,4 +1,4 @@
-package com.advenoh.queue.nonspring;
+package kr.pe.advenoh.queue.nonspring;
 
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;

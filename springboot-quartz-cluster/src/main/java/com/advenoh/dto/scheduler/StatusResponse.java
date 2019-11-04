@@ -1,4 +1,4 @@
-package com.advenoh.dto.scheduler;
+package kr.pe.advenoh.dto.scheduler;
 
 import lombok.Getter;
 import lombok.Setter;

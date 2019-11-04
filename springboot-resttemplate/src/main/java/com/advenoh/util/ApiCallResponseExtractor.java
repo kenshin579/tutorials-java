@@ -1,4 +1,4 @@
-package com.advenoh.util;
+package kr.pe.advenoh.util;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpResponse;

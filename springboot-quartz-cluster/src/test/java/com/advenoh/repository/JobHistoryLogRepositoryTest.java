@@ -1,9 +1,9 @@
-package com.advenoh.repository;
+package kr.pe.advenoh.repository;
 
-import com.advenoh.model.JobHistory;
-import com.advenoh.model.JobStatus;
-import com.advenoh.model.JobType;
-import com.advenoh.model.StateType;
+import kr.pe.advenoh.model.JobHistory;
+import kr.pe.advenoh.model.JobStatus;
+import kr.pe.advenoh.model.JobType;
+import kr.pe.advenoh.model.StateType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.advenoh;
+package kr.pe.advenoh;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.LongAdder;
 import java.util.stream.IntStream;
 
-import static com.advenoh.ConcurrentUtils.stop;
+import static kr.pe.advenoh.ConcurrentUtils.stop;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @Slf4j
