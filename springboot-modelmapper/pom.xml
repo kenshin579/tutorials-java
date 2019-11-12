@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>kr.pe.advenoh</groupId>
+    <groupId>com.advenoh</groupId>
     <artifactId>springboot-modelmapper</artifactId>
     <name>springboot-modelmapper</name>
     <description>Spring Boot ModelMapper</description>

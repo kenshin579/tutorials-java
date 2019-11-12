@@ -1,8 +1,8 @@
 package com.advenoh.service.impl;
 
-import kr.pe.advenoh.dto.JobRequest;
-import kr.pe.advenoh.dto.JobStatusResponse;
-import kr.pe.advenoh.job.CronJob;
+import com.advenoh.dto.JobRequest;
+import com.advenoh.dto.JobStatusResponse;
+import com.advenoh.job.CronJob;
 import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;

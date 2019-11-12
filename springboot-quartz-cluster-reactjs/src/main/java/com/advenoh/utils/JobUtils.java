@@ -1,6 +1,6 @@
 package com.advenoh.utils;
 
-import kr.pe.advenoh.dto.scheduler.JobRequest;
+import com.advenoh.dto.scheduler.JobRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.Job;
 import org.quartz.JobDetail;

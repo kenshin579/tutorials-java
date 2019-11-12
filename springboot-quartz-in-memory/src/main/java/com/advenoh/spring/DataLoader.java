@@ -1,10 +1,10 @@
 package com.advenoh.spring;
 
-import kr.pe.advenoh.dto.JobRequest;
-import kr.pe.advenoh.job.CronJob;
-import kr.pe.advenoh.job.CronJob2;
-import kr.pe.advenoh.job.SimpleJob;
-import kr.pe.advenoh.service.ScheduleService;
+import com.advenoh.dto.JobRequest;
+import com.advenoh.job.CronJob;
+import com.advenoh.job.CronJob2;
+import com.advenoh.job.SimpleJob;
+import com.advenoh.service.ScheduleService;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.JobDataMap;
 import org.springframework.beans.factory.annotation.Autowired;

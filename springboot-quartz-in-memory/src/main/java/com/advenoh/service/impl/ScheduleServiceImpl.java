@@ -1,11 +1,11 @@
 package com.advenoh.service.impl;
 
-import kr.pe.advenoh.dto.JobRequest;
-import kr.pe.advenoh.dto.JobResponse;
-import kr.pe.advenoh.dto.JobStatusResponse;
-import kr.pe.advenoh.service.ScheduleService;
-import kr.pe.advenoh.utils.DateTimeUtils;
-import kr.pe.advenoh.utils.JobUtils;
+import com.advenoh.dto.JobRequest;
+import com.advenoh.dto.JobResponse;
+import com.advenoh.dto.JobStatusResponse;
+import com.advenoh.service.ScheduleService;
+import com.advenoh.utils.DateTimeUtils;
+import com.advenoh.utils.JobUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.Job;
 import org.quartz.JobDetail;

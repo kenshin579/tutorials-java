@@ -1,6 +1,6 @@
 package com.advenoh.job;
 
-import kr.pe.advenoh.utils.TestUtils;
+import com.advenoh.utils.TestUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

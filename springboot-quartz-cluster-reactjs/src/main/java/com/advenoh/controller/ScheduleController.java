@@ -1,11 +1,11 @@
 package com.advenoh.controller;
 
-import kr.pe.advenoh.dto.scheduler.ApiResponse;
-import kr.pe.advenoh.dto.scheduler.JobRequest;
-import kr.pe.advenoh.dto.scheduler.StatusResponse;
-import kr.pe.advenoh.job.CronJob2;
-import kr.pe.advenoh.job.SimpleJob;
-import kr.pe.advenoh.service.ScheduleService;
+import com.advenoh.dto.scheduler.ApiResponse;
+import com.advenoh.dto.scheduler.JobRequest;
+import com.advenoh.dto.scheduler.StatusResponse;
+import com.advenoh.job.CronJob2;
+import com.advenoh.job.SimpleJob;
+import com.advenoh.service.ScheduleService;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.JobKey;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class ScheduleController {
 
     @RequestMapping(value = "/job", method = RequestMethod.POST)
     public ResponseEntity<?> addScheduleJob(@ModelAttribute JobRequest jobRequest) {
-        log.debug("add schedule job :: jobRequest : {}", jobRequest);
+        log.info("add schedule job :: jobRequest : {}", jobRequest);
         if (jobRequest.getJobName() == null) {
             return new ResponseEntity<>(new ApiResponse(false, "Require jobName"),
                     HttpStatus.BAD_REQUEST);
@@ -48,7 +48,7 @@ public class ScheduleController {
 
     @RequestMapping(value = "/job", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteScheduleJob(@ModelAttribute JobRequest jobRequest) {
-        log.info("[FRANK] jobRequest : {}", jobRequest);
+        log.info("jobRequest : {}", jobRequest);
 
         JobKey jobKey = new JobKey(jobRequest.getJobName(), jobRequest.getGroupName());
         if (scheduleService.isJobExists(jobKey)) {

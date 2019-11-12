@@ -3,6 +3,8 @@ package com.advenoh;
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.read.ListAppender;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +26,7 @@ public class LogAssertTest {
     }
 
     @Test
-    public void requestJobId() {
+    public void requestJobId() throws JsonProcessingException {
         String jobId = "12342";
 
         Logger logger = (Logger) LoggerFactory.getLogger(SomeService.class);
@@ -36,6 +38,7 @@ public class LogAssertTest {
         someService.requestJobId(jobId);
 
         List<ILoggingEvent> logsList = listAppender.list;
+        log.info("[FRANK] {}", new ObjectMapper().writeValueAsString(logsList));
         assertThat(logsList.get(0).getMessage()).contains("[servicedebug] error occurred : jobId : ");
     }
 

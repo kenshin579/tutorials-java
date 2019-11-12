@@ -5,31 +5,50 @@ import Form from "react-bootstrap/Form";
 
 class SchedulerAddModal extends Component {
     render() {
-        const {showModal, onClose, onSubmit} = this.props;
+        const {enableModal, onClose, onSubmit} = this.props;
+        console.log('enableModal', enableModal);
 
         return (
-            <Modal show={showModal} onHide={() => onClose()}>
+            <Modal show={enableModal} onHide={() => onClose()}>
                 <Modal.Header closeButton>
                     <Modal.Title>새 Job 추가</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form noValidate onSubmit={onSubmit}>
-                        <Form.Group controlId="formMediaNo">
-                            <Form.Label>미디어 번호</Form.Label>
-                            <Form.Control type="text" name="mediaNo" placeholder="미디어번호를 입력하세요"/>
+                        <Form.Group controlId="formJobName">
+                            <Form.Label>Job 이름</Form.Label>
+                            <Form.Control type="text" name="jobName" placeholder="Job 이름을 입력하세요"/>
+                        </Form.Group>
+                        <Form.Group controlId="formGroupName">
+                            <Form.Label>그룹 이름</Form.Label>
+                            <Form.Control type="text" name="groupName" placeholder="그룹 이름을 입력하세요"/>
+                        </Form.Group>
+                        <Form.Group controlId="formCronExpression">
+                            <Form.Label>Cron 표현식</Form.Label>
+                            <Form.Control type="text" name="cronExpression" placeholder="Cron 표현식을 입력하세요"/>
+                        </Form.Group>
+                        <Form.Group controlId="formStartDateAt">
+                            <Form.Label>시작 날짜</Form.Label>
+                            <Form.Control type="text" name="startDateAt" placeholder="시작 날짜를 입력하세요"/>
+                        </Form.Group>
+                        <Form.Group controlId="formRepeatIntervalInSeconds">
+                            <Form.Label>반복 인터벌</Form.Label>
+                            <Form.Control type="text" name="repeatIntervalInSeconds" placeholder="반복 인터벌(초)를 입력하세요"/>
+                        </Form.Group>
+                        <Form.Group controlId="formRepeatCount">
+                            <Form.Label>반복 횟수</Form.Label>
+                            <Form.Control type="text" name="repeatCount" placeholder="반복 횟수를 입력하세요"/>
                         </Form.Group>
 
                         <Form.Group controlId="formJobType">
-                            <Form.Label>스케줄 Job 타입</Form.Label>
+                            <Form.Label>스케줄 Job 클래스</Form.Label>
                             <Form.Control name="jobType" as="select">
                                 <option></option>
-                                <option>LIVE-ID3</option>
-                                <option>LIVE-METACOUNTER</option>
-                                <option>LIVE-SENDBIRD-STATS</option>
-                                <option>LIVE-DEAL-PURCHASE</option>
+                                <option>CronJob2</option>
+                                <option>SimpleJob</option>
                             </Form.Control>
                             <Form.Text className="text-muted">
-                                추가할 스케줄 Job 타입을 선택주세요
+                                추가할 스케줄 Job 클래스을 선택주세요
                             </Form.Text>
                         </Form.Group>
                         <div className="text-right">

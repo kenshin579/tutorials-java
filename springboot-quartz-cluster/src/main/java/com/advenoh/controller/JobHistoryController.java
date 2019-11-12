@@ -1,7 +1,7 @@
 package com.advenoh.controller;
 
-import kr.pe.advenoh.model.JobStatus;
-import kr.pe.advenoh.service.JobHistoryService;
+import com.advenoh.model.JobStatus;
+import com.advenoh.service.JobHistoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

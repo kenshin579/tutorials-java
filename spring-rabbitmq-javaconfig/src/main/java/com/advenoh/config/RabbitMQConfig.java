@@ -1,6 +1,6 @@
 package com.advenoh.config;
 
-import kr.pe.advenoh.queue.simple.Receiver;
+import com.advenoh.queue.simple.Receiver;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

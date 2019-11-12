@@ -1,11 +1,11 @@
 package com.advenoh.service.impl;
 
-import kr.pe.advenoh.dto.scheduler.JobRequest;
-import kr.pe.advenoh.dto.scheduler.StatusResponse;
-import kr.pe.advenoh.job.CronJob;
-import kr.pe.advenoh.model.JobHistory;
-import kr.pe.advenoh.model.JobStatus;
-import kr.pe.advenoh.service.JobHistoryService;
+import com.advenoh.dto.scheduler.JobRequest;
+import com.advenoh.dto.scheduler.StatusResponse;
+import com.advenoh.job.CronJob;
+import com.advenoh.model.JobHistory;
+import com.advenoh.model.JobStatus;
+import com.advenoh.service.JobHistoryService;
 import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -35,7 +35,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import static org.assertj.core.api.Assertions.anyOf;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.doNothing;

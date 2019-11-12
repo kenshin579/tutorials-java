@@ -1,7 +1,7 @@
 package com.advenoh.spring.config;
 
-import kr.pe.advenoh.service.JobsListener;
-import kr.pe.advenoh.service.TriggersListener;
+import com.advenoh.service.JobsListener;
+import com.advenoh.service.TriggersListener;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.JobDetail;
 import org.quartz.JobExecutionContext;

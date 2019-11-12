@@ -1,7 +1,7 @@
 package com.advenoh.service;
 
-import kr.pe.advenoh.dto.scheduler.JobRequest;
-import kr.pe.advenoh.dto.scheduler.StatusResponse;
+import com.advenoh.dto.scheduler.JobRequest;
+import com.advenoh.dto.scheduler.StatusResponse;
 import org.quartz.Job;
 import org.quartz.JobKey;
 

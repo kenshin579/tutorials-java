@@ -1,7 +1,7 @@
 package com.advenoh.controller;
 
-import kr.pe.advenoh.model.Message;
-import kr.pe.advenoh.model.OutputMessage;
+import com.advenoh.model.Message;
+import com.advenoh.model.OutputMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;

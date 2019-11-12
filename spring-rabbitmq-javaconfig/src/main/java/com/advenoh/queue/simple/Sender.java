@@ -1,6 +1,6 @@
 package com.advenoh.queue.simple;
 
-import kr.pe.advenoh.config.RabbitMQConfig;
+import com.advenoh.config.RabbitMQConfig;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

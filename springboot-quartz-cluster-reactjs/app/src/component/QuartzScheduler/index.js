@@ -31,10 +31,8 @@ class QuartzScheduler extends Component {
             .then(response => {
                     console.log('deleteJob response', response);
                     this.setState({message: `${jobName}-${groupName}을 성공적으로 삭제하였습니다.`});
-
                 }
             ).catch(error => {
-            //todo : 삭제 오류가 발생하는 경우 alert에 error 메시지 출력하기
             let responseMsg = JSON.parse(error.request.response);
             this.setState({message: `${jobName}-${groupName} - ${responseMsg.message}`});
             console.error('error occurred while deleting the job - ', responseMsg.message, error);
@@ -49,30 +47,37 @@ class QuartzScheduler extends Component {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-        const mediaNo = formData.get('mediaNo');
-        const jobType = formData.get('jobType');
-        console.log('mediaNo', mediaNo, 'jobType', jobType);
+        const jobName = formData.get('jobName');
+        const groupName = formData.get('groupName');
+        const cronExpression = formData.get('cronExpression');
+        const startDateAt = formData.get('startDateAt');
+        const repeatIntervalInSeconds = formData.get('repeatIntervalInSeconds');
+        const repeatCount = formData.get('repeatCount');
 
-        SchedulerService.addJob(mediaNo, jobType)
+        //todo: 인자가 너무 많다. 객체로 넘기던지 해야 할 듯하다
+        SchedulerService.addJob(jobName, groupName, cronExpression, startDateAt, repeatIntervalInSeconds, repeatCount)
             .then(response => {
-                    this.setState({message: `${mediaNo}-${jobType} 성공적으로 추가되었습니다.`});
-                    this.refreshSchedules();
-                    this.showNotification();
+                    this.setState({message: `${jobName}-${groupName} 성공적으로 추가되었습니다.`});
                 }
             ).catch(error => {
-                console.error('error occurred while adding the job', error);
+            let responseMsg = JSON.parse(error.request.response);
+            this.setState({message: `${jobName}-${groupName} - ${responseMsg.message}`});
+            console.error('error occurred while adding the job - ', responseMsg.message, error);
+        }).then(() => {
+                this.refreshSchedules();
+                this.showNotification();
             }
         );
-
         this.hideModal();
     }
 
     hideModal() {
-        this.setState({showModal: false});
+        this.setState({enableModal: false});
     }
 
     showModal() {
-        this.setState({showModal: true});
+        console.log('showModal');
+        this.setState({enableModal: true});
     }
 
     hideNotification() {
@@ -111,7 +116,7 @@ class QuartzScheduler extends Component {
     }
 
     render() {
-        const {schedules, jobStatus, message, enableNotification} = this.state;
+        const {schedules, jobStatus, message, enableNotification, enableModal} = this.state;
         const {deleteScheduleOnClick, addScheduleOnSubmit, hideModal, showModal, hideNotification, showNotification} = this;
         return (
             <div className="container-fluid">
@@ -119,6 +124,7 @@ class QuartzScheduler extends Component {
                 <ScheduleList schedules={schedules}
                               message={message}
                               enableNotification={enableNotification}
+                              enableModal={enableModal}
                               onDelete={deleteScheduleOnClick}
                               onSubmit={addScheduleOnSubmit}
                               hideModal={hideModal}

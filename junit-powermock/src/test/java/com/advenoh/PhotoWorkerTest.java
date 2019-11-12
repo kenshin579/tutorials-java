@@ -1,6 +1,6 @@
 package com.advenoh;
 
-import kr.pe.advenoh.model.User;
+import com.advenoh.model.User;
 import org.junit.Before;
 import org.junit.Test;
 

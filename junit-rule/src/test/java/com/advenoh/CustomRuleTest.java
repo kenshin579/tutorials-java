@@ -1,6 +1,6 @@
 package com.advenoh;
 
-import kr.pe.advenoh.rules.LoggingRule;
+import com.advenoh.rules.LoggingRule;
 import org.junit.Rule;
 import org.junit.Test;
 

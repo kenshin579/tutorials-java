@@ -1,7 +1,7 @@
 package com.advenoh.dto.history;
 
-import kr.pe.advenoh.model.JobType;
-import kr.pe.advenoh.model.StateType;
+import com.advenoh.model.JobType;
+import com.advenoh.model.StateType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

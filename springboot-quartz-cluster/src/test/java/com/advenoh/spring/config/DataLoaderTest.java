@@ -1,7 +1,7 @@
 package com.advenoh.spring.config;
 
-import kr.pe.advenoh.model.JobType;
-import kr.pe.advenoh.spring.DataLoader;
+import com.advenoh.model.JobType;
+import com.advenoh.spring.DataLoader;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Condition;
 import org.junit.Before;

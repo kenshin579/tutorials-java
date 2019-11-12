@@ -1,7 +1,7 @@
 package com.advenoh.utils;
 
-import kr.pe.advenoh.dto.JobRequest;
-import kr.pe.advenoh.job.SimpleJob;
+import com.advenoh.dto.JobRequest;
+import com.advenoh.job.SimpleJob;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.quartz.CronExpression;
@@ -12,7 +12,6 @@ import org.quartz.SimpleTrigger;
 import org.quartz.Trigger;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

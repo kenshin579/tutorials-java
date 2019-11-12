@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import './ScheduleList.css';
 import ScheduleItem from "../ScheduleItem";
 import {Alert, Button, Card, Table} from "react-bootstrap";
+import SchedulerAddModal from "../ScheduleAdd/SchedulerAdd";
 
 class ScheduleList extends Component {
     render() {
-        const {schedules, message, enableNotification, onDelete, onSubmit, hideModal, showModal, hideNotification, showNotification} = this.props;
+        const {schedules, message, enableNotification, enableModal, onDelete, onSubmit, hideModal, showModal, hideNotification, showNotification} = this.props;
         const scheduleView = [];
         
         schedules.map(schedule => {
@@ -27,14 +28,14 @@ class ScheduleList extends Component {
                     </Card.Header>
                     <Card.Body>
                         <div className="text-right mb-3">
-                            <Button variant="primary" onClick={showModal}>
+                            <Button variant="primary" onClick={() => showModal()}>
                                 새 Job 추가
                             </Button>
-                            {/*<SchedulerAddModal*/}
-                            {/*    showModal={showModal}*/}
-                            {/*    onClose={hideModal}*/}
-                            {/*    onSubmit={onSubmit}*/}
-                            {/*/>*/}
+                            <SchedulerAddModal
+                                enableModal={enableModal}
+                                onClose={hideModal}
+                                onSubmit={onSubmit}
+                            />
                         </div>
                         <Table responsive striped hover>
                             <thead className="thread-light">

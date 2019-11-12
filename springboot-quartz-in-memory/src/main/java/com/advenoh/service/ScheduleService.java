@@ -1,10 +1,9 @@
 package com.advenoh.service;
 
-import kr.pe.advenoh.dto.JobRequest;
-import kr.pe.advenoh.dto.JobStatusResponse;
+import com.advenoh.dto.JobRequest;
+import com.advenoh.dto.JobStatusResponse;
 import org.quartz.Job;
 import org.quartz.JobKey;
-import org.springframework.scheduling.quartz.QuartzJobBean;
 
 public interface ScheduleService {
     JobStatusResponse getAllJobs();

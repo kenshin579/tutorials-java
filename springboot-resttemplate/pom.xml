@@ -8,7 +8,7 @@
         <version>2.1.3.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>kr.pe.advenoh</groupId>
+    <groupId>com.advenoh</groupId>
     <artifactId>springboot-resttemplate</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>springboot-resttemplate</name>

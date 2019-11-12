@@ -1,8 +1,8 @@
 package com.advenoh.controller;
 
-import kr.pe.advenoh.dto.scheduler.StatusResponse;
-import kr.pe.advenoh.job.SimpleJob;
-import kr.pe.advenoh.service.ScheduleService;
+import com.advenoh.dto.scheduler.StatusResponse;
+import com.advenoh.job.SimpleJob;
+import com.advenoh.service.ScheduleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

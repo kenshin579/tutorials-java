@@ -1,6 +1,6 @@
 package com.advenoh.exception.handler;
 
-import kr.pe.advenoh.exception.EmployeeNotFoundException;
+import com.advenoh.exception.EmployeeNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.stereotype.Component;

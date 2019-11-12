@@ -1,7 +1,7 @@
 package com.advenoh.utils;
 
-import kr.pe.advenoh.dto.scheduler.JobRequest;
-import kr.pe.advenoh.job.SimpleJob;
+import com.advenoh.dto.scheduler.JobRequest;
+import com.advenoh.job.SimpleJob;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.quartz.CronExpression;

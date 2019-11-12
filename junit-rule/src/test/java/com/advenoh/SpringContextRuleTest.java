@@ -1,6 +1,6 @@
 package com.advenoh;
 
-import kr.pe.advenoh.rules.SpringContextRule;
+import com.advenoh.rules.SpringContextRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;

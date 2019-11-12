@@ -7,10 +7,19 @@ class SchedulerService {
         return axios.get(`${API_SCHEDULE_BASE_URL}/jobs`);
     }
 
-    // addJob(mediaNo, jobType) {
-    //     return axios.post(`${API_SCHEDULE_BASE_URL}/media/${mediaNo}/types/${jobType}`);
-    // }
-    //
+    addJob(jobName, groupName, cronExpression, startDateAt, repeatIntervalInSeconds, repeatCount) {
+        console.log(jobName, groupName, cronExpression, startDateAt, repeatIntervalInSeconds, repeatCount);
+        let requestBody = {
+            jobName: jobName, groupName: groupName,
+            cronExpression: cronExpression, startDateAt: startDateAt,
+            repeatIntervalInSeconds: repeatIntervalInSeconds, repeatCount: repeatCount
+        };
+        let config = {
+            headers: {'Content-type': 'application/x-www-form-urlencoded'}
+        };
+        console.log('requestBody', requestBody);
+        return axios.post(`${API_SCHEDULE_BASE_URL}/job`, requestBody, config);
+    }
 
     deleteJob(jobName, groupName) {
         console.log('jobName', jobName, 'groupName', groupName);
