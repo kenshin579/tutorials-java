@@ -17,7 +17,7 @@
                 <module>java-eventlistener</module>
                 <module>java-generics</module>
                 <module>log-commons-logging-log4j</module>
-                <module>log-commons-slf4j-log4j</module>
+                <!--<module>log-commons-slf4j-log4j</module>-->
                 <module>log-slf4j-log4j</module>
                 <module>log-slf4j-logback</module>
                 <module>thread-callable</module>
@@ -26,7 +26,6 @@
                 <module>rmi-calculator</module>
                 <module>ds-priority-queue</module>
                 <module>java-iterator</module>
-                <module>jedis-dao</module>
                 <module>java-enum</module>
                 <module>java-reflection</module>
                 <module>java-method-chain</module>

@@ -14,7 +14,6 @@ public class SomeService {
 		} catch (Exception e) {
 			log.error("[servicedebug] error occurred : jobId : {}", jobId);
 		}
-
 	}
 
 	private void throwMethodTest(String msg) throws Exception {
