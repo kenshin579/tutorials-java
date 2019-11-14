@@ -38,7 +38,7 @@ public class LogAssertTest {
         someService.requestJobId(jobId);
 
         List<ILoggingEvent> logsList = listAppender.list;
-        log.info("[FRANK] {}", new ObjectMapper().writeValueAsString(logsList));
+        log.info("[FRANK] logsList : {}", new ObjectMapper().writeValueAsString(logsList));
         assertThat(logsList.get(0).getMessage()).contains("[servicedebug] error occurred : jobId : ");
     }
 
