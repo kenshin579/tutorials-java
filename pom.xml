@@ -17,7 +17,6 @@
                 <module>java-eventlistener</module>
                 <module>java-generics</module>
                 <module>log-commons-logging-log4j</module>
-                <!--<module>log-commons-slf4j-log4j</module>-->
                 <module>log-slf4j-log4j</module>
                 <module>log-slf4j-logback</module>
                 <module>thread-callable</module>
