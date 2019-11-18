@@ -1,14 +1,13 @@
 package com.advenoh;
 
-import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.read.ListAppender;
+import com.advenoh.util.LoggerTestUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -29,11 +28,7 @@ public class LogAssertTest {
     public void requestJobId() throws JsonProcessingException {
         String jobId = "12342";
 
-        Logger logger = (Logger) LoggerFactory.getLogger(SomeService.class);
-        ListAppender<ILoggingEvent> listAppender = new ListAppender<>();
-        listAppender.start();
-
-        logger.addAppender(listAppender);
+        ListAppender<ILoggingEvent> listAppender = LoggerTestUtil.getListAppenderForClass(SomeService.class);
 
         someService.requestJobId(jobId);
 
