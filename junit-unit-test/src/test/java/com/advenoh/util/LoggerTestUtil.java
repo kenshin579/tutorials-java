@@ -10,9 +10,9 @@ public class LoggerTestUtil {
 		Logger logger = (Logger) LoggerFactory.getLogger(clazz);
 
 		ListAppender<ILoggingEvent> listAppender = new ListAppender<>();
-		listAppender.start();
+		listAppender.start(); //기록을 시작한다
 
-		logger.addAppender(listAppender);
+		logger.addAppender(listAppender); //로거에 ListAppender를 추가하여 발생하는 로그를 List에 저장하도록 한다
 
 		return listAppender;
 	}

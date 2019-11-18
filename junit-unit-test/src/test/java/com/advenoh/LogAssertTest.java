@@ -32,8 +32,9 @@ public class LogAssertTest {
 
         someService.requestJobId(jobId);
 
-        List<ILoggingEvent> logsList = listAppender.list;
-        log.info("[FRANK] logsList : {}", new ObjectMapper().writeValueAsString(logsList));
+        List<ILoggingEvent> logsList = listAppender.list; //저장한 데이터를 가져온다
+        log.info("전체 logsList : {}", new ObjectMapper().writerWithDefaultPrettyPrinter() //JSON 포멧을 pretty하게 정렬한다
+		        .writeValueAsString(logsList));
         assertThat(logsList.get(0).getMessage()).contains("[servicedebug] error occurred : jobId : ");
     }
 
