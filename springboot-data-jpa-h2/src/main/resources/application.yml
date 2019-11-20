@@ -1,8 +1,11 @@
 # Database Settings
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;
-#    url: jdbc:h2:file:~/testdb;MODE=MySQL
+    # in memory
+#    url: jdbc:h2:mem:testdb;MODE=mysql;
+    # file
+    url: jdbc:h2:file:~/data/h2/testdb;MODE=MySQL
+    #
     platform: h2
     username: sa
     password:
