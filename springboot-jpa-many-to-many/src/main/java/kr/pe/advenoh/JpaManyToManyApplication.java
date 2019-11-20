@@ -1,13 +1,13 @@
-package com.advenoh;
+package kr.pe.advenoh;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class JpaManyToManyApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(JpaManyToManyApplication.class, args);
     }
 
 }
