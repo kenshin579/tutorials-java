@@ -30,4 +30,7 @@ public class Post extends DateAudit {
 
 	@Lob
 	private String content;
+
+	//연관관계 매핑
+
 }
