@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @EnableJpaAuditing
 @SpringBootApplication
-public class JpaOneToManyApplication {
+public class JpaUndirectionalOneToManyApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JpaOneToManyApplication.class, args);
+        SpringApplication.run(JpaUndirectionalOneToManyApplication.class, args);
     }
 }
