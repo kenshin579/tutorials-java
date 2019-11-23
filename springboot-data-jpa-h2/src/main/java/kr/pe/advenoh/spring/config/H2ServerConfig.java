@@ -8,8 +8,9 @@ import java.sql.SQLException;
 
 @Configuration
 public class H2ServerConfig {
+
 	@Bean(initMethod = "start", destroyMethod = "stop")
-	public Server inMemoryH2DatabaseServer() throws SQLException {
+	public Server H2DatabaseServer() throws SQLException {
 		return Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9091");
 	}
 }
