@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.advenoh</groupId>
-    <artifactId>springboot-jpa-one-to-many</artifactId>
+    <artifactId>springboot-jpa-many-to-one-directional</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-jpa-one-to-many</name>
+    <name>springboot-jpa-many-to-one-directional</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

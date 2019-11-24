@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringbootJpaOneToManyApplication {
+public class JpaDirectionalOneToManyApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringbootJpaOneToManyApplication.class, args);
+        SpringApplication.run(JpaDirectionalOneToManyApplication.class, args);
     }
 
 }

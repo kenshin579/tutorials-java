@@ -98,10 +98,10 @@
                 <module>springboot-resttemplate</module>
                 <module>springboot-quartz-cluster</module>
                 <module>springboot-quartz-cluster-reactjs</module>
-                <module>springboot-jpa-one-to-many</module>
+                <module>springboot-jpa-many-to-one-directional</module>
                 <module>springboot-quartz-reactjs-angularjs</module>
                 <module>springboot-quartz-in-memory</module>
-                <module>springboot-jpa-one-to-many-undirectional</module>
+                <module>springboot-jpa-many-to-one-undirectional</module>
                 <module>springboot-jpa-many-to-many</module>
                 <module>springboot-jpa-unit-test</module>
             </modules>
