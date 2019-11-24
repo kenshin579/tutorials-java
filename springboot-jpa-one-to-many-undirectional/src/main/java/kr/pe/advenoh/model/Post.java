@@ -31,6 +31,10 @@ public class Post extends DateAudit {
 	@Lob
 	private String content;
 
-	//연관관계 매핑
-
+	public Post(String title, String author, int likeCount, String content) {
+		this.title = title;
+		this.author = author;
+		this.likeCount = likeCount;
+		this.content = content;
+	}
 }

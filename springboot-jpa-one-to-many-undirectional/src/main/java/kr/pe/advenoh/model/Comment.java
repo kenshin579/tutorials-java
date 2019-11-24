@@ -36,4 +36,8 @@ public class Comment extends DateAudit {
 	@JoinColumn(name = "post_id")
 	private Post post;
 
+	public Comment(String author, String content) {
+		this.author = author;
+		this.content = content;
+	}
 }
