@@ -34,7 +34,7 @@ public class Comment extends DateAudit {
 	//연관관계 매팽
 	@ManyToOne
 	@JoinColumn(name = "post_id")
-	private Post post;
+	private Post post; //연관관계의 주인이 된다
 
 	public Comment(String author, String content) {
 		this.author = author;
