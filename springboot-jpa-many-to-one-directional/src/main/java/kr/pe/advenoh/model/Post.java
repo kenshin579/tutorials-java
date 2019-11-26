@@ -36,7 +36,7 @@ public class Post extends DateAudit {
 
     //양방향 연관관계 설정
     @OneToMany(mappedBy = "post")
-    private List<Comment> comments = new ArrayList<>();
+    private List<Comment> comments = new ArrayList<>(); //연관관계 주인이 아니다.
 
     public Post(String title, String author, int likeCount, String content) {
         this.title = title;

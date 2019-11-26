@@ -1,5 +1,7 @@
 package kr.pe.advenoh.repository;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.pe.advenoh.model.Comment;
 import kr.pe.advenoh.model.Post;
 import lombok.extern.slf4j.Slf4j;
@@ -7,19 +9,22 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.util.Pair;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import javax.persistence.EntityManager;
+import java.util.List;
 
 @Slf4j
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@SpringBootTest
 public class PostRepositoryIntegrationTest {
+//    @Autowired
+//    private TestEntityManager testEntityManager;
+
     @Autowired
-    private TestEntityManager testEntityManager;
+    private EntityManager em;
 
     @Autowired
     private PostRepository postRepository;
@@ -33,15 +38,41 @@ public class PostRepositoryIntegrationTest {
 
     //todo: 여기서부터 다시하면 됨 pg 185
     @Test
-    public void 양방향_post1_comment1_저장후_author로_확인하() {
+    public void 양방향_post1_comment1_저장후_author로_확인하() throws JsonProcessingException {
         create_post1_comment1();
 
-        Comment comment = commentRepository.findByAuthor("angela");
-        assertThat(comment.getPost().getTitle()).isEqualTo("title1");
+        String jpqlComment = "select c from Comment c";
+        String jpqlPost = "select p from Post p";
+
+        List<Comment> commentList = em.createQuery(jpqlComment, Comment.class)
+                .getResultList();
+        List<Post> postList = em.createQuery(jpqlPost, Post.class)
+                .getResultList();
+        log.info("[FRANK] commentList: {}", new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(commentList));
+        log.info("[FRANK] postList: {}", new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(postList));
+
+
+
+//        Comment comment = commentRepository.findByAuthor("angela");
+//        assertThat(comment.getPost().getTitle()).isEqualTo("title1");
     }
 
+    @Test
+    public void 양방향으로_객체_그래프_탐색() throws JsonProcessingException {
+        create_post1_comment1();
+
+        //todo: 왜 조회가 안되나?
+        Post post = em.find(Post.class, 1L);
+        log.info("[FRANK] post : {}", new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(post));
+
+        List<Comment> comments = post.getComments();
+        for (Comment comment : comments) {
+            log.info("[FRANK] comment = {}", new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(comment));
+        }
+    }
+//
 //    @Test
-//    public void 연관관계_수정() {
+//    public void 양방향_연관관계_수정() {
 //        create_post1_comment1();
 //
 //        //포스트2 변경
@@ -100,12 +131,12 @@ public class PostRepositoryIntegrationTest {
     private Pair<Post, Comment> create_post1_comment1() {
         //포스트1 저장
         Post post1 = new Post("title1", "frank1", 5, "content");
-        testEntityManager.persistAndFlush(post1);
+        em.persist(post1);
 
         //코멘트1 저장
         Comment comment1 = new Comment("angela", "comment1");
         comment1.setPost(post1); //연관관계 설정
-        testEntityManager.persistAndFlush(comment1);
+        em.persist(comment1);
 
         return Pair.of(post1, comment1);
     }
