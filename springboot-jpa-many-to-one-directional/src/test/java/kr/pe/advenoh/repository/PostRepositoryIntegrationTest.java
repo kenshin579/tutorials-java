@@ -9,19 +9,22 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.data.util.Pair;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Slf4j
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@DataJpaTest
 public class PostRepositoryIntegrationTest {
-//    @Autowired
-//    private TestEntityManager testEntityManager;
+    @Autowired
+    private TestEntityManager testEntityManager;
 
     @Autowired
     private EntityManager em;
@@ -55,6 +58,51 @@ public class PostRepositoryIntegrationTest {
 
 //        Comment comment = commentRepository.findByAuthor("angela");
 //        assertThat(comment.getPost().getTitle()).isEqualTo("title1");
+    }
+
+    @Test
+    public void 양방향_순수한_객체() {
+        Post post = new Post("title1", "author1", 5, "content");
+        Comment comment1 = new Comment("author1", "comment1");
+        Comment comment2 = new Comment("author2", "comment2");
+
+        comment1.setPost(post); //연관관계 설정
+        comment2.setPost(post); //연관관계 설정
+
+        List<Comment> comments = post.getComments();
+        assertThat(comments.size()).isEqualTo(0); //우리가 기대한 값은 연관관계 결과는 아니다 - 양방향은 양쪽다 관계를 설정해야 함 (포스트 -> 코멘트)
+    }
+
+    @Test
+    public void 양방향_순수한_객체_원하는_결과() {
+        Post post = new Post("title1", "author1", 5, "content");
+        Comment comment1 = new Comment("author1", "comment1");
+        Comment comment2 = new Comment("author2", "comment2");
+
+        comment1.setPost(post);             //연관관계 설정 comment1 -> post
+        post.getComments().add(comment1);   //연관관계 설정 post -> comment1
+        comment2.setPost(post);             //연관관계 설정 comment2 -> post
+        post.getComments().add(comment2);   //연관관계 설정 post -> comment2
+
+        List<Comment> comments = post.getComments();
+        assertThat(comments.size()).isEqualTo(2);
+    }
+
+    @Test
+    public void 양방향_ORM_스타일로_원하는_결과() {
+        Post post = new Post("title1", "author1", 5, "content");
+        Comment comment1 = new Comment("author1", "comment1");
+        Comment comment2 = new Comment("author2", "comment2");
+
+        comment1.setPost(post);             //연관관계 설정 comment1 -> post
+        post.getComments().add(comment1);   //연관관계 설정 post -> comment1
+        em.persist(comment1);
+
+        comment2.setPost(post);             //연관관계 설정 comment2 -> post
+        post.getComments().add(comment2);   //연관관계 설정 post -> comment2
+        em.persist(comment2);
+
+
     }
 
     @Test
