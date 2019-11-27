@@ -55,7 +55,6 @@ public class PostRepositoryIntegrationTest {
         log.info("[FRANK] postList: {}", new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(postList));
 
 
-
 //        Comment comment = commentRepository.findByAuthor("angela");
 //        assertThat(comment.getPost().getTitle()).isEqualTo("title1");
     }
@@ -91,18 +90,35 @@ public class PostRepositoryIntegrationTest {
     @Test
     public void 양방향_ORM_스타일로_원하는_결과() {
         Post post = new Post("title1", "author1", 5, "content");
-        Comment comment1 = new Comment("author1", "comment1");
-        Comment comment2 = new Comment("author2", "comment2");
+        em.persist(post);
 
+        Comment comment1 = new Comment("author1", "comment1");
         comment1.setPost(post);             //연관관계 설정 comment1 -> post
         post.getComments().add(comment1);   //연관관계 설정 post -> comment1
         em.persist(comment1);
 
+        Comment comment2 = new Comment("author2", "comment2");
         comment2.setPost(post);             //연관관계 설정 comment2 -> post
         post.getComments().add(comment2);   //연관관계 설정 post -> comment2
         em.persist(comment2);
+    }
 
+    @Test
+    public void 양방향_ORM_스타일로_원하는_결과_편의_메서드_추가후_refactoring() {
+        Post post = new Post("title1", "author1", 5, "content");
+        em.persist(post);
 
+        Comment comment1 = new Comment("author1", "comment1");
+        comment1.setPost(post);             //연관관계 설정 comment1 -> post
+//        post.getComments().add(comment1);   //연관관계 설정 post -> comment1
+        em.persist(comment1);
+        assertThat(post.getComments().get(0).getAuthor()).isEqualTo("author1");
+
+        Comment comment2 = new Comment("author2", "comment2");
+        comment2.setPost(post);             //연관관계 설정 comment2 -> post
+//        post.getComments().add(comment2);   //연관관계 설정 post -> comment2
+        em.persist(comment2);
+        assertThat(post.getComments().get(0).getAuthor()).isEqualTo("author2");
     }
 
     @Test

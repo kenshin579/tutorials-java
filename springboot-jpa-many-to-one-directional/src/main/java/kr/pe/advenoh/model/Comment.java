@@ -40,4 +40,13 @@ public class Comment extends DateAudit {
 		this.author = author;
 		this.content = content;
 	}
+
+    public void setPost(Post post) {
+        this.post = post;
+        //기존 관계 제거
+        if (this.post != null) {
+            this.post.getComments().remove(this);
+        }
+        post.getComments().add(this);
+    }
 }
