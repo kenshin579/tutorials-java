@@ -4,6 +4,7 @@ import kr.pe.advenoh.model.audit.DateAudit;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +17,7 @@ import javax.persistence.Table;
 @Setter
 @Entity
 @NoArgsConstructor
+@ToString
 @Table(name = "course")
 public class Course extends DateAudit {
     @Id
@@ -26,5 +28,4 @@ public class Course extends DateAudit {
     private String courseName;
 
     private String location;
-
 }
