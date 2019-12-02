@@ -28,4 +28,9 @@ public class Course extends DateAudit {
     private String courseName;
 
     private String location;
+
+    public Course(String courseName, String location) {
+        this.courseName = courseName;
+        this.location = location;
+    }
 }
