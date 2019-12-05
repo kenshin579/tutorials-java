@@ -1,10 +1,10 @@
-package kr.pe.advenoh.springbootaoploggingwebsocket;
+package kr.pe.advenoh;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringbootAopLoggingWebsocketApplicationTests {
+class AopLoggingWebSocketAppTests {
 
 	@Test
 	void contextLoads() {
