@@ -104,6 +104,7 @@
                 <module>springboot-quartz-in-memory</module>
                 <module>springboot-jpa-many-to-many</module>
                 <module>springboot-jpa-unit-test</module>
+                <module>springboot-aop-logging-websocket</module>
             </modules>
         </profile>
     </profiles>
