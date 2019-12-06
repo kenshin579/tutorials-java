@@ -2,6 +2,7 @@ package kr.pe.advenoh.controller;
 
 import kr.pe.advenoh.model.Post;
 import kr.pe.advenoh.repository.PostRepository;
+import kr.pe.advenoh.service.BlogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,29 +23,31 @@ public class PostController {
 	@Autowired
 	private PostRepository postRepository;
 
+	@Autowired
+	private BlogService blogService;
+
 	@GetMapping
 	public Iterable<Post> getList() {
 		return postRepository.findAll();
 	}
 
-	@Transactional
 	@PostMapping
 	public Post addPost(Post post) {
-		return postRepository.save(post);
+		return blogService.createPost(post);
 	}
 
 	@Transactional
-	@PutMapping("/{id}")
-	public Post modifyPost(Post post) {
-		return postRepository.save(post);
+	@PutMapping("/{postId}")
+	public Post modifyPost(
+			@PathVariable Long postId,
+			Post post) {
+		return blogService.modifyPost(postId, post);
 	}
 
 	@Transactional
-	@DeleteMapping("/{id}")
-	public String deletePost(@PathVariable Long id) {
-		Post Post = new Post();
-		Post.setId(id);
-		postRepository.delete(Post);
+	@DeleteMapping("/{postId}")
+	public String deletePost(@PathVariable Long postId) {
+		blogService.deletePost(postId);
 		return "SUCCESS";
 	}
 }
