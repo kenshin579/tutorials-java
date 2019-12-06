@@ -34,6 +34,7 @@ public class Post extends DateAudit {
 
     private String author;
 
+    @Column(name = "like_count")
     private int likeCount;
 
     @Lob
