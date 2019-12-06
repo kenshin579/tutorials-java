@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
-    public Comment findByAuthor(String author);
+    Comment findByAuthor(String author);
 }

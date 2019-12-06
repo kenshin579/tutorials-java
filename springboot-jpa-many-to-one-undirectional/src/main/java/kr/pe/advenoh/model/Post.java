@@ -1,10 +1,12 @@
 package kr.pe.advenoh.model;
 
 import kr.pe.advenoh.model.audit.DateAudit;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,23 +20,25 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Table(name = "post")
 public class Post extends DateAudit {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "post_id")
+    private Long postId;
 
-	private String title;
+    private String title;
 
-	private String author;
+    private String author;
 
-	private int likeCount;
+    private int likeCount;
 
-	@Lob
-	private String content;
+    @Lob
+    private String content;
 
-	public Post(String title, String author, int likeCount, String content) {
-		this.title = title;
-		this.author = author;
-		this.likeCount = likeCount;
-		this.content = content;
-	}
+    @Builder
+    public Post(String title, String author, int likeCount, String content) {
+        this.title = title;
+        this.author = author;
+        this.likeCount = likeCount;
+        this.content = content;
+    }
 }
