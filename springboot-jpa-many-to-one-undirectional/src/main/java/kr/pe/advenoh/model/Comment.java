@@ -27,7 +27,6 @@ public class Comment extends DateAudit {
     @Column(name = "comment_id")
     private Long commentId;
 
-    @Column(name = "author")
     private String author;
 
     @Lob
@@ -36,7 +35,7 @@ public class Comment extends DateAudit {
     //연관관계 매팽
     @ManyToOne
     @JoinColumn(name = "post_id")
-    private Post post; //연관관계의 주인이 된다
+    private Post post;
 
     @Builder
     public Comment(String author, String content) {
