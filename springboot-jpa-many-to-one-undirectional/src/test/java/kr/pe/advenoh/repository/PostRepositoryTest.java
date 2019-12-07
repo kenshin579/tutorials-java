@@ -21,7 +21,11 @@ public class PostRepositoryTest {
 
     @Test
     public void save_post_확인() {
-        postRepository.save(new Post("title1", "frank", 5, "content"));
+        postRepository.save(Post.builder()
+                .title("title1")
+                .author("frank")
+                .likeCount(5)
+                .content("content").build());
         List<Post> posts = postRepository.findAll();
         assertThat(posts.get(0).getTitle()).isEqualTo("title1");
     }
