@@ -21,8 +21,8 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity
 @NoArgsConstructor
+@Entity
 @Table(name = "post")
 public class Post extends DateAudit {
     @Id
@@ -51,5 +51,19 @@ public class Post extends DateAudit {
         this.author = author;
         this.likeCount = likeCount;
         this.content = content;
+    }
+
+    /**
+     * 편의 메서드
+     * - 양쪽에 작성하는 경우에는 무한루프에 빠지지 않도록 작성해야 함
+     *
+     * @param comment
+     */
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
+        //무한루프에 빠지지 않도록 체크
+        if (comment.getPost() != this) {
+            comment.setPost(this);
+        }
     }
 }

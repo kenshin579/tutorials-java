@@ -19,9 +19,9 @@ import javax.persistence.Table;
 
 @Getter
 @Setter
-@Entity
 @NoArgsConstructor
 @ToString(exclude = "post")
+@Entity
 @Table(name = "comment")
 public class Comment extends DateAudit {
     @Id
@@ -29,7 +29,6 @@ public class Comment extends DateAudit {
     @Column(name = "comment_id")
     private Long commentId;
 
-    @Column(name = "author")
     private String author;
 
     @Lob
@@ -37,7 +36,7 @@ public class Comment extends DateAudit {
 
     //연관관계 매팽
     @ManyToOne
-    @JoinColumn(name = "post_id")
+    @JoinColumn(name = "post_id", nullable = false)
     private Post post; //연관관계의 주인이 된다
 
     @Builder
@@ -46,12 +45,15 @@ public class Comment extends DateAudit {
         this.content = content;
     }
 
+    /**
+     * 편의 메서드
+     * - 양쪽에 작성하는 경우에는 무한루프에 빠지지 않도록 작성해야 함
+     */
     public void setPost(Post post) {
         this.post = post;
-        //기존 관계 제거
-        if (this.post != null) {
-            this.post.getComments().remove(this);
+        //무한루프에 빠지지 않도록 체크
+        if (!post.getComments().contains(this)) {
+            post.getComments().add(this);
         }
-        post.getComments().add(this);
     }
 }
