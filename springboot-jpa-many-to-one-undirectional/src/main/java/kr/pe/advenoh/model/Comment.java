@@ -1,19 +1,12 @@
 package kr.pe.advenoh.model;
 
 import kr.pe.advenoh.model.audit.DateAudit;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -21,23 +14,24 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Table(name = "comment")
 public class Comment extends DateAudit {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "comment_id")
+    private Long commentId;
 
-	@Column(name = "author")
-	private String author;
+    private String author;
 
-	@Lob
-	private String content;
+    @Lob
+    private String content;
 
-	//연관관계 매팽
-	@ManyToOne
-	@JoinColumn(name = "post_id")
-	private Post post;
+    //연관관계 매팽
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "post_id", nullable = false)
+    private Post post;
 
-	public Comment(String author, String content) {
-		this.author = author;
-		this.content = content;
-	}
+    @Builder
+    public Comment(String author, String content) {
+        this.author = author;
+        this.content = content;
+    }
 }

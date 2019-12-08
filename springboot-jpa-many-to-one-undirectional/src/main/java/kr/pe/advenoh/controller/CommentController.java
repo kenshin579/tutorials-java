@@ -2,6 +2,7 @@ package kr.pe.advenoh.controller;
 
 import kr.pe.advenoh.model.Comment;
 import kr.pe.advenoh.repository.CommentRepository;
+import kr.pe.advenoh.service.BlogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +21,9 @@ import javax.transaction.Transactional;
 public class CommentController {
 
 	@Autowired
+	private BlogService blogService;
+
+	@Autowired
 	private CommentRepository commentRepository;
 
 	@GetMapping
@@ -27,24 +31,24 @@ public class CommentController {
 		return commentRepository.findAll();
 	}
 
-	@Transactional
-	@PostMapping
-	public Comment addComment(Comment comment) {
-		return commentRepository.save(comment);
+	@PostMapping("/post/{postId}")
+	public Comment addComment(
+			@PathVariable Long postId,
+			Comment comment) {
+		return blogService.createComment(postId, comment);
+	}
+
+	@PutMapping("/{commentId}")
+	public Comment modifyComment(
+			@PathVariable Long commentId,
+			Comment comment) {
+		return blogService.modifyComment(commentId, comment);
 	}
 
 	@Transactional
-	@PutMapping("/{id}")
-	public Comment modifyComment(Comment comment) {
-		return commentRepository.save(comment);
-	}
-
-	@Transactional
-	@DeleteMapping("/{id}")
-	public String deleteComment(@PathVariable Long id) {
-		Comment comment = new Comment();
-		comment.setId(id);
-		commentRepository.delete(comment);
+	@DeleteMapping("/{commentId}")
+	public String deleteComment(@PathVariable Long commentId) {
+		blogService.deleteComment(commentId);
 		return "SUCCESS";
 	}
 }
