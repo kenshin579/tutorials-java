@@ -105,6 +105,7 @@
                 <module>springboot-jpa-many-to-many</module>
                 <module>springboot-jpa-unit-test</module>
                 <module>springboot-jpa-n1-problem</module>
+                <module>springboot-jpa-pagination</module>
             </modules>
         </profile>
     </profiles>
