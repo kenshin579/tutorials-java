@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,11 @@ public class BookController {
 
 	@GetMapping("/paging")
 	public Page<Book> findBooksByPageRequest(final Pageable pageable) {
+		return bookService.findBooksByPageRequest(pageable);
+	}
+
+	@GetMapping("/slice")
+	public Slice<Book> findBooksByPageRequestWithSlice(final Pageable pageable) {
 		return bookService.findBooksByPageRequest(pageable);
 	}
 
