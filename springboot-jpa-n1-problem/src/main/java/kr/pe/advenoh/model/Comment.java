@@ -5,12 +5,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
 @Entity
+@ToString(exclude = "post")
 @NoArgsConstructor
 @Table(name = "comment")
 public class Comment extends DateAudit {

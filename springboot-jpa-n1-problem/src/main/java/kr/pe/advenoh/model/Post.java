@@ -1,5 +1,7 @@
 package kr.pe.advenoh.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.common.collect.Lists;
 import kr.pe.advenoh.model.audit.DateAudit;
 import lombok.Builder;
 import lombok.Getter;
@@ -39,8 +41,9 @@ public class Post extends DateAudit {
     @Lob
     private String content;
 
-    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)
-    private List<Comment> commentList = new ArrayList<>();
+    @JsonIgnore //JSON 변환시 무한 루프 방지용
+    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
+    private List<Comment> commentList = Lists.newArrayList();
 
     @Builder
     public Post(String title, String author, int likeCount, String content) {
