@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,6 +43,7 @@ public class Post extends DateAudit {
     private String content;
 
     @JsonIgnore //JSON 변환시 무한 루프 방지용
+//    @BatchSize(size = 2) //batch size를 지정한다
     @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
     private List<Comment> commentList = Lists.newArrayList();
 

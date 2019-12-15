@@ -29,18 +29,27 @@ public class PostRepositoryTest {
     @PersistenceContext
     private EntityManager em;
 
+    @Transactional
     @Test
     public void test_N1_문제_발생_즉시로딩_하는_경우() throws JsonProcessingException {
-        savePostWithComments(5, 2);
+        savePostWithComments(4, 2);
         List<Post> posts = postRepository.findAll(); //N+1 발생한다
-        log.info("posts: {}", new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(posts));
+    }
 
+    @Transactional
+    @Test
+    public void test_N1_문제_발생_지연로딩_하는_경우() throws JsonProcessingException {
+        savePostWithComments(4, 2);
+        List<Post> posts = postRepository.findAll(); //N+1 발생하지 않는
+
+        Post post = posts.get(0); //쿼리 발생하지 않음.
+        log.info("post : {}", post.getCommentList()); //조회 쿼리 이때 발생함
     }
 
     @Transactional
     @Test
     public void test_N1_문제_발생_지연로딩설정_loop으로_조회하는_경우() throws JsonProcessingException {
-        savePostWithComments(5, 2);
+        savePostWithComments(4, 2);
         List<Post> posts = postRepository.findAll(); //N+1 발생하지 않는다
 
         List<Comment> commentList;
@@ -53,14 +62,34 @@ public class PostRepositoryTest {
     @Transactional
     @Test
     public void test_N1_문제_발생_JPQL로_조회하는_경우() {
-        savePostWithComments(5, 2);
-        List<Comment> comments = postRepository.getCommentList();
+        savePostWithComments(4, 2);
+        List<Comment> comments = postRepository.findAllComments();
+    }
+
+    @Transactional
+    @Test
+    public void test_N1_문제_해결방법_fetch_join_사용() {
+        savePostWithComments(4, 2);
+        List<Post> posts = postRepository.findAllWithFetchJoin(); //한번에 조회해온다.
+
+        List<Comment> commentList;
+        for (Post post : posts) {
+            commentList = post.getCommentList();
+            log.info("post author: {}", commentList.size()); //N+1 발생하지 않는다
+        }
+    }
+
+    @Transactional
+    @Test
+    public void test_N1_문제_해결방법_증시로딩설정_loop으로_조회하는_경우() throws JsonProcessingException {
+        savePostWithComments(4, 2);
+        List<Post> posts = postRepository.findAll(); //배치 사이즈만큼 조회해온다
     }
 
     private void savePostWithComments(int maxPosts, int maxComments) {
         Post post;
         Comment comment;
-        for (int i = 1; i < maxPosts; i++) {
+        for (int i = 1; i <= maxPosts; i++) {
             post = Post.builder()
                     .title("title" + i)
                     .author("frank" + i)
@@ -68,7 +97,7 @@ public class PostRepositoryTest {
                     .content("content" + i).build();
             em.persist(post);
 
-            for (int j = 1; j < maxComments + 1; j++) {
+            for (int j = 1; j <= maxComments; j++) {
                 comment = Comment.builder()
                         .author("commentAuthor" + j)
                         .content("content" + j)
