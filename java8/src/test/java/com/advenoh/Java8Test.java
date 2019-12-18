@@ -1,8 +1,16 @@
 package com.advenoh;
 
+import com.advenoh.vod.VodCollection;
+import com.advenoh.vod.enums.VodCollectionType;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,6 +31,29 @@ public class Java8Test {
 				.filter(s1 -> s1 != SchedulerType.LIVE_DEAL_PURCHASE)
 				.allMatch(st -> getResult(st));
 		assertThat(result).isTrue();
+	}
+
+	@Test
+	public void test_collectionType별로_List생성하기() throws JsonProcessingException {
+		List<VodCollection> vodCollectionList = createVodCollection(3);
+		log.info("vodCollectionList : {}", new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(vodCollectionList));
+
+		Map<VodCollectionType, List<VodCollection>> vodCollectionMap = vodCollectionList.stream()
+				.collect(Collectors.groupingBy(VodCollection::getVodCollectionType));
+
+		log.info("vodCollectionMap : {}", new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(vodCollectionMap));
+	}
+
+	private List<VodCollection> createVodCollection(int max) {
+		List<VodCollection> vodCollectionList = new ArrayList<>();
+		for (int i = 0; i < max; i++) {
+			vodCollectionList.add(VodCollection.builder()
+					.title("title" + i)
+					.content("content" + i)
+					.vodCollectionType(VodCollectionType.getRandomType())
+					.build());
+		}
+		return vodCollectionList;
 	}
 
 	private boolean getResult(SchedulerType schedulerType) {
