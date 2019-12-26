@@ -92,7 +92,7 @@
                 <module>springboot-messaging-socketjs-stomp</module>
                 <module>springboot-messaging-rabbitmq</module>
                 <!--<module>springboot-security-junit-test-withmockuser</module>-->
-                <module>springboot-security</module>
+                <module>springboot-security-login</module>
                 <module>springboot-data-jpa-h2</module>
                 <module>springboot-modelmapper</module>
                 <module>springboot-resttemplate</module>
