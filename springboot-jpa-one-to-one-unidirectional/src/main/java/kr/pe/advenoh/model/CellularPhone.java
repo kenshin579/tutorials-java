@@ -17,8 +17,8 @@ import javax.persistence.Table;
 @Setter
 @Entity
 @NoArgsConstructor
-@Table(name = "comment")
-public class CelluarPhone extends DateAudit {
+@Table(name = "cellular_phone")
+public class CellularPhone extends DateAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "phone_id")
@@ -29,7 +29,7 @@ public class CelluarPhone extends DateAudit {
     private String model;
 
     @Builder
-    public CelluarPhone(String phoneNumber, String model) {
+    public CellularPhone(String phoneNumber, String model) {
         this.phoneNumber = phoneNumber;
         this.model = model;
     }

@@ -36,7 +36,7 @@ public class User extends DateAudit {
 
     @OneToOne
     @JoinColumn(name = "id")
-    private CelluarPhone celluarPhone;
+    private CellularPhone cellularPhone;
 
     @Builder
     public User(String username, String email, String name, String password) {
