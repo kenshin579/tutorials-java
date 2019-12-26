@@ -107,6 +107,7 @@
                 <module>springboot-jpa-pagination</module>
                 <module>springboot-jpa-one-to-one-unidirectional</module>
                 <module>springboot-jpa-one-to-one-bidirectional</module>
+                <module>springboot-jpa-one-to-one-bidirectional-target</module>
             </modules>
         </profile>
     </profiles>
