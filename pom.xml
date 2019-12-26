@@ -106,6 +106,7 @@
                 <module>springboot-jpa-unit-test</module>
                 <module>springboot-jpa-pagination</module>
                 <module>springboot-jpa-one-to-one-unidirectional</module>
+                <module>springboot-jpa-one-to-one-bidirectional</module>
             </modules>
         </profile>
     </profiles>
