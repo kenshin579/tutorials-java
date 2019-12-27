@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +35,7 @@ public class User extends DateAudit {
 
     private String password;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY) //지연로딩이 안된다
     @JoinColumn(name = "id")
     private CellularPhone cellularPhone;
 
