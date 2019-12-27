@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +30,8 @@ public class CellularPhone extends DateAudit {
 
     private String model;
 
-    @OneToOne(mappedBy = "cellularPhone")
+    //일대일관계에서 외래 키를 직접 관리하지 않는 지연로딩으로 설정해도 즉시로딩으로만 동작한다 (프록시의 한계)
+    @OneToOne(mappedBy = "cellularPhone", fetch = FetchType.LAZY)
     private User user;
 
     @Builder
