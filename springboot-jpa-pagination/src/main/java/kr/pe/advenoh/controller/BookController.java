@@ -1,7 +1,6 @@
 package kr.pe.advenoh.controller;
 
 import kr.pe.advenoh.model.Book;
-import kr.pe.advenoh.repository.BookRepository;
 import kr.pe.advenoh.service.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/book")
 public class BookController {
-
-	@Autowired
-	private BookRepository bookRepository;
-
 	@Autowired
 	private BookService bookService;
 
 	@GetMapping
 	public Iterable<Book> getList() {
-		return bookRepository.findAll();
+		return bookService.findAll();
 	}
 
 	@GetMapping("/paging")

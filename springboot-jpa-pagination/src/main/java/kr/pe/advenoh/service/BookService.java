@@ -22,4 +22,9 @@ public class BookService {
 	public Page<Book> findBooksByPageRequest(Pageable pageable) {
 		return bookRepository.findAll(pageable);
 	}
+
+	public Iterable<Book> findAll() {
+
+		return null;
+	}
 }
