@@ -1,13 +1,12 @@
-package hello;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class SecurityApplication {
 
     public static void main(String[] args) throws Throwable {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(SecurityApplication.class, args);
     }
+
 
 }
