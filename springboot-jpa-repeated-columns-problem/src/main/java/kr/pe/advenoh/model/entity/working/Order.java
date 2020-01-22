@@ -27,8 +27,9 @@ public class Order extends DateAudit {
 	@Column(name = "order_seqno")
 	private Long orderNo;
 
-	@OneToMany(mappedBy = "order")
-	private List<OrderItem> orderItems = new ArrayList<>();
-
 	private Date orderDate;     //주문시간
+
+	@OneToMany(mappedBy = "order")
+	private List<OrderItemMapping> orderItemMappingList = new ArrayList<>();
+
 }

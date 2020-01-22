@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @ToString
 @Entity
 @Table(name = "order_item")
-public class OrderItem extends DateAudit {
+public class OrderItemMapping extends DateAudit {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "order_item_seqno")
