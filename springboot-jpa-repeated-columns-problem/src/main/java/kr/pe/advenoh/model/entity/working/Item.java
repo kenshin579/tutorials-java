@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Setter
 @ToString
 @Entity
-@Table(name = "item")
+@Table(name = "test_item")
 public class Item extends DateAudit {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,4 +26,10 @@ public class Item extends DateAudit {
 	private String name;        //이름
 	private int price;          //가격
 	private int stockQuantity;  //재고수량
+
+	public Item(String name, int price, int stockQuantity) {
+		this.name = name;
+		this.price = price;
+		this.stockQuantity = stockQuantity;
+	}
 }

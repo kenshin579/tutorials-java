@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Setter
 @ToString
 @Entity
-@Table(name = "order_item")
+@Table(name = "test_order_item")
 public class OrderItemMapping extends DateAudit {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)

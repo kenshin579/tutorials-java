@@ -20,7 +20,7 @@ import java.util.List;
 @Setter
 @ToString
 @Entity
-@Table(name = "order")
+@Table(name = "test_order")
 public class Order extends DateAudit {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
