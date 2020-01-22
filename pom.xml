@@ -108,6 +108,7 @@
                 <module>springboot-jpa-one-to-one-unidirectional</module>
                 <module>springboot-jpa-one-to-one-bidirectional</module>
                 <module>springboot-jpa-one-to-one-bidirectional-target</module>
+                <module>springboot-jpa-repeated-columns-problem</module>
             </modules>
         </profile>
     </profiles>
