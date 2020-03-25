@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/history")
+@RequestMapping("/api/history")
 public class JobHistoryController {
     @Autowired
     private JobHistoryService jobHistoryService;

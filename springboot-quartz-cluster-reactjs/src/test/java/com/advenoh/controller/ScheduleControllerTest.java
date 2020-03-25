@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(ScheduleController.class)
 public class ScheduleControllerTest {
-    private final String BASE_PATH = "/scheduler";
+    private final String BASE_PATH = "/api/scheduler";
     @Autowired
     private MockMvc mvc;
 

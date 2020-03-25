@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/scheduler")
+@RequestMapping("/api/scheduler")
 public class ScheduleController {
 
     @Autowired

@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(JobHistoryController.class)
 public class JobHistoryControllerTest {
-    private final String BASE_PATH = "/history";
+    private final String BASE_PATH = "/api/history";
     @Autowired
     private MockMvc mvc;
 
