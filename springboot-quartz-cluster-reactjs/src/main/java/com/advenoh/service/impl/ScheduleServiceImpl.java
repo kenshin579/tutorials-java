@@ -2,7 +2,6 @@ package com.advenoh.service.impl;
 
 import com.advenoh.dto.scheduler.JobRequest;
 import com.advenoh.dto.scheduler.JobResponse;
-import com.advenoh.dto.scheduler.StatsResponse;
 import com.advenoh.dto.scheduler.StatusResponse;
 import com.advenoh.exception.ApiException;
 import com.advenoh.exception.ExceptionCode;
@@ -71,9 +70,9 @@ public class ScheduleServiceImpl implements ScheduleService {
         log.debug("[schedulerdebug] deleting job with jobKey : {}", jobKey);
         try {
 
-	        boolean result = schedulerFactoryBean.getScheduler().deleteJob(jobKey);
-	        jobHistoryService.deleteJob(jobKey);
-	        return result;
+            boolean result = schedulerFactoryBean.getScheduler().deleteJob(jobKey);
+            jobHistoryService.deleteJob(jobKey);
+            return result;
         } catch (SchedulerException e) {
             log.error("[schedulerdebug] error occurred while deleting job with jobKey : {}", jobKey, e);
             throw new ApiException(ExceptionCode.SCHEDULER_DELETE_FAIL.getMessage(), e);
@@ -91,7 +90,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
             Date dt = schedulerFactoryBean.getScheduler().rescheduleJob(TriggerKey.triggerKey(jobRequest.getJobName()), newTrigger);
             log.debug("Job with jobKey : {} rescheduled successfully at date : {}", jobKey, dt);
-	        jobHistoryService.updateJob(jobKey);
+            jobHistoryService.updateJob(jobKey);
             return true;
         } catch (SchedulerException e) {
             log.error("error occurred while scheduling with jobKey : {}", jobKey, e);
@@ -104,7 +103,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         log.debug("[schedulerdebug] pausing job with jobKey : {}", jobKey);
         try {
             schedulerFactoryBean.getScheduler().pauseJob(jobKey);
-	        jobHistoryService.pauseJob(jobKey);
+            jobHistoryService.pauseJob(jobKey);
             return true;
         } catch (SchedulerException e) {
             log.error("[schedulerdebug] error occurred while deleting job with jobKey : {}", jobKey, e);
@@ -117,7 +116,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         log.debug("[schedulerdebug] resuming job with jobKey : {}", jobKey);
         try {
             schedulerFactoryBean.getScheduler().resumeJob(jobKey);
-	        jobHistoryService.resumeJob(jobKey);
+            jobHistoryService.resumeJob(jobKey);
             return true;
         } catch (SchedulerException e) {
             log.error("[schedulerdebug] error occurred while resuming job with jobKey : {}", jobKey, e);
@@ -129,9 +128,9 @@ public class ScheduleServiceImpl implements ScheduleService {
     public boolean stopJob(JobKey jobKey) {
         log.debug("[schedulerdebug] stopping job with jobKey : {}", jobKey);
         try {
-	        boolean result = schedulerFactoryBean.getScheduler().interrupt(jobKey);
-	        jobHistoryService.stopJob(jobKey);
-	        return result;
+            boolean result = schedulerFactoryBean.getScheduler().interrupt(jobKey);
+            jobHistoryService.stopJob(jobKey);
+            return result;
         } catch (SchedulerException e) {
             log.error("[schedulerdebug] error occurred while stopping job with jobKey : {}", jobKey, e);
         }
@@ -180,11 +179,9 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         return StatusResponse.builder()
                 .jobs(jobs)
-                .stats(StatsResponse.builder()
-                        .numOfAllJobs(numOfAllJobs)
-                        .numOfRunningJobs(numOfRunningJobs)
-                        .numOfGroups(numOfGroups)
-                        .build())
+                .numOfAllJobs(numOfAllJobs)
+                .numOfRunningJobs(numOfRunningJobs)
+                .numOfGroups(numOfGroups)
                 .build();
     }
 
