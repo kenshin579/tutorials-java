@@ -1,14 +1,14 @@
 import React from 'react';
-import PageTemplate from "../components/common/PageTemplate";
-import StatusList from "../components/schedule/StatusList/StatusList";
-import ScheduleList from "../components/schedule/ScheduleList";
+import PageTemplate from "components/common/PageTemplate";
+import StatusListContainer from "../containers/status/StatusListContainer";
 
 const ListPage = () => {
 
     return (
         <PageTemplate>
-            <StatusList/>
-            <ScheduleList/>
+            {/*<StatusList/>*/}
+            {/*<ScheduleList/>*/}
+            <StatusListContainer/>
         </PageTemplate>
     );
 };
