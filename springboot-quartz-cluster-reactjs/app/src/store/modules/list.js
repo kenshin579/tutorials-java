@@ -1,4 +1,5 @@
 import {createAction, handleActions} from 'redux-actions';
+import {List, Map} from 'immutable';
 import * as api from 'utils/api';
 
 // action types
@@ -12,41 +13,31 @@ export const getScheduleSuccess = createAction(GET_SCHEDULE_SUCCESS);
 export const getScheduleFailure = createAction(GET_SCHEDULE_FAILURE);
 
 // initial state
-const initialState = {
+const initialState = Map({
     pending: false,
     error: false,
     data: {
         numOfAllJobs: 0,
         numOfGroups: 0,
         numOfRunningJobs: 0,
-        jobs: []
+        jobs: List()
     }
-};
+});
 
 // reducer
 export default handleActions({
     [GET_SCHEDULE_PENDING]: (state, action) => {
-        return {
-            ...state,
-            pending: false,
-            error: false
-        };
+        return state.set('pending', false)
+            .set('error', false);
     },
     [GET_SCHEDULE_SUCCESS]: (state, action) => {
         const {data} = action.payload;
-
-        return {
-            ...state,
-            pending: false,
-            data: data
-        };
+        return state.set('pending', false)
+            .set('data', data);
     },
     [GET_SCHEDULE_FAILURE]: (state, action) => {
-        return {
-            ...state,
-            pending: false,
-            error: true
-        };
+        return state.set('pending', false)
+            .set('error', true);
     },
 }, initialState)
 
