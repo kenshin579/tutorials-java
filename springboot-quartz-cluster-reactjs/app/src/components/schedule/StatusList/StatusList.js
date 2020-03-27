@@ -9,14 +9,13 @@ const cx = classNames.bind(styles);
 class StatusList extends Component {
     render() {
         const statusView = [];
-        let dummyTest = {
-            "numOfAllJobs": 1,
-            "numOfGroups": 1,
-            "numOfRunningJobs": 1
-        };
 
-        Object.keys(dummyTest).forEach((key) => {
-            statusView.push(<Status key={key} statusKey={key}>{dummyTest[key]}</Status>)
+        Object.keys(this.props.jobStatus).forEach((key) => {
+            statusView.push(
+                <Status key={key} statusKey={key}>
+                    {this.props.jobStatus[key]}
+                </Status>
+            )
         });
 
         return (

@@ -27,7 +27,7 @@ const initialState = Map({
 // reducer
 export default handleActions({
     [GET_SCHEDULE_PENDING]: (state, action) => {
-        return state.set('pending', false)
+        return state.set('pending', true)
             .set('error', false);
     },
     [GET_SCHEDULE_SUCCESS]: (state, action) => {
