@@ -7,7 +7,7 @@ import {pender} from 'redux-pender';
 const GET_SCHEDULE_INFO = 'list/GET_SCHEDULE_INFO';
 
 // action creators
-export const getScheduleInfo = createAction(GET_SCHEDULE_INFO, api.getScheduleInfoApi);
+export const getScheduleInfo = createAction(GET_SCHEDULE_INFO, api.getScheduleInfo);
 
 // initial state
 const initialState = Map({

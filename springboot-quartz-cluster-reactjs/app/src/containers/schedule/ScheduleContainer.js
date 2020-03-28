@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as scheduleListActions from 'store/modules/list';
 import StatusList from "../../components/schedule/StatusList";
-import ScheduleList from "../../components/schedule/ScheduleList";
+import JobList from "../../components/schedule/JobList";
 import {MAX_INTERVAL_SECONDS} from "../../constants";
 
 class ScheduleContainer extends Component {
@@ -33,7 +33,6 @@ class ScheduleContainer extends Component {
         if (loading) {
             return null;
         }
-        console.log('props', this.props);
         let jobStatus = {
             'numOfAllJobs': data.numOfAllJobs,
             'numOfGroups': data.numOfGroups,
@@ -43,7 +42,7 @@ class ScheduleContainer extends Component {
         return (
             <div>
                 <StatusList jobStatus={jobStatus}/>
-                <ScheduleList schedules={data.jobs}/>
+                <JobList jobs={data.jobs}/>
             </div>
         );
     }

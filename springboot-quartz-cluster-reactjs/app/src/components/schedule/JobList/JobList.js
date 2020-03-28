@@ -1,24 +1,24 @@
 import React, {Component} from 'react';
-import styles from './ScheduleList.scss';
+import styles from './JobList.scss';
 import classNames from 'classnames/bind';
 import {Button, Card, Table} from "react-bootstrap";
-import ScheduleItem from "../ScheduleItem";
+import JobItem from "../JobItem";
 
 const cx = classNames.bind(styles);
 
-class ScheduleList extends Component {
+class JobList extends Component {
     render() {
-        const {schedules} = this.props;
-        console.log('ScheduleList :: this.props', this.props);
+        const {jobs} = this.props;
+        console.log('JobList :: this.props', this.props);
 
-        const scheduleView = [];
+        const jobListView = [];
 
-        schedules.map(schedule => {
-            scheduleView.push(
-                <ScheduleItem
-                    key={schedule.jobName}
-                    schedule={schedule}>
-                </ScheduleItem>
+        jobs.map(job => {
+            jobListView.push(
+                <JobItem
+                    key={job.jobName}
+                    job={job}>
+                </JobItem>
             );
         });
 
@@ -53,7 +53,7 @@ class ScheduleList extends Component {
                             </tr>
                             </thead>
                             <tbody>
-                            {scheduleView}
+                            {jobListView}
                             </tbody>
                         </Table>
                     </Card.Body>
@@ -64,4 +64,4 @@ class ScheduleList extends Component {
 }
 
 
-export default ScheduleList;
+export default JobList;
