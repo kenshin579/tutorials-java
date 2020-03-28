@@ -43,7 +43,7 @@ class ScheduleContainer extends Component {
         return (
             <div>
                 <StatusList jobStatus={jobStatus}/>
-                <ScheduleList/>
+                <ScheduleList schedules={data.jobs}/>
             </div>
         );
     }
