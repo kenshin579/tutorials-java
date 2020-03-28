@@ -1,6 +1,6 @@
 import {applyMiddleware, compose, createStore} from 'redux';
 import modules from './modules';
-import ReduxThunk from 'redux-thunk';
+import penderMiddleware from 'redux-pender';
 
 
 const configure = () => {
@@ -9,12 +9,12 @@ const configure = () => {
     const devtools = isDev && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
     const composeEnhancers = devtools || compose;
 
-    const middlewares = [ReduxThunk];
+    const middlewares = [penderMiddleware()];
 
     const store = createStore(modules, composeEnhancers(
         applyMiddleware(...middlewares)
     ));
     return store;
-}
+};
 
 export default configure;

@@ -16,18 +16,11 @@ class ScheduleContainer extends Component {
         clearInterval(this.interval);
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        //이전 number와 현재 number가 다르면 요청을 시작함
-        if (this.props.number !== prevProps.number) {
-            this.loadData();
-        }
-    }
-
     loadData = async () => {
         const {ScheduleListActions} = this.props;
 
         try {
-            const response = await ScheduleListActions.getSchedule();
+            const response = await ScheduleListActions.getScheduleInfo();
             console.log('response', response);
         } catch (e) {
             console.error(e);
@@ -59,8 +52,7 @@ class ScheduleContainer extends Component {
 export default connect(
     (state) => ({
         data: state.list.get('data'),
-        loading: state.list.get('pending'),
-        error: state.list.get('error')
+        loading: state.pender.pending['list/GET_SCHEDULE_INFO']
     }),
     (dispatch) => ({
         ScheduleListActions: bindActionCreators(scheduleListActions, dispatch)
