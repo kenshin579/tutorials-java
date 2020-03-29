@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as baseActions from 'store/modules/base';
 import JobList from "../../components/schedule/JobList";
+import JobAlert from "../../components/notification/JobAlert";
 
 class JobListContainer extends Component {
     handleModal = (jobName, groupName) => {
@@ -14,22 +15,36 @@ class JobListContainer extends Component {
         });
     };
 
+    handleNotification = () => {
+        const {BaseActions} = this.props;
+        BaseActions.hideNotification();
+    };
+
     render() {
-        const {data} = this.props;
+        const {data, visibleNotification, message, handleNotification} = this.props;
         const {handleModal} = this;
 
         return (
-            <JobList
-                jobs={data.jobs}
-                onDeleteModal={handleModal}
-            />
+            <div>
+                <JobAlert
+                    visibleNotification={visibleNotification}
+                    message={message}
+                    handleNotification={handleNotification}
+                />
+                <JobList
+                    jobs={data.jobs}
+                    onDeleteModal={handleModal}
+                />
+            </div>
         );
     }
 }
 
 export default connect(
     (state) => ({
-        data: state.list.get('data')
+        data: state.list.get('data'),
+        visibleNotification: state.base.getIn(['notification', 'enable']),
+        message: state.base.getIn(['notification', 'message'])
     }),
     (dispatch) => ({
         BaseActions: bindActionCreators(baseActions, dispatch),
