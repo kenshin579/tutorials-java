@@ -18,7 +18,6 @@ class DeleteJobModalContainer extends Component {
     };
 
     showNotification = () => {
-        console.log('showNotification!!!');
         const {BaseActions} = this.props;
         BaseActions.showNotification();
         window.setTimeout(() => {
@@ -51,7 +50,6 @@ class DeleteJobModalContainer extends Component {
 
     render() {
         const {visible} = this.props;
-        console.log('DeleteJobModalContainer :: visible', visible);
         const {handleCancel, handleConfirm} = this;
         return (
             <DeleteJobModal
@@ -67,8 +65,7 @@ export default connect(
     (state) => ({
         visible: state.base.getIn(['modal', 'deleteJob']),
         jobName: state.base.getIn(['deleteJobModal', 'jobName']),
-        groupName: state.base.getIn(['deleteJobModal', 'groupName']),
-        // visibleNotification: state.base.getIn(['notification', 'enable']),
+        groupName: state.base.getIn(['deleteJobModal', 'groupName'])
     }),
     (dispatch) => ({
         BaseActions: bindActionCreators(baseActions, dispatch),
