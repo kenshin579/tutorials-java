@@ -69,6 +69,6 @@ export default connect(
     }),
     (dispatch) => ({
         BaseActions: bindActionCreators(baseActions, dispatch),
-        JobActions: bindActionCreators(jobActions, dispatch),
+        JobActions: bindActionCreators(jobActions, dispatch)
     })
 )(withRouter(DeleteJobModalContainer));

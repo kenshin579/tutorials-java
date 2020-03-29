@@ -23,10 +23,11 @@ export default handleActions({
     ...pender({
         type: ADD_JOB,
         onSuccess: (state, action) => {
-            const {} = action.payload.data;
-            console.log('action.payload1', action.payload);
-            // return state.set('postId', _id);
-            return;
+            const {jobName, groupName, cronExpression} = action.payload.data;
+            console.log('action.payload', action.payload);
+            return state.set('jobName', jobName)
+                .set('groupName', groupName)
+                .set('cronExpression', cronExpression);
         }
     })
 }, initialState)

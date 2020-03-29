@@ -6,7 +6,7 @@ import JobList from "../../components/schedule/JobList";
 import JobAlert from "../../components/notification/JobAlert";
 
 class JobListContainer extends Component {
-    handleModal = (jobName, groupName) => {
+    handleDeleteModal = (jobName, groupName) => {
         const {BaseActions} = this.props;
         BaseActions.showModal('deleteJob');
         BaseActions.updateDeleteJobModal({
@@ -15,14 +15,19 @@ class JobListContainer extends Component {
         });
     };
 
+    handleAddModal = () => {
+        const {BaseActions} = this.props;
+        BaseActions.showModal('addJob');
+    };
+
     handleNotification = () => {
         const {BaseActions} = this.props;
         BaseActions.hideNotification();
     };
 
     render() {
-        const {data, visibleNotification, message, handleNotification} = this.props;
-        const {handleModal} = this;
+        const {data, visibleNotification, message} = this.props;
+        const {handleDeleteModal, handleAddModal, handleNotification} = this;
 
         return (
             <div>
@@ -33,7 +38,8 @@ class JobListContainer extends Component {
                 />
                 <JobList
                     jobs={data.jobs}
-                    onDeleteModal={handleModal}
+                    onDeleteModal={handleDeleteModal}
+                    onAddModal={handleAddModal}
                 />
             </div>
         );

@@ -8,8 +8,7 @@ const cx = classNames.bind(styles);
 
 class JobList extends Component {
     render() {
-        const {jobs, onDeleteModal} = this.props;
-
+        const {jobs, onAddModal, onDeleteModal} = this.props;
         const jobListView = [];
 
         jobs.map(job => {
@@ -30,14 +29,9 @@ class JobList extends Component {
                 </Card.Header>
                 <Card.Body>
                     <div className={cx('text-right mb-3')}>
-                        <Button variant="primary">
+                        <Button variant="primary" onClick={onAddModal}>
                             새 Job 추가
                         </Button>
-                        {/*<SchedulerAddModal*/}
-                        {/*    enableModal={enableModal}*/}
-                        {/*    onClose={hideModal}*/}
-                        {/*    onSubmit={onSubmit}*/}
-                        {/*/>*/}
                     </div>
                     <Table responsive striped hover>
                         <thead className={cx("thread-light")}>
