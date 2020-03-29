@@ -37,38 +37,7 @@ class ScheduleContainer extends Component {
         }
     };
 
-    handleAddJob = (e) => {
-        console.log('submit');
-        // e.preventDefault();
-        // const form = e.target;
-        // const formData = new FormData(form);
-        // const jobName = formData.get('jobName');
-        // const groupName = formData.get('groupName');
-        // const cronExpression = formData.get('cronExpression');
-        // const startDateAt = formData.get('startDateAt');
-        // const repeatIntervalInSeconds = formData.get('repeatIntervalInSeconds');
-        // const repeatCount = formData.get('repeatCount');
-        //
-        // //todo: 인자가 너무 많다. 객체로 넘기던지 해야 할 듯하다
-        // SchedulerService.addJob(jobName, groupName, cronExpression, startDateAt, repeatIntervalInSeconds, repeatCount)
-        //     .then(response => {
-        //             this.setState({message: `${jobName}-${groupName} 성공적으로 추가되었습니다.`});
-        //         }
-        //     ).catch(error => {
-        //     let responseMsg = JSON.parse(error.request.response);
-        //     this.setState({message: `${jobName}-${groupName} - ${responseMsg.message}`});
-        //     console.error('error occurred while adding the job - ', responseMsg.message, error);
-        // }).then(() => {
-        //         this.refreshSchedules();
-        //         this.showNotification();
-        //     }
-        // );
-        // this.hideModal();
-    };
-
     render() {
-        const {handleDeleteJob, handleAddJob} = this;
-
         const {data, loading} = this.props;
         if (loading) {
             return null;
