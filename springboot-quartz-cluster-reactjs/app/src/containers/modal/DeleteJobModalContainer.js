@@ -3,9 +3,11 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as baseActions from 'store/modules/base';
 import * as jobActions from 'store/modules/job';
+import * as scheduleListActions from "store/modules/list";
 import {withRouter} from 'react-router-dom';
 import DeleteJobModal from "../../components/modal/DeleteJobModal";
 import {DELAY_TIME_FOR_MESSAGE} from "../../constants";
+
 
 class DeleteJobModalContainer extends Component {
     handleCancel = () => {
@@ -39,13 +41,13 @@ class DeleteJobModalContainer extends Component {
             console.error('error occurred while deleting the job - ', responseMsg.message, error);
         }
 
-        history.push('/');
         BaseActions.hideModal('deleteJob');
         BaseActions.updateDeleteJobModal({
             jobName: '',
             groupName: ''
         });
         this.showNotification();
+        history.push('/');
     };
 
     render() {
@@ -69,6 +71,7 @@ export default connect(
     }),
     (dispatch) => ({
         BaseActions: bindActionCreators(baseActions, dispatch),
-        JobActions: bindActionCreators(jobActions, dispatch)
+        JobActions: bindActionCreators(jobActions, dispatch),
+        ScheduleListActions: bindActionCreators(scheduleListActions, dispatch)
     })
 )(withRouter(DeleteJobModalContainer));
