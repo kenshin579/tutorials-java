@@ -41,7 +41,7 @@ public class ScheduleControllerTest {
 
         mvc.perform(post(BASE_PATH + "/job")
                 .param("jobName", "job1")
-                .param("jobGroup", "testGroup"))
+                .param("groupName", "testGroup"))
                 .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.success", is(true)));
@@ -58,7 +58,7 @@ public class ScheduleControllerTest {
 
         mvc.perform(delete(BASE_PATH + "/job")
                 .param("jobName", "job1")
-                .param("jobGroup", "testGroup"))
+                .param("groupName", "testGroup"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success", is(true)));
@@ -75,7 +75,7 @@ public class ScheduleControllerTest {
 
         mvc.perform(put(BASE_PATH + "/job/update")
                 .param("jobName", "job1")
-                .param("jobGroup", "testGroup"))
+                .param("groupName", "testGroup"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success", is(true)));
@@ -108,7 +108,7 @@ public class ScheduleControllerTest {
 
         mvc.perform(put(BASE_PATH + "/job/pause")
                 .param("jobName", "job1")
-                .param("jobGroup", "testGroup"))
+                .param("groupName", "testGroup"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success", is(true)));
@@ -126,7 +126,7 @@ public class ScheduleControllerTest {
 
         mvc.perform(put(BASE_PATH + "/job/resume")
                 .param("jobName", "job1")
-                .param("jobGroup", "testGroup"))
+                .param("groupName", "testGroup"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success", is(true)));

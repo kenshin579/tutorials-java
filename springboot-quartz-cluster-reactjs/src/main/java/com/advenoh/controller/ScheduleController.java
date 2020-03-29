@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
@@ -48,10 +49,12 @@ public class ScheduleController {
     }
 
     @RequestMapping(value = "/job", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteScheduleJob(@ModelAttribute JobRequest jobRequest) {
-        log.info("jobRequest : {}", jobRequest);
+    public ResponseEntity<?> deleteScheduleJob(
+            @RequestParam(name = "jobName") String jobName,
+            @RequestParam(name = "groupName") String groupName) {
+        log.info("jobName : {} groupName : {}", jobName, groupName);
 
-        JobKey jobKey = new JobKey(jobRequest.getJobName(), jobRequest.getGroupName());
+        JobKey jobKey = new JobKey(jobName, groupName);
         if (scheduleService.isJobExists(jobKey)) {
             if (!scheduleService.isJobRunning(jobKey)) {
                 scheduleService.deleteJob(jobKey);
