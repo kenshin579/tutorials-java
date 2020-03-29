@@ -1,6 +1,5 @@
 package com.advenoh.controller;
 
-import com.advenoh.dto.scheduler.StatsResponse;
 import com.advenoh.dto.scheduler.StatusResponse;
 import com.advenoh.job.SimpleJob;
 import com.advenoh.service.ScheduleService;
@@ -28,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebMvcTest(ScheduleController.class)
 public class ScheduleControllerTest {
-    private final String BASE_PATH = "/scheduler";
+    private final String BASE_PATH = "/api/scheduler";
     @Autowired
     private MockMvc mvc;
 
@@ -42,7 +41,7 @@ public class ScheduleControllerTest {
 
         mvc.perform(post(BASE_PATH + "/job")
                 .param("jobName", "job1")
-                .param("jobGroup", "testGroup"))
+                .param("groupName", "testGroup"))
                 .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.success", is(true)));
@@ -59,7 +58,7 @@ public class ScheduleControllerTest {
 
         mvc.perform(delete(BASE_PATH + "/job")
                 .param("jobName", "job1")
-                .param("jobGroup", "testGroup"))
+                .param("groupName", "testGroup"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success", is(true)));
@@ -76,7 +75,7 @@ public class ScheduleControllerTest {
 
         mvc.perform(put(BASE_PATH + "/job/update")
                 .param("jobName", "job1")
-                .param("jobGroup", "testGroup"))
+                .param("groupName", "testGroup"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success", is(true)));
@@ -88,9 +87,7 @@ public class ScheduleControllerTest {
     @Test
     public void getAllJobs() throws Exception {
         StatusResponse statsResponse = StatusResponse.builder()
-                .stats(StatsResponse.builder()
-                        .numOfAllJobs(1)
-                        .build())
+                .numOfAllJobs(1)
                 .build();
 
         given(scheduleService.getAllJobs()).willReturn(statsResponse);
@@ -98,7 +95,7 @@ public class ScheduleControllerTest {
         mvc.perform(get(BASE_PATH + "/jobs"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.stats.numOfAllJobs", is(1)));
+                .andExpect(jsonPath("$.numOfAllJobs", is(1)));
 
         verify(scheduleService).getAllJobs();
     }
@@ -111,7 +108,7 @@ public class ScheduleControllerTest {
 
         mvc.perform(put(BASE_PATH + "/job/pause")
                 .param("jobName", "job1")
-                .param("jobGroup", "testGroup"))
+                .param("groupName", "testGroup"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success", is(true)));
@@ -129,7 +126,7 @@ public class ScheduleControllerTest {
 
         mvc.perform(put(BASE_PATH + "/job/resume")
                 .param("jobName", "job1")
-                .param("jobGroup", "testGroup"))
+                .param("groupName", "testGroup"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success", is(true)));

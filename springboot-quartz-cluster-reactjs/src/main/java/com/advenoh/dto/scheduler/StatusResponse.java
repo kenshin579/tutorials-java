@@ -12,6 +12,8 @@ import java.util.List;
 @ToString
 @Builder
 public class StatusResponse {
-	private StatsResponse stats;
+	private int numOfAllJobs;
+	private int numOfGroups;
+	private int numOfRunningJobs;
 	private List<JobResponse> jobs;
 }
