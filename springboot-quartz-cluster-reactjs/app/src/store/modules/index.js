@@ -1,10 +1,12 @@
 import {combineReducers} from 'redux';
 import list from './list'
-import schedule from './schedule'
+import job from './job'
+import base from './base'
 import {penderReducer} from 'redux-pender';
 
 export default combineReducers({
+    base,
     list,
-    schedule,
+    job,
     pender: penderReducer
 });

@@ -8,8 +8,7 @@ const cx = classNames.bind(styles);
 
 class JobList extends Component {
     render() {
-        const {jobs} = this.props;
-        console.log('JobList :: this.props', this.props);
+        const {jobs, onDeleteModal} = this.props;
 
         const jobListView = [];
 
@@ -17,7 +16,9 @@ class JobList extends Component {
             jobListView.push(
                 <JobItem
                     key={job.jobName}
-                    job={job}>
+                    job={job}
+                    onDeleteModal={onDeleteModal}
+                >
                 </JobItem>
             );
         });

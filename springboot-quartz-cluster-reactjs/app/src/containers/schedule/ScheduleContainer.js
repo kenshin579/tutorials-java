@@ -3,8 +3,12 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as scheduleListActions from 'store/modules/list';
 import StatusList from "../../components/schedule/StatusList";
-import JobList from "../../components/schedule/JobList";
 import {MAX_INTERVAL_SECONDS} from "../../constants";
+import classNames from "classnames/bind";
+import styles from "../../components/schedule/JobList/JobList.scss";
+import JobListContainer from "../job/JobListContainer";
+
+const cx = classNames.bind(styles);
 
 class ScheduleContainer extends Component {
     componentDidMount() {
@@ -16,9 +20,15 @@ class ScheduleContainer extends Component {
         clearInterval(this.interval);
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        // 페이지/태그가 바뀔 때 리스트를 다시 불러옵니다.
+        if (prevProps.data.jobs.length !== this.props.data.jobs.length) {
+            this.loadData();
+        }
+    }
+
     loadData = async () => {
         const {ScheduleListActions} = this.props;
-
         try {
             const response = await ScheduleListActions.getScheduleInfo();
             console.log('response', response);
@@ -27,7 +37,37 @@ class ScheduleContainer extends Component {
         }
     };
 
+    handleAddJob = (e) => {
+        console.log('submit');
+        // e.preventDefault();
+        // const form = e.target;
+        // const formData = new FormData(form);
+        // const jobName = formData.get('jobName');
+        // const groupName = formData.get('groupName');
+        // const cronExpression = formData.get('cronExpression');
+        // const startDateAt = formData.get('startDateAt');
+        // const repeatIntervalInSeconds = formData.get('repeatIntervalInSeconds');
+        // const repeatCount = formData.get('repeatCount');
+        //
+        // //todo: 인자가 너무 많다. 객체로 넘기던지 해야 할 듯하다
+        // SchedulerService.addJob(jobName, groupName, cronExpression, startDateAt, repeatIntervalInSeconds, repeatCount)
+        //     .then(response => {
+        //             this.setState({message: `${jobName}-${groupName} 성공적으로 추가되었습니다.`});
+        //         }
+        //     ).catch(error => {
+        //     let responseMsg = JSON.parse(error.request.response);
+        //     this.setState({message: `${jobName}-${groupName} - ${responseMsg.message}`});
+        //     console.error('error occurred while adding the job - ', responseMsg.message, error);
+        // }).then(() => {
+        //         this.refreshSchedules();
+        //         this.showNotification();
+        //     }
+        // );
+        // this.hideModal();
+    };
+
     render() {
+        const {handleDeleteJob, handleAddJob} = this;
 
         const {data, loading} = this.props;
         if (loading) {
@@ -40,9 +80,9 @@ class ScheduleContainer extends Component {
         };
 
         return (
-            <div>
+            <div className={cx('container-fluid')}>
                 <StatusList jobStatus={jobStatus}/>
-                <JobList jobs={data.jobs}/>
+                <JobListContainer/>
             </div>
         );
     }
