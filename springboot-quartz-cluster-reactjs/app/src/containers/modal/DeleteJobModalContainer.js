@@ -3,9 +3,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as baseActions from 'store/modules/base';
 import * as jobActions from 'store/modules/job';
-import * as scheduleListActions from "store/modules/list";
-import {withRouter} from 'react-router-dom';
-import DeleteJobModal from "../../components/modal/DeleteJobModal";
+import * as scheduleListActions from 'store/modules/list';
+import DeleteJobModal from "components/modal/DeleteJobModal";
 import {DELAY_TIME_FOR_MESSAGE} from "../../constants";
 
 
@@ -13,10 +12,6 @@ class DeleteJobModalContainer extends Component {
     handleCancel = () => {
         const {BaseActions} = this.props;
         BaseActions.hideModal('deleteJob');
-        BaseActions.updateDeleteJobModal({
-            jobName: '',
-            groupName: ''
-        });
     };
 
     showNotification = () => {
@@ -29,7 +24,7 @@ class DeleteJobModalContainer extends Component {
     };
 
     handleConfirm = async () => {
-        const {BaseActions, JobActions, jobName, groupName, history} = this.props;
+        const {BaseActions, JobActions, ScheduleListActions, jobName, groupName} = this.props;
 
         try {
             // 삭제 후, 모달 닫고 홈페이지로 이동
@@ -42,12 +37,14 @@ class DeleteJobModalContainer extends Component {
         }
 
         BaseActions.hideModal('deleteJob');
-        BaseActions.updateDeleteJobModal({
-            jobName: '',
-            groupName: ''
-        });
         this.showNotification();
-        history.push('/');
+
+        try {
+            const response = await ScheduleListActions.getScheduleInfo();
+            console.log('deleteJob :: response', response);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     render() {
@@ -74,4 +71,4 @@ export default connect(
         JobActions: bindActionCreators(jobActions, dispatch),
         ScheduleListActions: bindActionCreators(scheduleListActions, dispatch)
     })
-)(withRouter(DeleteJobModalContainer));
+)(DeleteJobModalContainer);

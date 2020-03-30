@@ -4,8 +4,8 @@ import {bindActionCreators} from 'redux';
 import * as baseActions from 'store/modules/base';
 import * as jobActions from "store/modules/job";
 import AddJobModal from "components/modal/AddJobModal";
-import {withRouter} from "react-router-dom";
 import {DELAY_TIME_FOR_MESSAGE} from "../../constants";
+import * as scheduleListActions from "../../store/modules/list";
 
 
 class AddJobModalContainer extends Component {
@@ -30,7 +30,7 @@ class AddJobModalContainer extends Component {
         const jobName = formData.get('jobName');
         const groupName = formData.get('groupName');
 
-        const {BaseActions, JobActions, history} = this.props;
+        const {BaseActions, JobActions, ScheduleListActions} = this.props;
 
         try {
             await JobActions.addJob(formData);
@@ -40,9 +40,15 @@ class AddJobModalContainer extends Component {
             BaseActions.updateNotificationMessage({message: `${jobName}-${groupName} - ${responseMsg.message} : 추가 실패하였습니다.`});
             console.error('error occurred while adding the job - ', responseMsg.message, error);
         }
-        history.push('/');
         BaseActions.hideModal('addJob');
         this.showNotification();
+
+        try {
+            const response = await ScheduleListActions.getScheduleInfo();
+            console.log('addJob :: response', response);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     render() {
@@ -65,6 +71,7 @@ export default connect(
     }),
     (dispatch) => ({
         BaseActions: bindActionCreators(baseActions, dispatch),
-        JobActions: bindActionCreators(jobActions, dispatch)
+        JobActions: bindActionCreators(jobActions, dispatch),
+        ScheduleListActions: bindActionCreators(scheduleListActions, dispatch)
     })
-)(withRouter(AddJobModalContainer));
+)(AddJobModalContainer);
