@@ -22,7 +22,7 @@ class ScheduleContainer extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         // 페이지/태그가 바뀔 때 리스트를 다시 불러옵니다.
-        if (prevProps.data.jobs.length !== this.props.data.jobs.length) {
+        if (prevProps.data.numOfAllJobs !== this.props.data.numOfAllJobs) {
             this.loadData();
         }
     }
