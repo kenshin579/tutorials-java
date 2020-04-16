@@ -71,6 +71,7 @@ public class QueryDSLTest extends QuerydslRepositorySupport {
         JPQLQuery jpqlQuery = from(member);
         jpqlQuery.where(member.name.eq("nklee"));
         List<DslMember> result = jpqlQuery.fetch();
+        log.info("result : {}", result);
         assertThat(1).isEqualTo(result.size());
     }
 

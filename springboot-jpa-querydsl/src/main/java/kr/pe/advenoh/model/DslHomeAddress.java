@@ -1,6 +1,7 @@
 package kr.pe.advenoh.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Data
+@NoArgsConstructor
 @ToString(exclude = "member")
 @Entity
 @Table(name = "DSL_HOME_ADDRESS")
