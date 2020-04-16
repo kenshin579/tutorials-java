@@ -1,6 +1,7 @@
 package kr.pe.advenoh.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "DSL_MEMBER")
 public class DslMember {
