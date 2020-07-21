@@ -89,6 +89,14 @@
                 <module>spring-rabbitmq-xml</module>
                 <module>spring-rabbitmq-javaconfig</module>
                 <module>spring-poi-excel-download</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>springboot</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
                 <module>springboot-messaging-socketjs-stomp</module>
                 <module>springboot-messaging-rabbitmq</module>
                 <!--<module>springboot-security-junit-test-withmockuser</module>-->
