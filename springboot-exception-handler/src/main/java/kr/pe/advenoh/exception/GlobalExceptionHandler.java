@@ -19,6 +19,27 @@ import java.util.List;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(ServletRequestBindingException.class)
+    @ResponseBody
+    public ResponseEntity<?> handleRequestBindingException(HttpServletRequest request, HttpServletResponse response, Exception ex) {
+        log.error("[exception] invalid");
+        List<String> details = new ArrayList<>();
+        details.add(ex.getLocalizedMessage());
+        ErrorResponse error = new ErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), details);
+        return new ResponseEntity<Object>(error, error.getStatus());
+    }
+//
+//    @ExceptionHandler(MethodArgumentNotValidException.class)
+//    @ResponseBody
+//    public ResponseEntity<?> handleMethodArgumentNotValidExceptionException(HttpServletRequest request, HttpServletResponse response, Exception ex) {
+//        log.error("[exception] invalid");
+//        List<String> details = new ArrayList<>();
+//        details.add(ex.getLocalizedMessage());
+//        ErrorResponse error = new ErrorResponse(HttpStatus.BAD_REQUEST, StudentExceptionCode.STUDENT_REQUEST_INVALID.getMessage(),
+//                StudentExceptionCode.STUDENT_REQUEST_INVALID.getCode(), details);
+//        return new ResponseEntity<Object>(error, error.getStatus());
+//    }
+
     @ExceptionHandler({Exception.class})
     @ResponseBody
     public ResponseEntity<?> handleException(HttpServletRequest request, HttpServletResponse response, Exception ex) {
