@@ -1,6 +1,7 @@
 package kr.pe.advenoh.model.entity;
 
 import kr.pe.advenoh.model.audit.DateAudit;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,5 +29,10 @@ public class Student extends DateAudit {
 
     private String address;
 
-
+    @Builder
+    public Student(String name, String mobileNumber, String address) {
+        this.name = name;
+        this.mobileNumber = mobileNumber;
+        this.address = address;
+    }
 }
