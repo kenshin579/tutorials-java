@@ -3,14 +3,13 @@ package kr.pe.advenoh.exception;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public enum SprinkleExceptionCode implements ExceptionCode {
+public enum StudentExceptionCode implements ExceptionCode {
     /*
-    system      : 10000
+    student     : 10000
     */
 
-    TOKEN_EXPIRED("10000", "토큰이 유효하지 않습니다"),
-    TOKEN_NOT_FOUND("10010", "존재하지 않는 토큰입니다"),
-    TOKEN_EXPIRED_FOR_KMONEY_QUERY("10020", "최대 조회시간이 지나서 정보를 조회할 수 없습니다"),
+    STUDENT_NOT_FOUND("10000", "요청하신 학생은 존재하지 않습니다"),
+    STUDENT_REQUEST_INVALID("10010", "요청하신 값이 잘못 되었습니다. 입력 값을 확인해주세요"),
     ;
 
     private String code;

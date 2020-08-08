@@ -21,11 +21,11 @@ public class ApiException extends RuntimeException {
         this.code = code;
     }
 
-    public ApiException(SprinkleExceptionCode exceptionCode, String... arg) {
+    public ApiException(StudentExceptionCode exceptionCode, String... arg) {
         this(exceptionCode.getCode(), exceptionCode.getMessage(arg));
     }
 
-    public ApiException(HttpStatus httpStatus, SprinkleExceptionCode exceptionCode, String... arg) {
+    public ApiException(HttpStatus httpStatus, StudentExceptionCode exceptionCode, String... arg) {
         this(exceptionCode.getCode(), exceptionCode.getMessage(arg));
         this.httpStatus = httpStatus;
     }
