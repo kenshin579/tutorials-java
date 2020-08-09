@@ -68,7 +68,6 @@ class StudentControllerTest implements TestConfig {
                 .andExpect(jsonPath("$").isArray());
     }
 
-    //todo: 작업이 필요함
     @Test
     @Transactional
     void addStudent_request_값이_잘못된_경우() throws Exception {
@@ -76,7 +75,8 @@ class StudentControllerTest implements TestConfig {
                 .param("mobileNumber", mobileNumber)
                 .param("address", address))
                 .andDo(print())
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message", is(StudentExceptionCode.STUDENT_REQUEST_INVALID.getMessage())));
     }
 
     @Test
