@@ -11,7 +11,8 @@ public class ComparablePlayer implements Comparable<ComparablePlayer> {
 	private String name;
 	private int score;
 
-	@Override public int compareTo(ComparablePlayer o) {
-		return o.getScore() - getScore();
+	@Override
+	public int compareTo(ComparablePlayer o) {
+		return o.getScore() - this.getScore();
 	}
 }

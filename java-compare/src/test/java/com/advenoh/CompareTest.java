@@ -2,6 +2,7 @@ package com.advenoh;
 
 import com.advenoh.model.ComparablePlayer;
 import com.advenoh.model.ComparatorPlayer;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Slf4j
 public class CompareTest {
 	List<ComparablePlayer> comparablePlayers;
 
@@ -64,5 +66,23 @@ public class CompareTest {
 				.collect(Collectors.toList());
 
 		assertThat(sortedPlayers).isSorted();
+	}
+
+	@Test
+	public void sortByScoreThenName() {
+		List<ComparatorPlayer> players = new ArrayList<>();
+		players.add(new ComparatorPlayer("Chloe", 1090));
+		players.add(new ComparatorPlayer("Dale", 982));
+		players.add(new ComparatorPlayer("Alice", 899));
+		players.add(new ComparatorPlayer("Bob", 982));
+		players.add(new ComparatorPlayer("Eric", 1018));
+
+		List<ComparatorPlayer> sortedPlayers = players.stream()
+				//.sorted((a, b) -> ComparatorPlayer.compareByNameThenScore(a, b))
+				.sorted(ComparatorPlayer::compareByScoreThenName)
+				.collect(Collectors.toList());
+
+		assertThat(sortedPlayers).isSortedAccordingTo(ComparatorPlayer::compareByScoreThenName);
+
 	}
 }
