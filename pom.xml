@@ -42,6 +42,7 @@
                 <module>java-concurrency-atomic</module>
                 <module>java-ssl-keystore-import-test</module>
                 <module>java-compare</module>
+                <module>java-ifabsent</module>
                 <module>custom-annotation</module>
                 <module>jayway-jsonpath</module>
                 <module>lombok</module>
