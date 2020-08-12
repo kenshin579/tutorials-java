@@ -35,26 +35,27 @@
                 <module>java-prepost-interface</module>
                 <module>java-final</module>
                 <module>java-optional</module>
-                <module>custom-annotation</module>
+                <module>java-completablefuture</module>
                 <module>java-class-loader</module>
+                <module>java-file-io</module>
+                <module>java-concurrency-countdownlatch</module>
+                <module>java-concurrency-atomic</module>
+                <module>java-ssl-keystore-import-test</module>
+                <module>java-compare</module>
+                <module>custom-annotation</module>
                 <module>jayway-jsonpath</module>
                 <module>lombok</module>
                 <module>json-jackson</module>
                 <module>amazon-s3</module>
-                <module>java-completablefuture</module>
                 <module>zencoder</module>
-                <module>java-ssl-keystore-import-test</module>
                 <module>assertj-unit-test</module>
                 <module>interface-callback</module>
-                <module>java-file-io</module>
                 <module>junit-mockito</module>
                 <module>retry-exception-handler</module>
                 <module>junit-powermock</module>
                 <module>junit-rule</module>
                 <module>junit-unit-test</module>
                 <module>rabbitmq-amqp-client</module>
-                <module>java-concurrency-countdownlatch</module>
-                <module>java-concurrency-atomic</module>
                 <module>google-guava</module>
                 <module>scheduler-quartz</module>
                 <module>scheduler-quartz-mysql</module>
