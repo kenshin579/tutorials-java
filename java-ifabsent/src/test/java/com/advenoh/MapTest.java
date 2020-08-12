@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * http://tech.javacafe.io/2018/12/03/HashMap/
  */
 @Slf4j
-public class IfAbsentTest {
+public class MapTest {
     private Map<Integer, BigInteger> memoizeHashMap;
 
     @Before
@@ -88,5 +88,52 @@ public class IfAbsentTest {
 
         assertThat(stringLengthMap.putIfAbsent("John2", 10)).isNull(); //없는 경우, null로 반환하고 map에 저장함
         assertThat(stringLengthMap.size()).isEqualTo(2);
+    }
+
+    @Test
+    public void computeIfPresent() {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("john", 20);
+        map.put("paul", 30);
+        map.put("peter", 40);
+
+        map.computeIfPresent("kelly", (k, v) -> v + 10); //{john=20, paul=30, peter=40} //kelly not present
+        assertThat(map.get("kelly")).isNull();
+
+        map.computeIfPresent("peter", (k, v) -> v + 10); //{john=20, paul=30, peter=50} // peter present, so increase the value
+        assertThat(map.get("peter")).isEqualTo(40 + 10);
+    }
+
+    @Test
+    public void compute() {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("john", 20);
+        map.put("paul", 30);
+        map.put("peter", 40);
+
+        map.compute("peter", (k, v) -> v + 50); //{john=20, paul=30, peter=90} //Increase the value
+        assertThat(map.get("peter")).isEqualTo(40 + 50);
+    }
+
+    @Test
+    public void merge() {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("john", 20);
+        map.put("paul", 30);
+        map.put("peter", 40);
+
+        //Adds the key-value pair to the map, if key is not present or value for the key is null
+        map.merge("kelly", 50, (k, v) -> map.get("john") + 10); // {john=20, paul=30, peter=40, kelly=50}
+        assertThat(map.get("kelly")).isEqualTo(50);
+        assertThat(map.size()).isEqualTo(4);
+
+        //Replaces the value with the newly computed value, if the key is present
+        map.merge("peter", 50, (k, v) -> map.get("john") + 10); //{john=20, paul=30, peter=30, kelly=50}
+        assertThat(map.get("peter")).isEqualTo(30);
+
+        //Key is removed from the map , if new value computed is null
+        map.merge("peter", 30, (k, v) -> map.get("nancy")); //{john=20, paul=30, kelly=50}
+        assertThat(map.get("peter")).isNull();
+        assertThat(map.size()).isEqualTo(3);
     }
 }
