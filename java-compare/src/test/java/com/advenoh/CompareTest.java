@@ -13,6 +13,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CompareTest {
 
+	/**
+	 * https://www.daleseo.com/java-comparable-comparator/
+	 */
 	@Test
 	public void comparableTest() {
 		List<ComparablePlayer> players = new ArrayList<>();
@@ -22,16 +25,9 @@ public class CompareTest {
 		players.add(new ComparablePlayer("Dale", 982));
 		players.add(new ComparablePlayer("Eric", 1018));
 
-		Comparator<ComparablePlayer> comparator = new Comparator<ComparablePlayer>() {
-			@Override
-			public int compare(ComparablePlayer a, ComparablePlayer b) {
-				return b.getScore() - a.getScore();
-			}
-		};
-
 		Collections.sort(players);
 
-		assertThat(players).isSortedAccordingTo(comparator);
+		assertThat(players).isSorted();
 	}
 
 	@Test
