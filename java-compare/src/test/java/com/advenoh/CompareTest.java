@@ -60,6 +60,23 @@ public class CompareTest {
 	}
 
 	@Test
+	public void comparator_lambda_Test() {
+		List<ComparatorPlayer> players = new ArrayList<>();
+		players.add(new ComparatorPlayer("Alice", 899));
+		players.add(new ComparatorPlayer("Bob", 982));
+		players.add(new ComparatorPlayer("Chloe", 1090));
+		players.add(new ComparatorPlayer("Dale", 982));
+		players.add(new ComparatorPlayer("Eric", 1018));
+
+		Comparator<ComparatorPlayer> comparator = (a, b) -> b.getScore() - a.getScore();
+
+		Collections.sort(players, comparator);
+
+		assertThat(players).isSortedAccordingTo(comparator);
+	}
+
+
+	@Test
 	public void streamComparableSort() {
 		List<ComparablePlayer> sortedPlayers = comparablePlayers.stream()
 				.sorted((a, b) -> b.getScore() - a.getScore())
