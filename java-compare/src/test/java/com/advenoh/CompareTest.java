@@ -2,32 +2,38 @@ package com.advenoh;
 
 import com.advenoh.model.ComparablePlayer;
 import com.advenoh.model.ComparatorPlayer;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CompareTest {
+	List<ComparablePlayer> comparablePlayers;
+
+	@Before
+	public void setUp() {
+		comparablePlayers = new ArrayList<>();
+		comparablePlayers.add(new ComparablePlayer("Alice", 899));
+		comparablePlayers.add(new ComparablePlayer("Bob", 982));
+		comparablePlayers.add(new ComparablePlayer("Chloe", 1090));
+		comparablePlayers.add(new ComparablePlayer("Dale", 982));
+		comparablePlayers.add(new ComparablePlayer("Eric", 1018));
+	}
 
 	/**
 	 * https://www.daleseo.com/java-comparable-comparator/
 	 */
 	@Test
 	public void comparableTest() {
-		List<ComparablePlayer> players = new ArrayList<>();
-		players.add(new ComparablePlayer("Alice", 899));
-		players.add(new ComparablePlayer("Bob", 982));
-		players.add(new ComparablePlayer("Chloe", 1090));
-		players.add(new ComparablePlayer("Dale", 982));
-		players.add(new ComparablePlayer("Eric", 1018));
+		Collections.sort(comparablePlayers);
 
-		Collections.sort(players);
-
-		assertThat(players).isSorted();
+		assertThat(comparablePlayers).isSorted();
 	}
 
 	@Test
@@ -49,5 +55,14 @@ public class CompareTest {
 		Collections.sort(players, comparator);
 
 		assertThat(players).isSortedAccordingTo(comparator);
+	}
+
+	@Test
+	public void streamComparableSort() {
+		List<ComparablePlayer> sortedPlayers = comparablePlayers.stream()
+				.sorted((a, b) -> b.getScore() - a.getScore())
+				.collect(Collectors.toList());
+
+		assertThat(sortedPlayers).isSorted();
 	}
 }
