@@ -65,12 +65,17 @@ public class IfAbsentTest {
         log.info("stringLengthMap1 : {}", stringLengthMap);
 
         assertThat(stringLengthMap.computeIfAbsent("John", key -> key.length())).isEqualTo(5); //존재하면 value값을 반환함
+        assertThat(stringLengthMap.size()).isEqualTo(1);
         log.info("stringLengthMap2 : {}", stringLengthMap);
 
         //없으면 2번째 인자 함수를 실행한 결과를 반환하고 map에도 추가가 된다
-        assertThat(stringLengthMap.computeIfAbsent("JohnNon", key -> key.length())).isEqualTo("JohnNon".length());
-        assertThat(stringLengthMap.get("JohnNon")).isNotNull();
+        assertThat(stringLengthMap.computeIfAbsent("John2", key -> key.length())).isEqualTo("John2".length());
+        assertThat(stringLengthMap.get("John2")).isNotNull();
+        assertThat(stringLengthMap.size()).isEqualTo(2);
         log.info("stringLengthMap3 : {}", stringLengthMap);
+
+        assertThat(stringLengthMap.computeIfAbsent("John3", key -> null)).isNull();
+        assertThat(stringLengthMap.size()).isEqualTo(2);
     }
 
     @Test
@@ -81,7 +86,7 @@ public class IfAbsentTest {
         assertThat(stringLengthMap.putIfAbsent("John", 10)).isEqualTo(5); //존재하는 경우, value값을 반환한다
         assertThat(stringLengthMap.size()).isEqualTo(1);
 
-        assertThat(stringLengthMap.putIfAbsent("JohnNon", 10)).isNull(); //없는 경우, null로 반환하고 map에 저장함
+        assertThat(stringLengthMap.putIfAbsent("John2", 10)).isNull(); //없는 경우, null로 반환하고 map에 저장함
         assertThat(stringLengthMap.size()).isEqualTo(2);
     }
 }
