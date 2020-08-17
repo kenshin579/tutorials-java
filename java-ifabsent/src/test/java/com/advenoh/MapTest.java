@@ -57,9 +57,24 @@ public class MapTest {
                 (key) -> fibonacci(n - 1).add(fibonacci(n - 2)));
     }
 
+    @Test
+    public void computeIfAbsent1() {
+        Map<String, Integer> stringLengthMap1 = new HashMap<>();
+        Map<String, Integer> stringLengthMap2 = new HashMap<>();
+        stringLengthMap1.put("John1", 5);
+
+        Integer value1 = stringLengthMap1.computeIfAbsent("John1", String::length);
+        assertThat(value1).isEqualTo(5); //존재하면 value값을 반환함
+
+        if (!stringLengthMap2.containsKey("John2")) {
+            stringLengthMap2.put("John2", 15);
+        }
+        Integer value2 = stringLengthMap2.get("John2");
+        assertThat(value2).isEqualTo(15);
+    }
 
     @Test
-    public void computeIfAbsent() {
+    public void computeIfAbsent2() {
         Map<String, Integer> stringLengthMap = new HashMap<>();
         stringLengthMap.put("John", 5);
         log.info("stringLengthMap1 : {}", stringLengthMap);
