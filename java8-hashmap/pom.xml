@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.advenoh</groupId>
-  <artifactId>java-ifabsent</artifactId>
+  <artifactId>java8-hashmap</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>java-ifabsent</name>
+  <name>java8-hashmap</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 

@@ -32,6 +32,7 @@
                 <module>java10</module>
                 <module>java9</module>
                 <module>java8</module>
+                <module>java8-hashmap</module>
                 <module>java-prepost-interface</module>
                 <module>java-final</module>
                 <module>java-optional</module>
@@ -42,7 +43,6 @@
                 <module>java-concurrency-atomic</module>
                 <module>java-ssl-keystore-import-test</module>
                 <module>java-compare</module>
-                <module>java-ifabsent</module>
                 <module>custom-annotation</module>
                 <module>jayway-jsonpath</module>
                 <module>lombok</module>
