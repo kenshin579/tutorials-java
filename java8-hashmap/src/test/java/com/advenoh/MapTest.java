@@ -58,51 +58,48 @@ public class MapTest {
     }
 
     @Test
-    public void computeIfAbsent1() {
-        Map<String, Integer> stringLengthMap1 = new HashMap<>();
-        Map<String, Integer> stringLengthMap2 = new HashMap<>();
-        stringLengthMap1.put("John1", 5);
+    public void no_computeIfAbsent_method() {
+        Map<String, Integer> map1 = new HashMap<>();
+        Map<String, Integer> map2 = new HashMap<>();
+        map1.put("John1", 5);
 
-        Integer value1 = stringLengthMap1.computeIfAbsent("John1", String::length);
+        Integer value1 = map1.computeIfAbsent("John1", String::length);
         assertThat(value1).isEqualTo(5); //존재하면 value값을 반환함
 
-        if (!stringLengthMap2.containsKey("John2")) {
-            stringLengthMap2.put("John2", 15);
+        if (!map2.containsKey("John2")) {
+            map2.put("John2", 15);
         }
-        Integer value2 = stringLengthMap2.get("John2");
+        Integer value2 = map2.get("John2");
         assertThat(value2).isEqualTo(15);
     }
 
     @Test
-    public void computeIfAbsent2() {
-        Map<String, Integer> stringLengthMap = new HashMap<>();
-        stringLengthMap.put("John", 5);
-        log.info("stringLengthMap1 : {}", stringLengthMap);
+    public void computeIfAbsent() {
+        Map<String, Integer> map = new HashMap<>();
+        map.put("John", 5);
 
-        assertThat(stringLengthMap.computeIfAbsent("John", key -> key.length())).isEqualTo(5); //존재하면 value값을 반환함
-        assertThat(stringLengthMap.size()).isEqualTo(1);
-        log.info("stringLengthMap2 : {}", stringLengthMap);
+        assertThat(map.computeIfAbsent("John", key -> key.length())).isEqualTo(5); //존재하면 value값을 반환함
+        assertThat(map.size()).isEqualTo(1);
 
         //없으면 2번째 인자 함수를 실행한 결과를 반환하고 map에도 추가가 된다
-        assertThat(stringLengthMap.computeIfAbsent("John2", key -> key.length())).isEqualTo("John2".length());
-        assertThat(stringLengthMap.get("John2")).isNotNull();
-        assertThat(stringLengthMap.size()).isEqualTo(2);
-        log.info("stringLengthMap3 : {}", stringLengthMap);
+        assertThat(map.computeIfAbsent("John2", key -> key.length())).isEqualTo("John2".length());
+        assertThat(map.get("John2")).isNotNull();
+        assertThat(map.size()).isEqualTo(2);
 
-        assertThat(stringLengthMap.computeIfAbsent("John3", key -> null)).isNull();
-        assertThat(stringLengthMap.size()).isEqualTo(2);
+        assertThat(map.computeIfAbsent("John3", key -> null)).isNull();
+        assertThat(map.size()).isEqualTo(2);
     }
 
     @Test
     public void putIfAbsent() {
-        Map<String, Integer> stringLengthMap = new HashMap<>();
-        stringLengthMap.put("John", 5);
+        Map<String, Integer> map = new HashMap<>();
+        map.put("John", 5);
 
-        assertThat(stringLengthMap.putIfAbsent("John", 10)).isEqualTo(5); //존재하는 경우, value값을 반환한다
-        assertThat(stringLengthMap.size()).isEqualTo(1);
+        assertThat(map.putIfAbsent("John", 10)).isEqualTo(5); //존재하는 경우, value값을 반환한다
+        assertThat(map.size()).isEqualTo(1);
 
-        assertThat(stringLengthMap.putIfAbsent("John2", 10)).isNull(); //없는 경우, null로 반환하고 map에 저장함
-        assertThat(stringLengthMap.size()).isEqualTo(2);
+        assertThat(map.putIfAbsent("John2", 10)).isNull(); //없는 경우, null로 반환하고 map에 저장함
+        assertThat(map.size()).isEqualTo(2);
     }
 
     @Test
@@ -112,10 +109,10 @@ public class MapTest {
         map.put("paul", 30);
         map.put("peter", 40);
 
-        map.computeIfPresent("kelly", (k, v) -> v + 10); //{john=20, paul=30, peter=40} //kelly not present
+        map.computeIfPresent("kelly", (k, v) -> v + 10);
         assertThat(map.get("kelly")).isNull();
 
-        map.computeIfPresent("peter", (k, v) -> v + 10); //{john=20, paul=30, peter=50} // peter present, so increase the value
+        map.computeIfPresent("peter", (k, v) -> v + 10);
         assertThat(map.get("peter")).isEqualTo(40 + 10);
     }
 
@@ -126,7 +123,7 @@ public class MapTest {
         map.put("paul", 30);
         map.put("peter", 40);
 
-        map.compute("peter", (k, v) -> v + 50); //{john=20, paul=30, peter=90} //Increase the value
+        map.compute("peter", (k, v) -> v + 50);
         assertThat(map.get("peter")).isEqualTo(40 + 50);
     }
 
@@ -137,19 +134,20 @@ public class MapTest {
         map.put("paul", 30);
         map.put("peter", 40);
 
-        //Adds the key-value pair to the map, if key is not present or value for the key is null
-        map.merge("kelly", 50, (k, v) -> map.get("john") + 10); // {john=20, paul=30, peter=40, kelly=50}
+        //key값이 존재를 하면, 해당 key의 값을 remapping 함수의 결과 값으로 바꾼다
+        map.merge("peter", 50, (k, v) -> map.get("john") + 10);
+        assertThat(map.get("peter")).isEqualTo(30);
+
+        //key가 존재하고 remapping 함수의 결과가 null이면 map에서 해당 key를 삭제한다
+        map.merge("peter", 30, (k, v) -> map.get("nancy"));
+        assertThat(map.get("peter")).isNull();
+        assertThat(map.size()).isEqualTo(3);
+
+        //key가 존재하지 않으면 key, value값을 추가함
+        map.merge("kelly", 50, (k, v) -> map.get("john") + 10);
         assertThat(map.get("kelly")).isEqualTo(50);
         assertThat(map.size()).isEqualTo(4);
 
-        //Replaces the value with the newly computed value, if the key is present
-        map.merge("peter", 50, (k, v) -> map.get("john") + 10); //{john=20, paul=30, peter=30, kelly=50}
-        assertThat(map.get("peter")).isEqualTo(30);
-
-        //Key is removed from the map , if new value computed is null
-        map.merge("peter", 30, (k, v) -> map.get("nancy")); //{john=20, paul=30, kelly=50}
-        assertThat(map.get("peter")).isNull();
-        assertThat(map.size()).isEqualTo(3);
     }
 
     @Test
@@ -158,16 +156,18 @@ public class MapTest {
         Map<Character, Integer> map1 = new HashMap<>();
         Map<Character, Integer> map2 = new HashMap<>();
 
-        for (char c : str.toCharArray()) {
-            map1.put(c, map1.getOrDefault(c, 0) + 1);
-        }
-
+        //getOrDefault 사용하지 않는 경우
         for (char c : str.toCharArray()) {
             if (map2.containsKey(c)) {
                 map2.put(c, map2.get(c) + 1);
             } else {
                 map2.put(c, 1);
             }
+        }
+
+        //getOrDefault 사용하는 경우
+        for (char c : str.toCharArray()) {
+            map1.put(c, map1.getOrDefault(c, 0) + 1);
         }
 
         assertThat(map1).isEqualTo(map2);
