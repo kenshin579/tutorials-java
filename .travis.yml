@@ -16,7 +16,7 @@ cache:
     - '$HOME/.m2/repository'
 
 script:
-  - CI=false ./mvnw clean package -P real
+  - ./mvnw clean package
 
 #after_script:
 #  - cat /home/travis/.npm/_logs/*.log
