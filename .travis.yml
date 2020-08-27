@@ -1,0 +1,28 @@
+language: java
+
+os:
+  - linux
+
+jdk:
+  - openjdk14
+
+branches:
+  only:
+    - master
+
+# Travis CI 서버의 Home
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+
+script:
+  - CI=false ./mvnw clean package -P real
+
+#after_script:
+#  - cat /home/travis/.npm/_logs/*.log
+
+# CI 실행 완료시 메일로 알람
+#notifications:
+#  email:
+#    recipients:
+#      - advenoh@gmail.com
