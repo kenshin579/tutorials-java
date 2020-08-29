@@ -99,27 +99,27 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
-                <module>springboot-messaging-socketjs-stomp</module>
-                <module>springboot-messaging-rabbitmq</module>
-                <!--<module>springboot-security-junit-test-withmockuser</module>-->
-                <module>springboot-security</module>
                 <module>springboot-data-jpa-h2</module>
-                <module>springboot-modelmapper</module>
-                <module>springboot-resttemplate</module>
-                <module>springboot-quartz-cluster</module>
-                <module>springboot-quartz-cluster-reactjs</module>
+                <module>springboot-exception-handler</module>
+                <module>springboot-jpa-many-to-many</module>
                 <module>springboot-jpa-many-to-one-bidirectional</module>
                 <module>springboot-jpa-many-to-one-unidirectional</module>
-                <module>springboot-quartz-reactjs-angularjs</module>
-                <module>springboot-quartz-in-memory</module>
-                <module>springboot-jpa-many-to-many</module>
                 <module>springboot-jpa-unit-test</module>
                 <module>springboot-jpa-pagination</module>
                 <module>springboot-jpa-one-to-one-unidirectional</module>
                 <module>springboot-jpa-one-to-one-bidirectional</module>
                 <module>springboot-jpa-one-to-one-bidirectional-target</module>
                 <module>springboot-jpa-repeated-columns-problem</module>
-                <module>springboot-exception-handler</module>
+                <module>springboot-messaging-socketjs-stomp</module>
+                <module>springboot-messaging-rabbitmq</module>
+                <module>springboot-modelmapper</module>
+                <module>springboot-quartz-cluster</module>
+                <module>springboot-quartz-cluster-reactjs</module>
+                <module>springboot-quartz-in-memory</module>
+                <module>springboot-quartz-reactjs-angularjs</module>
+                <module>springboot-resttemplate</module>
+                <module>springboot-security</module>
+<!--                <module>springboot-security-junit-test-withmockuser</module>-->
             </modules>
         </profile>
     </profiles>
