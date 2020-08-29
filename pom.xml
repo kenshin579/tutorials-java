@@ -11,86 +11,86 @@
         <profile>
             <id>java-basic</id>
             <modules>
-                <module>httpclient</module>
-                <module>util-stopwatchaverage</module>
-                <module>java-hashcode</module>
-                <module>java-eventlistener</module>
-                <module>java-generics</module>
-                <module>log-commons-logging-log4j</module>
-                <module>log-slf4j-log4j</module>
-                <module>log-slf4j-logback</module>
-                <module>thread-callable</module>
-                <module>java-cloneable</module>
-                <module>rmi-withoutregistry</module>
-                <module>rmi-calculator</module>
+                <module>amazon-s3</module>
+                <module>assertj-unit-test</module>
+                <module>custom-annotation</module>
                 <module>ds-priority-queue</module>
-                <module>java-iterator</module>
-                <module>java-enum</module>
-                <module>java-reflection</module>
-                <module>java-method-chain</module>
+                <module>google-guava</module>
+                <module>httpclient</module>
+                <module>interface-callback</module>
+                <module>java8</module>
+                <module>java8-hashmap</module>
                 <module>java11</module>
                 <module>java10</module>
                 <module>java9</module>
-                <module>java8</module>
-                <module>java8-hashmap</module>
-                <module>java-prepost-interface</module>
-                <module>java-final</module>
-                <module>java-optional</module>
-                <module>java-completablefuture</module>
                 <module>java-class-loader</module>
-                <module>java-file-io</module>
-                <module>java-concurrency-countdownlatch</module>
-                <module>java-concurrency-atomic</module>
-                <module>java-ssl-keystore-import-test</module>
+                <module>java-cloneable</module>
                 <module>java-compare</module>
-                <module>custom-annotation</module>
+                <module>java-completablefuture</module>
+                <module>java-concurrency-atomic</module>
+                <module>java-concurrency-countdownlatch</module>
+                <module>java-enum</module>
+                <module>java-eventlistener</module>
+                <module>java-file-io</module>
+                <module>java-final</module>
+                <module>java-generics</module>
+                <module>java-hashcode</module>
+                <module>java-iterator</module>
+                <module>java-method-chain</module>
+                <module>java-optional</module>
+                <module>java-prepost-interface</module>
+                <module>java-reflection</module>
+                <module>java-ssl-keystore-import-test</module>
                 <module>jayway-jsonpath</module>
-                <module>lombok</module>
                 <module>json-jackson</module>
-                <module>amazon-s3</module>
-                <module>zencoder</module>
-                <module>assertj-unit-test</module>
-                <module>interface-callback</module>
                 <module>junit-mockito</module>
-                <module>retry-exception-handler</module>
                 <module>junit-powermock</module>
                 <module>junit-rule</module>
                 <module>junit-unit-test</module>
+                <module>log-commons-logging-log4j</module>
+                <module>log-slf4j-log4j</module>
+                <module>log-slf4j-logback</module>
+                <module>lombok</module>
                 <module>rabbitmq-amqp-client</module>
-                <module>google-guava</module>
+                <module>retry-exception-handler</module>
+                <module>rmi-withoutregistry</module>
+                <module>rmi-calculator</module>
                 <module>scheduler-quartz</module>
                 <module>scheduler-quartz-mysql</module>
+                <module>thread-callable</module>
+                <module>util-stopwatchaverage</module>
+                <module>zencoder</module>
             </modules>
         </profile>
         <profile>
             <id>spring</id>
             <modules>
+                <module>simple-spring-memcached</module>
+                <module>spring-annotation-order</module>
+                <module>spring-async</module>
                 <module>spring-di-annotation</module>
                 <module>spring-di-annotation-javaconfig</module>
                 <module>spring-di-javaconfig</module>
-                <module>simple-spring-memcached</module>
-                <module>spring-mvc-unit-test</module>
-                <module>spring-mvc-javaconfig-commons-fileupload-ajax</module>
-                <module>spring-mvc-javaconfig-fileupload-form</module>
-                <module>spring-mvc-xml-fileupload</module>
-                <module>spring-mvc-hello-world</module>
-                <module>spring-mvc-exception-journaldev</module>
-                <module>spring-mvc-mybatis</module>
-                <module>spring-resttemplate</module>
-                <module>spring-mvc-xml-mybatis</module>
-                <module>spring-mybatis-sqlsession-dao-support</module>
-                <module>spring-mybatis-sqlsession-template</module>
-                <module>spring-mybatis-mapper</module>
-                <module>spring-async</module>
-                <module>spring-mybatis-dao</module>
+                <module>spring-messaging-websocket</module>
                 <module>spring-model-attribute</module>
                 <module>spring-model-attribute-method</module>
-                <module>spring-annotation-order</module>
-                <module>spring-websocket-stomp</module>
-                <module>spring-messaging-websocket</module>
-                <module>spring-rabbitmq-xml</module>
-                <module>spring-rabbitmq-javaconfig</module>
+                <module>spring-mvc-exception-journaldev</module>
+                <module>spring-mvc-hello-world</module>
+                <module>spring-mvc-javaconfig-commons-fileupload-ajax</module>
+                <module>spring-mvc-javaconfig-fileupload-form</module>
+                <module>spring-mvc-mybatis</module>
+                <module>spring-mvc-unit-test</module>
+                <module>spring-mvc-xml-fileupload</module>
+                <module>spring-mvc-xml-mybatis</module>
+                <module>spring-mybatis-dao</module>
+                <module>spring-mybatis-mapper</module>
+                <module>spring-mybatis-sqlsession-dao-support</module>
+                <module>spring-mybatis-sqlsession-template</module>
                 <module>spring-poi-excel-download</module>
+                <module>spring-resttemplate</module>
+                <module>spring-rabbitmq-javaconfig</module>
+                <module>spring-rabbitmq-xml</module>
+                <module>spring-websocket-stomp</module>
             </modules>
         </profile>
         <profile>
@@ -99,27 +99,27 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
-                <module>springboot-messaging-socketjs-stomp</module>
-                <module>springboot-messaging-rabbitmq</module>
-                <!--<module>springboot-security-junit-test-withmockuser</module>-->
-                <module>springboot-security</module>
                 <module>springboot-data-jpa-h2</module>
-                <module>springboot-modelmapper</module>
-                <module>springboot-resttemplate</module>
-                <module>springboot-quartz-cluster</module>
-                <module>springboot-quartz-cluster-reactjs</module>
+                <module>springboot-exception-handler</module>
+                <module>springboot-jpa-many-to-many</module>
                 <module>springboot-jpa-many-to-one-bidirectional</module>
                 <module>springboot-jpa-many-to-one-unidirectional</module>
-                <module>springboot-quartz-reactjs-angularjs</module>
-                <module>springboot-quartz-in-memory</module>
-                <module>springboot-jpa-many-to-many</module>
                 <module>springboot-jpa-unit-test</module>
                 <module>springboot-jpa-pagination</module>
                 <module>springboot-jpa-one-to-one-unidirectional</module>
                 <module>springboot-jpa-one-to-one-bidirectional</module>
                 <module>springboot-jpa-one-to-one-bidirectional-target</module>
                 <module>springboot-jpa-repeated-columns-problem</module>
-                <module>springboot-exception-handler</module>
+                <module>springboot-messaging-socketjs-stomp</module>
+                <module>springboot-messaging-rabbitmq</module>
+                <module>springboot-modelmapper</module>
+                <module>springboot-quartz-cluster</module>
+                <module>springboot-quartz-cluster-reactjs</module>
+                <module>springboot-quartz-in-memory</module>
+                <module>springboot-quartz-reactjs-angularjs</module>
+                <module>springboot-resttemplate</module>
+                <module>springboot-security</module>
+<!--                <module>springboot-security-junit-test-withmockuser</module>-->
             </modules>
         </profile>
     </profiles>
