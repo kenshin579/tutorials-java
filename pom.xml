@@ -11,55 +11,55 @@
         <profile>
             <id>java-basic</id>
             <modules>
-                <module>httpclient</module>
-                <module>util-stopwatchaverage</module>
-                <module>java-hashcode</module>
-                <module>java-eventlistener</module>
-                <module>java-generics</module>
-                <module>log-commons-logging-log4j</module>
-                <module>log-slf4j-log4j</module>
-                <module>log-slf4j-logback</module>
-                <module>thread-callable</module>
-                <module>java-cloneable</module>
-                <module>rmi-withoutregistry</module>
-                <module>rmi-calculator</module>
+                <module>amazon-s3</module>
+                <module>assertj-unit-test</module>
+                <module>custom-annotation</module>
                 <module>ds-priority-queue</module>
-                <module>java-iterator</module>
-                <module>java-enum</module>
-                <module>java-reflection</module>
-                <module>java-method-chain</module>
+                <module>google-guava</module>
+                <module>httpclient</module>
+                <module>interface-callback</module>
+                <module>java8</module>
+                <module>java8-hashmap</module>
                 <module>java11</module>
                 <module>java10</module>
                 <module>java9</module>
-                <module>java8</module>
-                <module>java8-hashmap</module>
-                <module>java-prepost-interface</module>
-                <module>java-final</module>
-                <module>java-optional</module>
-                <module>java-completablefuture</module>
                 <module>java-class-loader</module>
-                <module>java-file-io</module>
-                <module>java-concurrency-countdownlatch</module>
-                <module>java-concurrency-atomic</module>
-                <module>java-ssl-keystore-import-test</module>
+                <module>java-cloneable</module>
                 <module>java-compare</module>
-                <module>custom-annotation</module>
+                <module>java-completablefuture</module>
+                <module>java-concurrency-atomic</module>
+                <module>java-concurrency-countdownlatch</module>
+                <module>java-enum</module>
+                <module>java-eventlistener</module>
+                <module>java-file-io</module>
+                <module>java-final</module>
+                <module>java-generics</module>
+                <module>java-hashcode</module>
+                <module>java-iterator</module>
+                <module>java-method-chain</module>
+                <module>java-optional</module>
+                <module>java-prepost-interface</module>
+                <module>java-reflection</module>
+                <module>java-ssl-keystore-import-test</module>
                 <module>jayway-jsonpath</module>
-                <module>lombok</module>
                 <module>json-jackson</module>
-                <module>amazon-s3</module>
-                <module>zencoder</module>
-                <module>assertj-unit-test</module>
-                <module>interface-callback</module>
                 <module>junit-mockito</module>
-                <module>retry-exception-handler</module>
                 <module>junit-powermock</module>
                 <module>junit-rule</module>
                 <module>junit-unit-test</module>
+                <module>log-commons-logging-log4j</module>
+                <module>log-slf4j-log4j</module>
+                <module>log-slf4j-logback</module>
+                <module>lombok</module>
                 <module>rabbitmq-amqp-client</module>
-                <module>google-guava</module>
+                <module>retry-exception-handler</module>
+                <module>rmi-withoutregistry</module>
+                <module>rmi-calculator</module>
                 <module>scheduler-quartz</module>
                 <module>scheduler-quartz-mysql</module>
+                <module>thread-callable</module>
+                <module>util-stopwatchaverage</module>
+                <module>zencoder</module>
             </modules>
         </profile>
         <profile>
