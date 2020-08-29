@@ -65,32 +65,32 @@
         <profile>
             <id>spring</id>
             <modules>
+                <module>simple-spring-memcached</module>
+                <module>spring-annotation-order</module>
+                <module>spring-async</module>
                 <module>spring-di-annotation</module>
                 <module>spring-di-annotation-javaconfig</module>
                 <module>spring-di-javaconfig</module>
-                <module>simple-spring-memcached</module>
-                <module>spring-mvc-unit-test</module>
-                <module>spring-mvc-javaconfig-commons-fileupload-ajax</module>
-                <module>spring-mvc-javaconfig-fileupload-form</module>
-                <module>spring-mvc-xml-fileupload</module>
-                <module>spring-mvc-hello-world</module>
-                <module>spring-mvc-exception-journaldev</module>
-                <module>spring-mvc-mybatis</module>
-                <module>spring-resttemplate</module>
-                <module>spring-mvc-xml-mybatis</module>
-                <module>spring-mybatis-sqlsession-dao-support</module>
-                <module>spring-mybatis-sqlsession-template</module>
-                <module>spring-mybatis-mapper</module>
-                <module>spring-async</module>
-                <module>spring-mybatis-dao</module>
+                <module>spring-messaging-websocket</module>
                 <module>spring-model-attribute</module>
                 <module>spring-model-attribute-method</module>
-                <module>spring-annotation-order</module>
-                <module>spring-websocket-stomp</module>
-                <module>spring-messaging-websocket</module>
-                <module>spring-rabbitmq-xml</module>
-                <module>spring-rabbitmq-javaconfig</module>
+                <module>spring-mvc-exception-journaldev</module>
+                <module>spring-mvc-hello-world</module>
+                <module>spring-mvc-javaconfig-commons-fileupload-ajax</module>
+                <module>spring-mvc-javaconfig-fileupload-form</module>
+                <module>spring-mvc-mybatis</module>
+                <module>spring-mvc-unit-test</module>
+                <module>spring-mvc-xml-fileupload</module>
+                <module>spring-mvc-xml-mybatis</module>
+                <module>spring-mybatis-dao</module>
+                <module>spring-mybatis-mapper</module>
+                <module>spring-mybatis-sqlsession-dao-support</module>
+                <module>spring-mybatis-sqlsession-template</module>
                 <module>spring-poi-excel-download</module>
+                <module>spring-resttemplate</module>
+                <module>spring-rabbitmq-javaconfig</module>
+                <module>spring-rabbitmq-xml</module>
+                <module>spring-websocket-stomp</module>
             </modules>
         </profile>
         <profile>
