@@ -35,6 +35,7 @@
                 <module>java11</module>
                 <module>java10</module>
                 <module>java9</module>
+                <module>java-collections</module>
                 <module>java-class-loader</module>
                 <module>java-cloneable</module>
                 <module>java-compare</module>
