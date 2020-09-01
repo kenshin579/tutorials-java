@@ -11,6 +11,7 @@
         <profile>
             <id>java-basic</id>
             <modules>
+                <module>algorithm-sort</module>
                 <module>amazon-s3</module>
                 <module>assertj-unit-test</module>
                 <module>custom-annotation</module>
