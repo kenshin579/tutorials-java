@@ -64,4 +64,11 @@ public class Java8Test {
 		log.info("schedulerType : {} result : {}", schedulerType, result);
 		return result;
 	}
+
+	//todo : List<Map<String, Long>> -> List<Long>으로 변환하기
+//	private List<Long> getAllVodNos() throws JsonProcessingException {
+//		List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT vod_seqno FROM tmon_media.media_vod");
+//		return maps.stream().map(m -> ((BigInteger) m.get("vod_seqno")).longValue()).collect(Collectors.toList());
+//	}
+
 }
