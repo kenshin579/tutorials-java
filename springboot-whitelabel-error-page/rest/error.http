@@ -1,0 +1,10 @@
+GET http://localhost:8080/notfound
+Accept: text/html
+###
+
+GET http://localhost:8080/notfound
+Accept: application/json
+
+###
+#GET http://localhost:8080
+#Accept: application/json
