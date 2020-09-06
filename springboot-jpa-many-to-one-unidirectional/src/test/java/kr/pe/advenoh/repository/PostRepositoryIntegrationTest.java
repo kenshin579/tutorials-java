@@ -1,9 +1,9 @@
 package kr.pe.advenoh.repository;
 
-import javafx.util.Pair;
 import kr.pe.advenoh.model.Comment;
 import kr.pe.advenoh.model.Post;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -71,6 +71,7 @@ public class PostRepositoryIntegrationTest {
      */
     @Test
     public void 연관관계_제거_오류() {
+
         Pair<Post, Comment> pair = create_post1_comment1();
 
         Comment comment2 = new Comment("angela2", "comment2");
@@ -96,6 +97,6 @@ public class PostRepositoryIntegrationTest {
         comment1.setPost(post1); //연관관계 설정
         testEntityManager.persistAndFlush(comment1);
 
-        return new Pair<>(post1, comment1);
+        return Pair.of(post1, comment1);
     }
 }

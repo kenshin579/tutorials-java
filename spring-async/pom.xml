@@ -13,7 +13,7 @@
     <artifactId>spring-async</artifactId>
     <packaging>war</packaging>
 
-    <name>spring-async Maven Webapp</name>
+    <name>spring-async</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
