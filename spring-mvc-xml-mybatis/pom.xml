@@ -13,7 +13,7 @@
     <artifactId>spring-mvc-xml-mybatis</artifactId>
     <packaging>war</packaging>
 
-    <name>spring-mvc-xml-mybatis Maven Webapp</name>
+    <name>spring-mvc-xml-mybatis</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 

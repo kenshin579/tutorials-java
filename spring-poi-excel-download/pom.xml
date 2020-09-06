@@ -12,7 +12,7 @@
     <artifactId>spring-poi-excel-download</artifactId>
     <packaging>war</packaging>
 
-    <name>spring-poi-excel-download Maven Webapp</name>
+    <name>spring-poi-excel-download</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 

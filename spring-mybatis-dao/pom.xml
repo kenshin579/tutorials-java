@@ -13,7 +13,7 @@
     <artifactId>spring-mybatis-dao</artifactId>
     <packaging>war</packaging>
 
-    <name>spring-mybatis-dao Maven Webapp</name>
+    <name>spring-mybatis-dao</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 

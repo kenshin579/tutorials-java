@@ -13,7 +13,7 @@
     <artifactId>httpclient</artifactId>
     <packaging>war</packaging>
 
-    <name>httpclient Maven Webapp</name>
+    <name>httpclient</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
