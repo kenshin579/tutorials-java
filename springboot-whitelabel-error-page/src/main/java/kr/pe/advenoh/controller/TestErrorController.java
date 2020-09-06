@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestErrorController {
 
-    @GetMapping("/internal-server-error")
+    @GetMapping("/5xx")
     public Object getStudent() {
-        throw new IllegalStateException("error!!!");
+        int result = 100 / 0;
+        return result;
     }
 }
