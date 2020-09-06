@@ -7,5 +7,5 @@ GET http://localhost:8080/notfound
 Accept: application/json
 
 ### 5xx
-GET http://localhost:8080/test/internal-server-error
-Accept: text/html
+GET http://localhost:8080/test/5xx
+Accept: application/json
