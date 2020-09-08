@@ -1,0 +1,11 @@
+### whitelabel error page
+GET http://localhost:8080/notfound
+Accept: text/html
+
+### 404 response
+GET http://localhost:8080/notfound
+Accept: application/json
+
+### 5xx
+GET http://localhost:8080/test/5xx
+Accept: application/json
