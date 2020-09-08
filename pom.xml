@@ -102,6 +102,7 @@
                 <module>springboot-data-jpa-h2</module>
                 <module>springboot-whitelabel-error-page</module>
                 <module>springboot-exception-handler</module>
+                <module>springboot-handler-method-argument-resolver</module>
                 <module>springboot-jpa-many-to-many</module>
                 <module>springboot-jpa-many-to-one-bidirectional</module>
                 <module>springboot-jpa-many-to-one-unidirectional</module>
