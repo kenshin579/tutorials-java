@@ -25,8 +25,12 @@ public class CustomErrorController implements ErrorController {
         return "error";
     }
 
+    /**
+     * 이 메서드는 스프링 부트 2.3.x부터 deprecated 됨
+     * - 이 메서드 대신 custom path를 지정하려면 server.error.path 속성으로 지정해야 한다
+     */
     @Override
     public String getErrorPath() {
-        return "/error";
+        return null;
     }
 }
