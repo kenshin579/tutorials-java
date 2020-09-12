@@ -3,21 +3,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>kr.pe.advenoh</groupId>
+        <artifactId>tutorials-java</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
     <version>1.0-SNAPSHOT</version>
 
-    <groupId>com.advenoh</groupId>
+    <groupId>kr.pe.advenoh</groupId>
     <artifactId>springboot-quartz-reactjs-angularjs</artifactId>
 
     <name>springboot-quartz-reactjs-angularjs</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.7.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
