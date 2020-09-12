@@ -8,7 +8,7 @@
         <version>1.0-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.advenoh</groupId>
+    <groupId>kr.pe.advenoh</groupId>
     <artifactId>springboot-quartz-cluster-reactjs</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>springboot-quartz-cluster-reactjs</name>

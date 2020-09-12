@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.advenoh</groupId>
+    <groupId>kr.pe.advenoh</groupId>
     <artifactId>springboot-data-jpa-h2</artifactId>
     <version>1.0-SNAPSHOT</version>
 

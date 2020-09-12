@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.advenoh</groupId>
+    <groupId>kr.pe.advenoh</groupId>
     <artifactId>springboot-messaging-rabbitmq</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
