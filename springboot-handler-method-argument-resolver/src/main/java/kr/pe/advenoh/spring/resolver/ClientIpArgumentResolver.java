@@ -1,5 +1,6 @@
-package kr.pe.advenoh.resolver;
+package kr.pe.advenoh.spring.resolver;
 
+import kr.pe.advenoh.resolver.ClientIp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
