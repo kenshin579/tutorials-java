@@ -118,6 +118,7 @@
                 <module>springboot-jpa-many-to-many</module>
                 <module>springboot-jpa-many-to-one-bidirectional</module>
                 <module>springboot-jpa-many-to-one-unidirectional</module>
+                <module>springboot-jpa-n1-problem</module>
                 <module>springboot-jpa-unit-test</module>
                 <module>springboot-jpa-pagination</module>
                 <module>springboot-jpa-one-to-one-unidirectional</module>
@@ -133,7 +134,6 @@
                 <module>springboot-quartz-reactjs-angularjs</module>
                 <module>springboot-resttemplate</module>
                 <module>springboot-security</module>
-<!--                <module>springboot-security-junit-test-withmockuser</module>-->
             </modules>
         </profile>
     </profiles>
