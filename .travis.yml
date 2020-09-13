@@ -16,7 +16,7 @@ cache:
     - '$HOME/.m2/repository'
 
 script:
-  - ./mvnw clean package -Dmaven.test.failure.ignore=true
+  - ./mvnw clean install -Dmaven.test.failure.ignore=true
 
 #after_script:
 #  - cat /home/travis/.npm/_logs/*.log
