@@ -35,3 +35,4 @@ application-my.yml
 hs_err_pid*
 
 **/node_modules
+/venv/
