@@ -5,7 +5,7 @@ import os
 import shutil
 import sys
 import tempfile
-import urllib
+import urllib.request
 from pathlib import Path
 
 ################################################################################################
@@ -44,7 +44,12 @@ def update_readme():
     remote_file_size = Path(remote_file).stat().st_size
     local_file_size = Path(LOCAL_README_FILE).stat().st_size
     if remote_file_size > local_file_size:
-        shutil.copy(remote_file, LOCAL_README_FILE)
+        # shutil.copy(remote_file, LOCAL_README_FILE)
+        with open(remote_file) as f:
+            lines = f.readlines()
+            lines[0] = "[![HitCount](http://hits.dwyl.com/kenshin579/tutorials-java.svg)](http://hits.dwyl.com/kenshin579/tutorials-java)\n"
+        with open(LOCAL_README_FILE, "w") as f:
+            f.writelines(lines)
 
 ################################################################################################
 # Main function
