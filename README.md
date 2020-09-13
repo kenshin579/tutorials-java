@@ -1,4 +1,4 @@
-[![HitCount](http://hits.dwyl.io/kenshin579/advenohpekr.svg)](http://hits.dwyl.io/kenshin579/advenohpekr)
+[![HitCount](http://hits.dwyl.com/kenshin579/tutorials-java.svg)](http://hits.dwyl.com/kenshin579/tutorials-java)
 
 # Frank's Blog Code
 
