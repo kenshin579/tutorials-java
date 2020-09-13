@@ -2,17 +2,11 @@
 # -*- coding: utf-8 -*-
 import argparse
 import os
-import re
 import shutil
 import sys
 import tempfile
 import urllib
-from itertools import islice
 from pathlib import Path
-
-from bs4 import BeautifulSoup
-import requests
-
 
 ################################################################################################
 # todo :
