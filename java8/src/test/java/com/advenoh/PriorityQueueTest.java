@@ -33,4 +33,17 @@ public class PriorityQueueTest {
         assertThat(minHeap.poll()).isEqualTo(10);
         assertThat(minHeap.poll()).isEqualTo(5);
     }
+
+    @Test
+    public void test_student_age() {
+        PriorityQueue<Student> studentAgeHeap = new PriorityQueue<>();
+
+        studentAgeHeap.add(new Student("Frank", 23));
+        studentAgeHeap.add(new Student("Angela", 10));
+        studentAgeHeap.add(new Student("David", 30));
+        studentAgeHeap.add(new Student("Joe", 15));
+
+//        assertThat(studentAgeHeap.poll()).isEqualTo();
+
+    }
 }
