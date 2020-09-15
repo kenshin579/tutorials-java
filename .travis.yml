@@ -16,6 +16,7 @@ cache:
     - '$HOME/.m2/repository'
 
 script:
+  - ./mvnw -N install
   - ./mvnw clean install -Dmaven.test.failure.ignore=true
 
 #after_script:
