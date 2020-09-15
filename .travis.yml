@@ -6,6 +6,8 @@ os:
 jdk:
   - openjdk14
 
+install: true
+
 #before_install:
 #  - chmod +x mvnw
 
