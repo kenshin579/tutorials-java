@@ -113,7 +113,6 @@
             </activation>
             <modules>
                 <module>springboot-data-jpa-h2</module>
-                <module>springboot-whitelabel-error-page</module>
                 <module>springboot-exception-handler</module>
                 <module>springboot-handler-method-argument-resolver</module>
                 <module>springboot-jpa-many-to-many</module>
@@ -135,6 +134,7 @@
                 <module>springboot-quartz-reactjs-angularjs</module>
                 <module>springboot-resttemplate</module>
                 <module>springboot-security</module>
+                <module>springboot-whitelabel-error-page</module>
             </modules>
         </profile>
     </profiles>
