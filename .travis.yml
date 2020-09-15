@@ -6,6 +6,9 @@ os:
 jdk:
   - openjdk14
 
+#before_install:
+#  - chmod +x mvnw
+
 branches:
   only:
     - master
@@ -16,8 +19,8 @@ cache:
     - '$HOME/.m2/repository'
 
 script:
-  - ./mvnw -N install
-  - ./mvnw clean install -Dmaven.test.failure.ignore=true
+  - mvn -N install
+  - mvn clean package -Dmaven.test.failure.ignore=true
 
 #after_script:
 #  - cat /home/travis/.npm/_logs/*.log
