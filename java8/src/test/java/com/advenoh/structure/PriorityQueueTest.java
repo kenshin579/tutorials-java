@@ -5,12 +5,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 public class PriorityQueueTest {
+
     @Test
     public void test_minHeap() {
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
@@ -37,14 +39,16 @@ public class PriorityQueueTest {
 
     @Test
     public void test_student_age() {
-        PriorityQueue<Student> studentAgeHeap = new PriorityQueue<>();
+        int capacity  = 4;
+        PriorityQueue<Student> studentAgeHeap = new PriorityQueue<>(capacity, Comparator.comparing((Student student) -> student.getAge()));
 
         studentAgeHeap.add(new Student("Frank", 23));
         studentAgeHeap.add(new Student("Angela", 10));
         studentAgeHeap.add(new Student("David", 30));
         studentAgeHeap.add(new Student("Joe", 15));
 
-//        assertThat(studentAgeHeap.poll()).isEqualTo();
+        assertThat(studentAgeHeap.poll().getName()).isEqualTo("Angela");
+        assertThat(studentAgeHeap.poll().getName()).isEqualTo("Joe");
 
     }
 }
