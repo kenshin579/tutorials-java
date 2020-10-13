@@ -24,4 +24,11 @@ public class IntStreamToListOfObjectTest {
 
 		assertThat(students.size()).isEqualTo(max);
 	}
+
+	@Test
+	public void generateListOfIntegers() {
+		int max = 3;
+		List<Integer> intList = IntStream.range(0, max).boxed().collect(Collectors.toList());
+		assertThat(intList.size()).isEqualTo(max);
+	}
 }
