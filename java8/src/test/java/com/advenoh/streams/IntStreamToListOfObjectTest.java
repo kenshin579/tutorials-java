@@ -1,6 +1,6 @@
 package com.advenoh.streams;
 
-import com.advenoh.Student;
+import com.advenoh.model.Student;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class IntStreamToListOfObjectTest {
 	private int MAX = 3;
 
 	@Test
-	public void generate_list_of_obj_with_for() {
+	public void generate_list_of_obj_before_Java8() {
 		List<Student> students = new ArrayList<>();
 		for (int i = 0; i < MAX; i++) {
 			students.add(new Student("name" + i, i + 10));

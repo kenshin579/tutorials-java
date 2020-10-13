@@ -1,5 +1,6 @@
-package com.advenoh;
+package com.advenoh.structure;
 
+import com.advenoh.model.Student;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
