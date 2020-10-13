@@ -1,6 +1,6 @@
 package com.advenoh.utils;
 
-import com.advenoh.Student;
+import com.advenoh.model.Student;
 
 import java.util.List;
 import java.util.stream.Collectors;

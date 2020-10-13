@@ -1,6 +1,6 @@
 package com.advenoh.streams;
 
-import com.advenoh.Student;
+import com.advenoh.model.Student;
 import com.advenoh.utils.TestUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -16,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class ConvertListToMapTest {
 
 	@Test
-	public void collectorsToMap() {
+	public void convert_students_to_map1() {
 		int max = 3;
 		List<Student> students = TestUtil.getStudentSample(max);
 
@@ -39,6 +40,23 @@ public class ConvertListToMapTest {
 				);
 
 		assertThat(nameVsAgeMap2.size()).isEqualTo(max);
+
+	}
+
+	@Test
+	public void convert_students_to_map2() {
+		int max = 3;
+		List<Student> students = TestUtil.getStudentSample(max);
+
+		Map<Integer, Student> nameVsAgeMap1 = IntStream.range(0, max).boxed()
+				.collect(Collectors.toMap(
+						i1 -> i1 + 1,
+						i2 -> students.get(i2)
+				));
+
+		nameVsAgeMap1.forEach((it, it2) -> log.info("{}", it));
+
+		assertThat(nameVsAgeMap1.size()).isEqualTo(max);
 
 	}
 

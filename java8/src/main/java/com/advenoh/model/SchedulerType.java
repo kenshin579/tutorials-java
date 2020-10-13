@@ -1,4 +1,4 @@
-package com.advenoh;
+package com.advenoh.model;
 
 public enum SchedulerType {
 	ALL,

@@ -1,4 +1,4 @@
-package com.advenoh.vod.enums;
+package com.advenoh.model.vod.enums;
 
 import java.util.Arrays;
 import java.util.Collections;

@@ -1,6 +1,6 @@
-package com.advenoh.vod;
+package com.advenoh.model.vod;
 
-import com.advenoh.vod.enums.VodCollectionType;
+import com.advenoh.model.vod.enums.VodCollectionType;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

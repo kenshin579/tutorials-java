@@ -1,8 +1,8 @@
 package com.advenoh.streams;
 
-import com.advenoh.SchedulerType;
-import com.advenoh.vod.VodCollection;
-import com.advenoh.vod.enums.VodCollectionType;
+import com.advenoh.model.SchedulerType;
+import com.advenoh.model.vod.VodCollection;
+import com.advenoh.model.vod.enums.VodCollectionType;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -67,9 +67,9 @@ public class StreamTest {
 	}
 
 	//todo : List<Map<String, Long>> -> List<Long>으로 변환하기
-//	private List<Long> getAllVodNos() throws JsonProcessingException {
-//		List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT vod_seqno FROM tmon_media.media_vod");
-//		return maps.stream().map(m -> ((BigInteger) m.get("vod_seqno")).longValue()).collect(Collectors.toList());
-//	}
+	//	private List<Long> getAllVodNos() throws JsonProcessingException {
+	//		List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT vod_seqno FROM tmon_media.media_vod");
+	//		return maps.stream().map(m -> ((BigInteger) m.get("vod_seqno")).longValue()).collect(Collectors.toList());
+	//	}
 
 }

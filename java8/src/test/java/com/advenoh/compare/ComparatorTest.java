@@ -1,6 +1,6 @@
 package com.advenoh.compare;
 
-import com.advenoh.Student;
+import com.advenoh.model.Student;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -47,8 +47,10 @@ public class ComparatorTest {
 		Collections.sort(students, (o1, o2) -> {
 			if (o1.getAge() == 0 && o2.getAge() == 0)
 				return 0;
-			if (o1.getAge() == 0) return 1;
-			if (o2.getAge() == 0) return -1;
+			if (o1.getAge() == 0)
+				return 1;
+			if (o2.getAge() == 0)
+				return -1;
 			return 0;
 		});
 
