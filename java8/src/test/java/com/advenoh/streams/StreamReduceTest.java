@@ -1,4 +1,4 @@
-package com.advenoh;
+package com.advenoh.streams;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
-public class Java8StreamReduceTest {
+public class StreamReduceTest {
 
     @Test
     public void test_sum하기() {

@@ -1,4 +1,4 @@
-package com.advenoh;
+package com.advenoh.streams;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
