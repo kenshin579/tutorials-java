@@ -1,9 +1,9 @@
-package com.advenoh;
+package com.advenoh.streams;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class Java8StreamTest {
+public class StreamFlatMapTest {
     /**
      * todo : 작업하기
      * https://howtodoinjava.com/java8/stream-flatmap-example/

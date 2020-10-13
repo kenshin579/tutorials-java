@@ -1,5 +1,6 @@
-package com.advenoh;
+package com.advenoh.streams;
 
+import com.advenoh.SchedulerType;
 import com.advenoh.vod.VodCollection;
 import com.advenoh.vod.enums.VodCollectionType;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -16,7 +17,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
-public class Java8Test {
+public class StreamTest {
 	@Test
 	public void test_stream으로_getResult_메서드의_총_결과를_반환하는_예제() {
 		boolean result;
