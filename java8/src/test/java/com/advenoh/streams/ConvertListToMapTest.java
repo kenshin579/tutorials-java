@@ -17,46 +17,51 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class ConvertListToMapTest {
 
 	@Test
-	public void convert_students_to_map1() {
+	public void convert_students_to_map_of_nameVsAge() {
 		int max = 3;
 		List<Student> students = TestUtil.getStudentSample(max);
 
-		Map<String, Integer> nameVsAgeMap1 = students
+		Map<String, Integer> nameVsAgeMap = students
 				.stream()
 				.collect(Collectors.toMap(
 						i1 -> i1.getName(),
 						i2 -> i2.getAge())
 				);
 
-		assertThat(nameVsAgeMap1.size()).isEqualTo(max);
-		log.info("nameVsAgeMap1 : {}", nameVsAgeMap1);
+		assertThat(nameVsAgeMap.size()).isEqualTo(max);
+		log.info("nameVsAgeMap : {}", nameVsAgeMap);
+	}
+
+	@Test
+	public void convert_students_to_map_of_nameVsAge_method_reference() {
+		int max = 3;
+		List<Student> students = TestUtil.getStudentSample(max);
 
 		//method reference
-		Map<String, Integer> nameVsAgeMap2 = students
+		Map<String, Integer> nameVsAgeMap = students
 				.stream()
 				.collect(Collectors.toMap(
 						Student::getName,
 						Student::getAge)
 				);
 
-		assertThat(nameVsAgeMap2.size()).isEqualTo(max);
-
+		assertThat(nameVsAgeMap.size()).isEqualTo(max);
 	}
 
 	@Test
-	public void convert_students_to_map2() {
+	public void convert_students_to_map_of_idVsStudent() {
 		int max = 3;
 		List<Student> students = TestUtil.getStudentSample(max);
 
-		Map<Integer, Student> nameVsAgeMap1 = IntStream.range(0, max).boxed()
+		Map<Integer, Student> idVsStudentMap = IntStream.range(0, max).boxed()
 				.collect(Collectors.toMap(
 						i1 -> i1 + 1,
 						i2 -> students.get(i2)
 				));
 
-		nameVsAgeMap1.forEach((it, it2) -> log.info("{}", it));
+		idVsStudentMap.forEach((it, it2) -> log.info("{}", it));
 
-		assertThat(nameVsAgeMap1.size()).isEqualTo(max);
+		assertThat(idVsStudentMap.size()).isEqualTo(max);
 
 	}
 
