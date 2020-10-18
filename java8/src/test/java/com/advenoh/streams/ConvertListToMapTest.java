@@ -5,6 +5,7 @@ import com.advenoh.utils.TestUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -15,6 +16,21 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Slf4j
 public class ConvertListToMapTest {
+
+	@Test
+	public void convert_students_to_map_of_nameVsAge_beforeJava8() {
+		int max = 3;
+		List<Student> students = TestUtil.getStudentSample(max);
+		Map<String, Integer> nameVsAgeMap = new HashMap<>();
+		Student student;
+		for (int i = 0; i < students.size(); i++) {
+			student = students.get(i);
+			nameVsAgeMap.put(student.getName(), student.getAge());
+		}
+
+		assertThat(nameVsAgeMap.size()).isEqualTo(max);
+		log.info("nameVsAgeMap : {}", nameVsAgeMap);
+	}
 
 	@Test
 	public void convert_students_to_map_of_nameVsAge() {
