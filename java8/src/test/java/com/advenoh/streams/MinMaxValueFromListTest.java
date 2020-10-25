@@ -17,12 +17,20 @@ public class MinMaxValueFromListTest {
     @Test
     public void test_max_값_얻기() {
         List<Integer> intList = Arrays.asList(2, 3, 6, 4, 10, 23);
-        Integer minValue = intList.stream()
+        Integer maxValue = intList.stream()
                 .mapToInt(x -> x)
                 .max()
                 .orElseThrow(NoSuchElementException::new);
 
-        assertThat(minValue).isEqualTo(2);
+        assertThat(maxValue).isEqualTo(23);
     }
 
+    @Test
+    public void test_max_값_얻기2() {
+        int[] intArr = {3, 2, 6, 10, 234};
+        Integer maxValue = Arrays.stream(intArr)
+                .max()
+                .getAsInt();
+        assertThat(maxValue).isEqualTo(234);
+    }
 }
