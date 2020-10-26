@@ -33,4 +33,11 @@ public class MinMaxValueFromListTest {
                 .getAsInt();
         assertThat(maxValue).isEqualTo(234);
     }
+
+    @Test
+    public void strList에서_str길이가_제일_긴_값() {
+        String[] lines = {"Hello", "My", "World11"};
+        int maxWidth = Arrays.stream(lines).mapToInt(String::length).max().getAsInt();
+        assertThat(maxWidth).isEqualTo(7);
+    }
 }
