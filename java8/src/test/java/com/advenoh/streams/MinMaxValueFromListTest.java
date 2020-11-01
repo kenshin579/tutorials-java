@@ -25,6 +25,17 @@ public class MinMaxValueFromListTest {
                 .mapToInt(x -> x)
                 .max()
                 .orElseThrow(NoSuchElementException::new);
+//                .orElseThrow(() -> new NoSuchElementException());
+
+        assertThat(maxValue).isEqualTo(23);
+    }
+
+    @Test
+    public void 숫자_list_max_값_찾기2() {
+        List<Integer> intList = Arrays.asList(2, 3, 6, 4, 23, 10);
+        Integer maxValue = intList.stream()
+                .max(Comparator.comparing(x -> x))
+                .orElseThrow(NoSuchElementException::new);
 
         assertThat(maxValue).isEqualTo(23);
     }
