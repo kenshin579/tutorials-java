@@ -1,4 +1,5 @@
-FROM openjdk:8-jdk-alpine as build
+#FROM openjdk:8-jdk-alpine as build
+FROM dwagstaff/jdk8-armhfp as build
 WORKDIR /app
 
 COPY mvnw .
